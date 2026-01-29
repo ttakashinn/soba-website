@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl } from '../i18n/utils';
+import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -57,7 +58,7 @@ const alternateURLs = {
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     )}
   </head>
-  <body class={lang === 'ja' ? 'font-sans' : 'font-sans'} style={lang === 'ja' ? 'font-family: "Noto Sans JP", sans-serif;' : 'font-family: "Inter", sans-serif;'}>
+  <body class="font-sans" style={lang === 'ja' ? 'font-family: "Noto Sans JP", sans-serif;' : 'font-family: "Inter", sans-serif;'}>
     <slot />
 
     <script>

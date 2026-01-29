@@ -1,0 +1,62 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Netlify Forms
+[[plugins]]
+  package = "@netlify/plugin-forms"
+
+# Redirects for language detection
+[[redirects]]
+  from = "/*"
+  to = "/en/:splat"
+  status = 302
+  force = false
+  conditions = {Language = ["en"], Country = ["US", "GB", "AU", "CA", "NZ", "IE"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/ja/:splat"
+  status = 302
+  force = false
+  conditions = {Language = ["ja"], Country = ["JP"]}
+
+# Default to Vietnamese
+[[redirects]]
+  from = "/*"
+  to = "/:splat"
+  status = 200
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# 404 page
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+```
+
+---
+
+### **Step 25: Tạo robots.txt**
+
+Tạo file `public/robots.txt`:
+```
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sobavn.com/sitemap-index.xml

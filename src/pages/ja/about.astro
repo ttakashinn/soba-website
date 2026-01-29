@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ja');
+---
+
+<BaseLayout
+  title="会社概要"
+  description="SOBA GROUP - 5年以上の経験を持ち、50社以上にサービスを提供する信頼できるDXパートナー。"
+  lang="ja"
+>
+  <Header />
+
+  <main>
+    <!-- Page Header -->
+    <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-4">会社概要</h1>
+        <p class="text-xl text-blue-100">信頼できるDXパートナー</p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="prose prose-lg max-w-none">
+          <h2>私たちのストーリー</h2>
+          <p class="text-gray-600 leading-relaxed">
+            SOBA GROUPは、中小企業が大きなコストをかけずに
+            最新のテクノロジーにアクセスできるよう支援することを使命として設立されました。
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            中小企業には、予算に合った、導入しやすく、
+            迅速なROIをもたらすソリューションが必要であることを理解しています。
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            5年以上の経験と50以上の成功したプロジェクトを持ち、
+            SOBA GROUPは企業の信頼できるパートナーであることを誇りに思っています。
+          </p>
+
+          <h2 class="mt-12">ミッション＆ビジョン</h2>
+
+          <h3>ミッション</h3>
+          <p class="text-gray-600 leading-relaxed">
+            デジタル技術を中小企業により近づけ、
+            デジタル時代において平等に競争できるよう支援します。
+          </p>
+
+          <h3>ビジョン</h3>
+          <p class="text-gray-600 leading-relaxed">
+            ベトナムおよび地域における中小企業向けの主要なITサービスプロバイダーになる。
+          </p>
+
+          <h2 class="mt-12">コアバリュー</h2>
+          <ul class="space-y-4">
+            <li class="text-gray-600">
+              <strong>顧客中心:</strong> すべての決定は顧客の利益を考慮して行われます
+            </li>
+            <li class="text-gray-600">
+              <strong>品質へのコミットメント:</strong> サービス品質に妥協はありません
+            </li>
+            <li class="text-gray-600">
+              <strong>透明性:</strong> コスト、進捗、責任について明確
+            </li>
+            <li class="text-gray-600">
+              <strong>イノベーション:</strong> 常に最新の技術と方法で更新
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

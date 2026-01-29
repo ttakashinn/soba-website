@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('en');
+---
+
+<BaseLayout
+  title="About Us"
+  description="SOBA GROUP - Trusted digital transformation partner with 5+ years of experience serving 50+ businesses."
+  lang="en"
+>
+  <Header />
+
+  <main>
+    <!-- Page Header -->
+    <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-4">About Us</h1>
+        <p class="text-xl text-blue-100">Trusted Digital Transformation Partner</p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="prose prose-lg max-w-none">
+          <h2>Our Story</h2>
+          <p class="text-gray-600 leading-relaxed">
+            SOBA GROUP was founded with the mission to help small and medium enterprises
+            access modern technology without incurring large costs.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            We understand that SMEs need solutions that fit their budget,
+            are easy to implement, and deliver quick ROI.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            With 5+ years of experience and 50+ successful projects,
+            SOBA GROUP is proud to be a trusted partner for businesses.
+          </p>
+
+          <h2 class="mt-12">Mission & Vision</h2>
+
+          <h3>Mission</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Bring digital technology closer to small and medium enterprises,
+            helping them compete equally in the digital age.
+          </p>
+
+          <h3>Vision</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Become the leading IT service provider for SMEs in Vietnam and the region.
+          </p>
+
+          <h2 class="mt-12">Core Values</h2>
+          <ul class="space-y-4">
+            <li class="text-gray-600">
+              <strong>Customer-centric:</strong> All decisions are made with customer benefits in mind
+            </li>
+            <li class="text-gray-600">
+              <strong>Quality commitment:</strong> No compromise on service quality
+            </li>
+            <li class="text-gray-600">
+              <strong>Transparency:</strong> Clear about costs, progress, and responsibilities
+            </li>
+            <li class="text-gray-600">
+              <strong>Innovation:</strong> Always updated with the latest technology and methods
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
