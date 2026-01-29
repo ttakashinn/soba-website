@@ -1,10 +1,10 @@
 // astro.config.mjs
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   output: 'static',
-  site: 'https://sobavn.com',
+  site: 'https://sobavn.netlify.app',
 
   vite: {
     plugins: [tailwindcss()],
@@ -27,4 +27,4 @@ export default defineConfig({
   },
 
   compressHTML: true,
-});
+})
