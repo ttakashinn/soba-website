@@ -6,8 +6,7 @@
   },
   "include": [
     ".astro/types.d.ts",
-    ".astro/alpinejs.d.ts",
-    ".astro/global.d.ts",
+    "types/**/*.d.ts",
     "**/*"
   ],
   "exclude": ["dist"]
