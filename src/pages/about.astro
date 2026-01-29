@@ -1,16 +1,16 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { useTranslations } from '../../i18n/utils';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { useTranslations } from '../i18n/utils';
 
-const t = useTranslations('ja');
+const t = useTranslations('vi');
 ---
 
 <BaseLayout
-  title="会社概要"
-  description="SOBA GROUP - 5年以上の経験を持ち、50社以上にサービスを提供する信頼できるDXパートナー。"
-  lang="ja"
+  title="Về chúng tôi"
+  description="SOBA GROUP - Đối tác chuyển đổi số tin cậy với 5+ năm kinh nghiệm phục vụ 50+ doanh nghiệp."
+  lang="vi"
 >
   <Header />
 
@@ -23,8 +23,8 @@ const t = useTranslations('ja');
 
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
-          <h1 class="text-5xl lg:text-6xl font-bold mb-6">会社概要</h1>
-          <p class="text-2xl text-blue-100">信頼できるDXパートナー</p>
+          <h1 class="text-5xl lg:text-6xl font-bold mb-6">Về chúng tôi</h1>
+          <p class="text-2xl text-blue-100">Đối tác chuyển đổi số tin cậy</p>
         </div>
       </div>
     </section>
@@ -34,19 +34,19 @@ const t = useTranslations('ja');
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 class="text-4xl font-bold text-gray-900 mb-6">私たちのストーリー</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">Câu chuyện của chúng tôi</h2>
             <div class="space-y-4 text-lg text-gray-600 leading-relaxed">
               <p>
-                SOBA GROUPは、中小企業が大きなコストをかけずに
-                最新のテクノロジーにアクセスできるよう支援することを使命として設立されました。
+                SOBA GROUP được thành lập với sứ mệnh giúp doanh nghiệp vừa và nhỏ
+                tiếp cận công nghệ hiện đại mà không tốn kém chi phí lớn.
               </p>
               <p>
-                中小企業には、予算に合った、導入しやすく、
-                迅速なROIをもたらすソリューションが必要であることを理解しています。
+                Chúng tôi hiểu rằng SME cần giải pháp phù hợp với ngân sách,
+                dễ triển khai và mang lại ROI nhanh chóng.
               </p>
               <p>
-                <strong class="text-blue-600">5年以上の経験</strong>と<strong class="text-blue-600">50以上の成功したプロジェクト</strong>を持ち、
-                SOBA GROUPは企業の信頼できるパートナーであることを誇りに思っています。
+                Với <strong class="text-blue-600">5+ năm kinh nghiệm</strong> và <strong class="text-blue-600">50+ dự án thành công</strong>,
+                SOBA GROUP tự hào là đối tác tin cậy của doanh nghiệp.
               </p>
             </div>
           </div>
@@ -56,19 +56,19 @@ const t = useTranslations('ja');
               <div class="grid grid-cols-2 gap-6 h-full">
                 <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center">
                   <div class="text-5xl font-bold text-blue-600 mb-2">50+</div>
-                  <div class="text-gray-600 text-center">成功プロジェクト</div>
+                  <div class="text-gray-600 text-center">Dự án thành công</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center">
                   <div class="text-5xl font-bold text-blue-600 mb-2">5+</div>
-                  <div class="text-gray-600 text-center">年の経験</div>
+                  <div class="text-gray-600 text-center">Năm kinh nghiệm</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center">
                   <div class="text-5xl font-bold text-blue-600 mb-2">98%</div>
-                  <div class="text-gray-600 text-center">顧客満足度</div>
+                  <div class="text-gray-600 text-center">Khách hàng hài lòng</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center">
                   <div class="text-5xl font-bold text-blue-600 mb-2">24/7</div>
-                  <div class="text-gray-600 text-center">サポート</div>
+                  <div class="text-gray-600 text-center">Hỗ trợ</div>
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@ const t = useTranslations('ja');
     <section class="py-20 bg-linear-to-br from-gray-50 to-blue-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">ミッション＆ビジョン</h2>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Sứ mệnh & Tầm nhìn</h2>
           <div class="w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
         </div>
 
@@ -93,10 +93,10 @@ const t = useTranslations('ja');
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">ミッション</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Sứ mệnh</h3>
             <p class="text-gray-600 text-lg leading-relaxed">
-              デジタル技術を中小企業により近づけ、
-              デジタル時代において平等に競争できるよう支援します。
+              Đem công nghệ số đến gần hơn với doanh nghiệp vừa và nhỏ,
+              giúp họ cạnh tranh bình đẳng trong thời đại số.
             </p>
           </div>
 
@@ -108,9 +108,9 @@ const t = useTranslations('ja');
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">ビジョン</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Tầm nhìn</h3>
             <p class="text-gray-600 text-lg leading-relaxed">
-              ベトナムおよび地域における中小企業向けの主要なITサービスプロバイダーになる。
+              Trở thành nhà cung cấp dịch vụ IT hàng đầu cho SME tại Việt Nam và khu vực.
             </p>
           </div>
         </div>
@@ -121,7 +121,7 @@ const t = useTranslations('ja');
     <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">コアバリュー</h2>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Giá trị cốt lõi</h2>
           <div class="w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
         </div>
 
@@ -132,9 +132,9 @@ const t = useTranslations('ja');
               <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <span class="text-2xl text-white font-bold">1</span>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">顧客中心</h3>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Lấy khách hàng làm trung tâm</h3>
               <p class="text-gray-600 leading-relaxed">
-                すべての決定は顧客の利益を考慮して行われます
+                Mọi quyết định đều hướng đến lợi ích khách hàng
               </p>
             </div>
           </div>
@@ -145,9 +145,9 @@ const t = useTranslations('ja');
               <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <span class="text-2xl text-white font-bold">2</span>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">品質へのコミットメント</h3>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Cam kết chất lượng</h3>
               <p class="text-gray-600 leading-relaxed">
-                サービス品質に妥協はありません
+                Không thỏa hiệp về chất lượng dịch vụ
               </p>
             </div>
           </div>
@@ -158,9 +158,9 @@ const t = useTranslations('ja');
               <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <span class="text-2xl text-white font-bold">3</span>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">透明性</h3>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Minh bạch</h3>
               <p class="text-gray-600 leading-relaxed">
-                コスト、進捗、責任について明確
+                Rõ ràng về chi phí, tiến độ và trách nhiệm
               </p>
             </div>
           </div>
@@ -171,9 +171,9 @@ const t = useTranslations('ja');
               <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <span class="text-2xl text-white font-bold">4</span>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">イノベーション</h3>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Đổi mới</h3>
               <p class="text-gray-600 leading-relaxed">
-                常に最新の技術と方法で更新
+                Luôn cập nhật công nghệ và phương pháp mới nhất
               </p>
             </div>
           </div>
@@ -184,15 +184,15 @@ const t = useTranslations('ja');
     <!-- CTA -->
     <section class="py-20 bg-linear-to-br from-blue-600 to-blue-900 text-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl font-bold mb-6">デジタル変革の旅を始める準備はできていますか？</h2>
+        <h2 class="text-4xl font-bold mb-6">Sẵn sàng bắt đầu hành trình chuyển đổi số?</h2>
         <p class="text-xl text-blue-100 mb-8">
-          私たちがあなたのビジネスパートナーになります
+          Hãy để chúng tôi đồng hành cùng doanh nghiệp của bạn
         </p>
         <a
-          href="/ja/contact"
+          href="/contact"
           class="inline-block bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-2xl"
         >
-          今すぐお問い合わせ
+          Liên hệ ngay
         </a>
       </div>
     </section>

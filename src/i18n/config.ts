@@ -23,7 +23,7 @@ export const ui = {
     'services.title': 'Dịch vụ của chúng tôi',
     'services.digital.title': 'Chuyển đổi số toàn diện',
     'services.digital.desc': 'Từ chiến lược đến triển khai, chúng tôi đồng hành cùng doanh nghiệp hiện đại hóa quy trình, tối ưu vận hành',
-    'services.outsourcing.title': 'Đội ngũ IT chuyên nghiệp',
+    'services.outsourcing.title': 'Phát triển phần mềm',
     'services.outsourcing.desc': 'Thuê ngoài lập trình viên, BA, tester chất lượng cao. Linh hoạt quy mô, tiết kiệm chi phí',
     'services.bpo.title': 'Bảo trì & vận hành IT',
     'services.bpo.desc': 'Phòng IT ảo cho SME. Giám sát 24/7, bảo trì hệ thống, xử lý sự cố nhanh chóng',

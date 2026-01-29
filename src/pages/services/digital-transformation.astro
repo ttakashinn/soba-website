@@ -1,0 +1,379 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import CTA from '../../components/CTA.astro'
+---
+
+<BaseLayout
+  title='Tư vấn & Phát triển Chuyển đổi số'
+  description='Giải pháp chuyển đổi số toàn diện giúp doanh nghiệp hiện đại hóa quy trình và tối ưu vận hành.'
+  lang='vi'>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section
+      class='relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
+      </div>
+
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <div class='text-6xl mb-6'>🚀</div>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'
+            >Tư vấn & Phát triển Chuyển đổi số</h1
+          >
+          <p class='text-2xl text-blue-100'>
+            Từ chiến lược đến triển khai, chúng tôi đồng hành cùng doanh nghiệp
+            hiện đại hóa quy trình
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >Doanh nghiệp của bạn đang gặp vấn đề gì?</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>Quy trình thủ công</h3>
+            <p class='text-gray-600'>Lãng phí thời gian và dễ sai sót</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>Dữ liệu rời rạc</h3>
+            <p class='text-gray-600'>Khó quản lý và ra quyết định</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>Tụt hậu đối thủ</h3>
+            <p class='text-gray-600'>Không theo kịp xu hướng số</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>Chi phí cao</h3>
+            <p class='text-gray-600'>Vận hành không hiệu quả</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >Giải pháp của chúng tôi</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 gap-8 mb-12'>
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-green-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Đánh giá & Tư vấn chiến lược</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Phân tích hiện trạng hệ thống</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Xác định nhu cầu chuyển đổi số</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Lộ trình chuyển đổi 12-24 tháng</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Ước tính chi phí và ROI</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-blue-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Phát triển phần mềm quản lý</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>ERP, CRM, HRM tùy chỉnh</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Tích hợp hệ thống hiện có</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Ứng dụng di động cho nhân viên</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Bảng điều khiển báo cáo theo thời gian thực</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-purple-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Tích hợp hệ thống</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Kết nối API với phần mềm cũ</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Chuyển đổi dữ liệu an toàn</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Đồng bộ dữ liệu theo thời gian thực</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Kết nối với dịch vụ bên thứ ba</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-orange-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Đào tạo & Quản lý thay đổi</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Đào tạo nhân viên sử dụng</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Hỗ trợ chuyển đổi quy trình</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Tài liệu hướng dẫn chi tiết</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Đội ngũ hỗ trợ trong giai đoạn đầu</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >Quy trình triển khai</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='relative'>
+          <div
+            class='absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-linear-to-b from-blue-600 to-blue-300 hidden lg:block'
+          ></div>
+
+          <div class='space-y-12'>
+            {
+              [
+                {
+                  step: '1',
+                  title: 'Khám phá & Phân tích',
+                  desc: 'Khảo sát hiện trạng, phân tích nhu cầu, xác định mục tiêu',
+                  duration: '1-2 tuần',
+                },
+                {
+                  step: '2',
+                  title: 'Chiến lược & Lập kế hoạch',
+                  desc: 'Thiết kế kiến trúc hệ thống, lập lộ trình, ước tính chi phí',
+                  duration: '2-3 tuần',
+                },
+                {
+                  step: '3',
+                  title: 'Phát triển',
+                  desc: 'Phát triển theo giai đoạn, demo định kỳ, phản hồi liên tục',
+                  duration: '2-4 tháng',
+                },
+                {
+                  step: '4',
+                  title: 'Kiểm thử & Nghiệm thu',
+                  desc: 'Kiểm thử toàn diện, nghiệm thu với người dùng thực tế',
+                  duration: '2-4 tuần',
+                },
+                {
+                  step: '5',
+                  title: 'Triển khai & Hỗ trợ',
+                  desc: 'Triển khai sản phẩm, đào tạo, hỗ trợ 24/7',
+                  duration: 'Liên tục',
+                },
+              ].map((item, index) => (
+                <div
+                  class={`relative flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+                  <div
+                    class={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:text-right lg:pr-12' : 'lg:text-left lg:pl-12'}`}>
+                    <div class='bg-linear-to-br from-blue-50 to-white rounded-xl p-6 shadow-lg border-2 border-blue-100'>
+                      <div class='text-4xl font-bold text-blue-600 mb-2'>
+                        0{item.step}
+                      </div>
+                      <h3 class='text-xl font-bold text-gray-900 mb-2'>
+                        {item.title}
+                      </h3>
+                      <p class='text-gray-600 mb-2'>{item.desc}</p>
+                      <span class='inline-block bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium'>
+                        {item.duration}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class='hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-blue-600 rounded-full items-center justify-center shadow-lg z-10'>
+                    <span class='text-white font-bold'>{item.step}</span>
+                  </div>
+
+                  <div class='hidden lg:block w-5/12' />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
+        <h2 class='text-4xl font-bold text-gray-900 mb-4'>Chi phí dự án</h2>
+        <div
+          class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full mb-8'
+        ></div>
+
+        <div class='bg-white rounded-2xl p-8 shadow-xl'>
+          <div class='text-5xl font-bold text-blue-600 mb-4'
+            >50-500 triệu VNĐ</div
+          >
+          <p class='text-xl text-gray-600 mb-6'
+            >Tùy thuộc vào quy mô và độ phức tạp dự án</p
+          >
+
+          <div class='grid md:grid-cols-3 gap-4 text-left'>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >SME nhỏ (10-50 người)</div
+              >
+              <div class='text-blue-600 font-bold'>50-150 triệu</div>
+            </div>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >SME vừa (50-150 người)</div
+              >
+              <div class='text-blue-600 font-bold'>150-300 triệu</div>
+            </div>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >Doanh nghiệp lớn (150+ người)</div
+              >
+              <div class='text-blue-600 font-bold'>300-500 triệu</div>
+            </div>
+          </div>
+
+          <div class='mt-6 text-sm text-gray-500'>
+            * Liên hệ để được tư vấn và báo giá chi tiết
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>

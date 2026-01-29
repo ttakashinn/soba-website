@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CTA from '../../components/CTA.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('en');
+---
+
+<BaseLayout
+  title="Services"
+  description="SOBA GROUP provides digital transformation consulting, outsourcing and BPO services for SMEs."
+  lang="en"
+>
+  <Header />
+
+  <main>
+    <!-- Page Header -->
+    <section class="bg-linear-to-br from-blue-600 to-blue-800 text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6">Our Services</h1>
+        <p class="text-xl text-blue-100 max-w-3xl">
+          Comprehensive IT solutions to help businesses optimize processes,
+          reduce costs, and increase productivity.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+          <ServiceCard
+            title={t('services.digital.title')}
+            description={t('services.digital.desc')}
+            icon="🚀"
+            href="/en/services/digital-transformation"
+          />
+          <ServiceCard
+            title={t('services.outsourcing.title')}
+            description={t('services.outsourcing.desc')}
+            icon="👥"
+            href="/en/services/outsourcing"
+          />
+          <ServiceCard
+            title={t('services.bpo.title')}
+            description={t('services.bpo.desc')}
+            icon="🛠️"
+            href="/en/services/bpo"
+          />
+        </div>
+
+        <!-- Why Choose Our Services -->
+        <div class="bg-linear-to-br from-blue-50 to-white rounded-2xl p-8 lg:p-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Why Choose Our Services?
+          </h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="flex items-start space-x-4">
+              <div class="shrink-0">
+                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  1
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Free Consultation</h3>
+                <p class="text-gray-600">
+                  Analyze needs and propose the most suitable solutions for your business.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="shrink-0">
+                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  2
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Transparent Pricing</h3>
+                <p class="text-gray-600">
+                  Clear quotes with no unexpected costs.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="shrink-0">
+                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  3
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Fast Implementation</h3>
+                <p class="text-gray-600">
+                  Agile methodology helps projects go live quickly, delivering immediate value.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="shrink-0">
+                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  4
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Long-term Support</h3>
+                <p class="text-gray-600">
+                  Warranty and technical support after deployment, ensuring stable operations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>

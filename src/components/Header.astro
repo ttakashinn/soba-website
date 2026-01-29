@@ -5,15 +5,56 @@ import { languages } from '../i18n/config';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Build language switcher URLs
-const currentPath = Astro.url.pathname;
-const pathWithoutLang = currentPath.replace(/^\/(en|ja)/, '') || '/';
+// URL mapping between languages
+const urlMap: Record<string, Record<'vi' | 'en' | 'ja', string>> = {
+  // Home pages
+  '/': { vi: '/', en: '/en/', ja: '/ja/' },
+  '/en/': { vi: '/', en: '/en/', ja: '/ja/' },
+  '/ja/': { vi: '/', en: '/en/', ja: '/ja/' },
 
-// Navigation links based on language
+  // Contact pages
+  '/contact': { vi: '/contact', en: '/en/contact', ja: '/ja/contact' },
+  '/en/contact': { vi: '/contact', en: '/en/contact', ja: '/ja/contact' },
+  '/ja/contact': { vi: '/contact', en: '/en/contact', ja: '/ja/contact' },
+
+  // About pages
+  '/about': { vi: '/about', en: '/en/about', ja: '/ja/about' },
+  '/en/about': { vi: '/about', en: '/en/about', ja: '/ja/about' },
+  '/ja/about': { vi: '/about', en: '/en/about', ja: '/ja/about' },
+
+  // Services pages
+  '/services': { vi: '/services', en: '/en/services', ja: '/ja/service' },
+  '/en/services': { vi: '/services', en: '/en/services', ja: '/ja/service' },
+  '/ja/service': { vi: '/services', en: '/en/services', ja: '/ja/service' },
+};
+
+// Get current path
+const currentPath = Astro.url.pathname;
+
+// Get alternate URLs based on mapping
+const getAlternateUrl = (targetLang: 'vi' | 'en' | 'ja') => {
+  const mapping = urlMap[currentPath];
+  if (mapping) {
+    return mapping[targetLang];
+  }
+  // Fallback: try to construct URL
+  if (targetLang === 'vi') {
+    return currentPath.replace(/^\/(en|ja)/, '') || '/';
+  }
+  return `/${targetLang}${currentPath.replace(/^\/(en|ja)/, '') || '/'}`;
+};
+
+const alternateUrls = {
+  vi: getAlternateUrl('vi'),
+  en: getAlternateUrl('en'),
+  ja: getAlternateUrl('ja'),
+};
+
+// Navigation links
 const navLinks = {
-  services: lang === 'vi' ? '/dich-vu' : `/${lang}/${lang === 'en' ? 'services' : 'service'}`,
-  about: lang === 'vi' ? '/ve-chung-toi' : `/${lang}/${lang === 'en' ? 'about' : 'about'}`,
-  contact: lang === 'vi' ? '/lien-he' : `/${lang}/${lang === 'en' ? 'contact' : 'contact'}`,
+  services: lang === 'vi' ? '/services' : lang === 'en' ? '/en/services' : '/ja/service',
+  about: lang === 'vi' ? '/about' : `/${lang}/about`,
+  contact: lang === 'vi' ? '/contact' : `/${lang}/contact`,
   home: lang === 'vi' ? '/' : `/${lang}/`,
 };
 ---
@@ -80,7 +121,7 @@ const navLinks = {
             style="display: none;"
           >
             <a
-              href={pathWithoutLang}
+              href={alternateUrls.vi}
               class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition"
               class:list={[{ 'bg-blue-50 text-blue-600 font-medium': lang === 'vi' }]}
             >
@@ -88,7 +129,7 @@ const navLinks = {
               <span>Tiếng Việt</span>
             </a>
             <a
-              href={`/en${pathWithoutLang}`}
+              href={alternateUrls.en}
               class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition"
               class:list={[{ 'bg-blue-50 text-blue-600 font-medium': lang === 'en' }]}
             >
@@ -96,7 +137,7 @@ const navLinks = {
               <span>English</span>
             </a>
             <a
-              href={`/ja${pathWithoutLang}`}
+              href={alternateUrls.ja}
               class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition"
               class:list={[{ 'bg-blue-50 text-blue-600 font-medium': lang === 'ja' }]}
             >
@@ -168,7 +209,7 @@ const navLinks = {
       <div class="pt-3 border-t space-y-2">
         <p class="text-xs text-gray-500 uppercase tracking-wide font-medium mb-2">Language / 言語</p>
         <a
-          href={pathWithoutLang}
+          href={alternateUrls.vi}
           class="flex items-center space-x-2 py-2 text-gray-700 hover:text-blue-600 transition"
           class:list={[{ 'text-blue-600 font-medium': lang === 'vi' }]}
         >
@@ -176,7 +217,7 @@ const navLinks = {
           <span>Tiếng Việt</span>
         </a>
         <a
-          href={`/en${pathWithoutLang}`}
+          href={alternateUrls.en}
           class="flex items-center space-x-2 py-2 text-gray-700 hover:text-blue-600 transition"
           class:list={[{ 'text-blue-600 font-medium': lang === 'en' }]}
         >
@@ -184,7 +225,7 @@ const navLinks = {
           <span>English</span>
         </a>
         <a
-          href={`/ja${pathWithoutLang}`}
+          href={alternateUrls.ja}
           class="flex items-center space-x-2 py-2 text-gray-700 hover:text-blue-600 transition"
           class:list={[{ 'text-blue-600 font-medium': lang === 'ja' }]}
         >
