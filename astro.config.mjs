@@ -1,30 +1,30 @@
-// astro.config.mjs
-import { defineConfig } from 'astro/config'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
+// https://astro.build/config
 export default defineConfig({
-  output: 'static',
-  site: 'https://sobavn.netlify.app',
+  site: 'https://sobavn.com',
+
+  output: 'static', // SSG mode cho Cloudflare Pages
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss()]
   },
 
   build: {
     inlineStylesheets: 'auto',
   },
 
-  // 🚫 Tắt prefetch aggressive
   prefetch: {
-    prefetchAll: false,
+    prefetchAll: true,
+    defaultStrategy: 'viewport',
   },
 
-  // 🚫 Không dùng sharp trên Netlify
   image: {
     service: {
-      entrypoint: 'astro/assets/services/noop',
+      entrypoint: 'astro/assets/services/sharp',
     },
   },
 
   compressHTML: true,
-})
+});

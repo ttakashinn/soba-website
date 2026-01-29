@@ -1,0 +1,6 @@
+# Language redirects based on Accept-Language header
+/:path*  /en/:path*  302  Language=en
+/:path*  /ja/:path*  302  Language=ja
+
+# 404 fallback
+/*  /404.html  404
