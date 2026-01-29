@@ -1,33 +1,30 @@
-// @ts-check
+// astro.config.mjs
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
 export default defineConfig({
+  output: 'static',
   site: 'https://sobavn.com',
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
-  // Build options
   build: {
     inlineStylesheets: 'auto',
   },
 
-  // Prefetch links for better navigation
+  // 🚫 Tắt prefetch aggressive
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport',
+    prefetchAll: false,
   },
 
-  // Image optimization
+  // 🚫 Không dùng sharp trên Netlify
   image: {
     service: {
-      entrypoint: 'astro/assets/services/sharp',
+      entrypoint: 'astro/assets/services/noop',
     },
   },
 
-  // Compress HTML
   compressHTML: true,
 });
