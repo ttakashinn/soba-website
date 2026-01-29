@@ -4,7 +4,7 @@ export const languages = {
   ja: '日本語',
 };
 
-export const defaultLang = 'en';
+export const defaultLang = 'vi';
 
 export const ui = {
   vi: {

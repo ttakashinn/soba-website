@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Stats from '../../components/Stats.astro';
+import WhyChooseUs from '../../components/WhyChooseUs.astro';
+import Process from '../../components/Process.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import CTA from '../../components/CTA.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ja');
+---
+
+<BaseLayout
+  title="ホーム"
+  description="SOBA GROUP - 中小企業のための信頼できるDXパートナー。コンサルティング - 実装 - 運用。"
+  lang="ja"
+>
+  <Header />
+
+  <main>
+    <Hero />
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            {t('services.title')}
+          </h2>
+          <div class="w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <ServiceCard
+            title={t('services.digital.title')}
+            description={t('services.digital.desc')}
+            icon="🚀"
+            href="/ja/service/dx"
+          />
+          <ServiceCard
+            title={t('services.outsourcing.title')}
+            description={t('services.outsourcing.desc')}
+            icon="👥"
+            href="/ja/service/outsourcing"
+          />
+          <ServiceCard
+            title={t('services.bpo.title')}
+            description={t('services.bpo.desc')}
+            icon="🛠️"
+            href="/ja/service/bpo"
+          />
+        </div>
+      </div>
+    </section>
+
+    <Stats />
+    <WhyChooseUs />
+    <Process />
+    <CTA />
+    <ContactForm />
+  </main>
+
+  <Footer />
+</BaseLayout>
