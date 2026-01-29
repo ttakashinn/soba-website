@@ -2,10 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-# Netlify Forms
-[[plugins]]
-  package = "@netlify/plugin-forms"
-
 # Redirects for language detection
 [[redirects]]
   from = "/*"
