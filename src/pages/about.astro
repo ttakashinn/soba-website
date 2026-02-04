@@ -2,9 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-// import { useTranslations } from '../i18n/utils';
-
-// const t = useTranslations('vi');
+import Team from '../components/Team.astro';
+import FAQ from '../components/FAQ.astro';
 ---
 
 <BaseLayout
@@ -180,6 +179,12 @@ import Footer from '../components/Footer.astro';
         </div>
       </div>
     </section>
+
+    <!-- Team Section -->
+    <Team />
+
+    <!-- FAQ Section -->
+    <FAQ />
 
     <!-- CTA -->
     <section class="py-20 bg-linear-to-br from-blue-600 to-blue-900 text-white">

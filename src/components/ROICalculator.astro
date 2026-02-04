@@ -1,0 +1,230 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const content = {
+  vi: {
+    title: 'Tính ROI chuyển đổi số',
+    subtitle: 'Ước tính tiết kiệm khi triển khai hệ thống quản lý',
+    employees: 'Số nhân viên',
+    employeesTooltip: 'Số người sẽ sử dụng hệ thống',
+    monthlyCost: 'Chi phí thủ công/tháng (triệu VNĐ)',
+    monthlyCostTooltip: 'Chi phí nhân sự cho các công việc thủ công hiện tại',
+    manualHours: 'Giờ xử lý thủ công/tháng',
+    manualHoursTooltip: 'Tổng giờ mà nhân viên dành cho công việc thủ công',
+    results: {
+      investment: 'Đầu tư ban đầu',
+      monthlySavings: 'Tiết kiệm/tháng',
+      timeSaved: 'Giờ tiết kiệm/tháng',
+      roiMonths: 'Hoàn vốn sau'
+    },
+    months: 'tháng',
+    million: 'triệu',
+    hours: 'giờ',
+    note: '* Ước tính dựa trên giảm 60% chi phí thủ công và 70% thời gian xử lý',
+    cta: 'Nhận tư vấn chi tiết'
+  },
+  en: {
+    title: 'Digital Transformation ROI Calculator',
+    subtitle: 'Estimate savings when implementing management systems',
+    employees: 'Number of employees',
+    employeesTooltip: 'Number of people who will use the system',
+    monthlyCost: 'Manual cost/month ($ thousand)',
+    monthlyCostTooltip: 'Personnel costs for current manual work',
+    manualHours: 'Manual processing hours/month',
+    manualHoursTooltip: 'Total hours employees spend on manual work',
+    results: {
+      investment: 'Initial Investment',
+      monthlySavings: 'Monthly Savings',
+      timeSaved: 'Hours Saved/Month',
+      roiMonths: 'Payback Period'
+    },
+    months: 'months',
+    million: 'K',
+    hours: 'hours',
+    note: '* Estimate based on 60% reduction in manual costs and 70% reduction in processing time',
+    cta: 'Get detailed consultation'
+  },
+  ja: {
+    title: 'DX投資対効果計算機',
+    subtitle: '管理システム導入による節約を試算',
+    employees: '従業員数',
+    employeesTooltip: 'システムを使用する人数',
+    monthlyCost: '手作業コスト/月（万円）',
+    monthlyCostTooltip: '現在の手作業にかかる人件費',
+    manualHours: '手作業処理時間/月',
+    manualHoursTooltip: '従業員が手作業に費やす総時間',
+    results: {
+      investment: '初期投資',
+      monthlySavings: '月間節約',
+      timeSaved: '月間時間節約',
+      roiMonths: '投資回収期間'
+    },
+    months: 'ヶ月',
+    million: '万',
+    hours: '時間',
+    note: '* 手作業コスト60%削減、処理時間70%削減に基づく試算',
+    cta: '詳細相談を受ける'
+  }
+};
+
+const currentContent = content[lang as keyof typeof content] || content.vi;
+const contactUrl = lang === 'vi' ? '/contact' : `/${lang}/contact`;
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.title}</h2>
+      <p class="text-xl text-gray-600">{currentContent.subtitle}</p>
+      <div class="w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full mt-6"></div>
+    </div>
+
+    <div
+      x-data="roiCalculator()"
+      class="bg-linear-to-br from-blue-50 via-white to-purple-50 rounded-3xl p-8 lg:p-12 shadow-xl border border-blue-100"
+    >
+      <!-- Inputs -->
+      <div class="grid md:grid-cols-3 gap-6 mb-10">
+        <!-- Employees -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">
+            {currentContent.employees}
+            <span
+              class="inline-block ml-1 text-gray-400 cursor-help"
+              title={currentContent.employeesTooltip}
+            >ⓘ</span>
+          </label>
+          <input
+            type="number"
+            x-model.number="employees"
+            min="1"
+            max="1000"
+            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-lg"
+          />
+        </div>
+
+        <!-- Monthly Cost -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">
+            {currentContent.monthlyCost}
+            <span
+              class="inline-block ml-1 text-gray-400 cursor-help"
+              title={currentContent.monthlyCostTooltip}
+            >ⓘ</span>
+          </label>
+          <input
+            type="number"
+            x-model.number="monthlyCost"
+            min="1"
+            max="10000"
+            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-lg"
+          />
+        </div>
+
+        <!-- Manual Hours -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">
+            {currentContent.manualHours}
+            <span
+              class="inline-block ml-1 text-gray-400 cursor-help"
+              title={currentContent.manualHoursTooltip}
+            >ⓘ</span>
+          </label>
+          <input
+            type="number"
+            x-model.number="manualHours"
+            min="1"
+            max="10000"
+            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-lg"
+          />
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <!-- Investment -->
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="text-gray-500 text-sm mb-2">{currentContent.results.investment}</div>
+          <div class="text-2xl lg:text-3xl font-bold text-blue-600">
+            <span x-text="investment.toFixed(0)"></span>
+            <span class="text-base font-normal">{currentContent.million}</span>
+          </div>
+        </div>
+
+        <!-- Monthly Savings -->
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="text-gray-500 text-sm mb-2">{currentContent.results.monthlySavings}</div>
+          <div class="text-2xl lg:text-3xl font-bold text-green-600">
+            <span x-text="savings.toFixed(1)"></span>
+            <span class="text-base font-normal">{currentContent.million}</span>
+          </div>
+        </div>
+
+        <!-- Time Saved -->
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="text-gray-500 text-sm mb-2">{currentContent.results.timeSaved}</div>
+          <div class="text-2xl lg:text-3xl font-bold text-purple-600">
+            <span x-text="timeSaved.toFixed(0)"></span>
+            <span class="text-base font-normal">{currentContent.hours}</span>
+          </div>
+        </div>
+
+        <!-- ROI Months -->
+        <div class="bg-linear-to-br from-blue-600 to-blue-700 rounded-xl p-6 shadow-md text-center text-white">
+          <div class="text-blue-100 text-sm mb-2">{currentContent.results.roiMonths}</div>
+          <div class="text-2xl lg:text-3xl font-bold">
+            <span x-text="roiMonths.toFixed(1)"></span>
+            <span class="text-base font-normal">{currentContent.months}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Note & CTA -->
+      <div class="text-center">
+        <p class="text-gray-500 text-sm mb-6">{currentContent.note}</p>
+        <a
+          href={contactUrl}
+          class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+        >
+          {currentContent.cta}
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('roiCalculator', () => ({
+      employees: 20,
+      monthlyCost: 50,
+      manualHours: 200,
+
+      get investment() {
+        // Investment = employees * 1.2 million (base cost per user)
+        return this.employees * 1.2;
+      },
+
+      get savings() {
+        // Savings = monthly cost * 0.6 (60% reduction)
+        return this.monthlyCost * 0.6;
+      },
+
+      get timeSaved() {
+        // Time saved = manual hours * 0.7 (70% reduction)
+        return this.manualHours * 0.7;
+      },
+
+      get roiMonths() {
+        // ROI months = Investment / Monthly Savings
+        if (this.savings <= 0) return 0;
+        return this.investment / this.savings;
+      }
+    }));
+  });
+</script>

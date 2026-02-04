@@ -1,0 +1,194 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const faqs = {
+  vi: [
+    {
+      icon: '💰',
+      question: 'Chi phí dự án chuyển đổi số trung bình là bao nhiêu?',
+      answer: 'Tùy quy mô: SME nhỏ (50-150 triệu), SME vừa (150-300 triệu), Enterprise (300-500 triệu). Chúng tôi tư vấn miễn phí và báo giá chi tiết sau khi phân tích nhu cầu.'
+    },
+    {
+      icon: '⏱️',
+      question: 'Thời gian triển khai mất bao lâu?',
+      answer: 'Thông thường 2-4 tháng cho dự án ERP/CRM. Chia làm nhiều sprint, có thể đưa vào sử dụng từng phần sớm hơn.'
+    },
+    {
+      icon: '🛠️',
+      question: 'Có hỗ trợ sau khi go-live không?',
+      answer: 'Có, chúng tôi có gói bảo trì 12-24 tháng, support 24/7, training nhân viên và xử lý bug miễn phí trong thời gian bảo hành.'
+    },
+    {
+      icon: '💳',
+      question: 'Thanh toán như thế nào?',
+      answer: 'Linh hoạt: 30% ký hợp đồng, 40% khi UAT, 30% khi go-live. Hoặc chia theo milestone cho dự án lớn.'
+    },
+    {
+      icon: '⚙️',
+      question: 'Công nghệ sử dụng có thể customize không?',
+      answer: 'Hoàn toàn. Chúng tôi phát triển custom software phù hợp đặc thù doanh nghiệp, không dùng template có sẵn.'
+    },
+    {
+      icon: '🗺️',
+      question: 'Có làm việc với doanh nghiệp ở tỉnh không?',
+      answer: 'Có, chúng tôi làm remote hiệu quả. Đã có khách hàng ở Hà Nội, Đà Nẵng, TP.HCM và các tỉnh thành khác.'
+    },
+    {
+      icon: '🔒',
+      question: 'Bảo mật dữ liệu như thế nào?',
+      answer: 'NDA ký kết, mã nguồn thuộc sở hữu khách hàng, backup tự động, SSL/TLS encryption, tuân thủ GDPR nếu cần.'
+    },
+    {
+      icon: '📈',
+      question: 'Có thể scale hệ thống sau này không?',
+      answer: 'Có, kiến trúc được thiết kế để scale. Dễ dàng thêm tính năng, tăng users, migrate lên cloud khi cần.'
+    }
+  ],
+  en: [
+    {
+      icon: '💰',
+      question: 'What is the average cost of a digital transformation project?',
+      answer: 'Depends on scale: Small SME ($2,000-6,000), Medium SME ($6,000-12,000), Enterprise ($12,000-20,000). We provide free consultation and detailed quotes after analyzing your needs.'
+    },
+    {
+      icon: '⏱️',
+      question: 'How long does implementation take?',
+      answer: 'Typically 2-4 months for ERP/CRM projects. Divided into multiple sprints, parts can be deployed earlier for immediate use.'
+    },
+    {
+      icon: '🛠️',
+      question: 'Is there support after go-live?',
+      answer: 'Yes, we offer 12-24 month maintenance packages, 24/7 support, employee training, and free bug fixes during the warranty period.'
+    },
+    {
+      icon: '💳',
+      question: 'What are the payment terms?',
+      answer: 'Flexible: 30% upon contract signing, 40% at UAT, 30% at go-live. Or milestone-based payments for larger projects.'
+    },
+    {
+      icon: '⚙️',
+      question: 'Can the technology be customized?',
+      answer: 'Absolutely. We develop custom software tailored to your business specifics, not using pre-made templates.'
+    },
+    {
+      icon: '🗺️',
+      question: 'Do you work with businesses in other cities/countries?',
+      answer: 'Yes, we work remotely effectively. We have clients across Vietnam, Japan, and other countries.'
+    },
+    {
+      icon: '🔒',
+      question: 'How do you ensure data security?',
+      answer: 'NDA signed, source code owned by client, automatic backup, SSL/TLS encryption, GDPR compliant if needed.'
+    },
+    {
+      icon: '📈',
+      question: 'Can the system be scaled later?',
+      answer: 'Yes, architecture is designed for scaling. Easy to add features, increase users, migrate to cloud when needed.'
+    }
+  ],
+  ja: [
+    {
+      icon: '💰',
+      question: 'DXプロジェクトの平均費用はいくらですか？',
+      answer: '規模により異なります：小規模SME（30-90万円）、中規模SME（90-180万円）、大企業（180-300万円）。ニーズ分析後に無料相談と詳細見積もりを提供します。'
+    },
+    {
+      icon: '⏱️',
+      question: '導入にはどのくらいかかりますか？',
+      answer: 'ERP/CRMプロジェクトの場合、通常2-4ヶ月です。複数のスプリントに分けて、一部を早期に展開することも可能です。'
+    },
+    {
+      icon: '🛠️',
+      question: '本番稼働後のサポートはありますか？',
+      answer: 'はい、12-24ヶ月の保守パッケージ、24時間365日サポート、社員トレーニング、保証期間中の無料バグ修正を提供しています。'
+    },
+    {
+      icon: '💳',
+      question: '支払い条件はどうなっていますか？',
+      answer: '柔軟に対応：契約時30%、UAT時40%、本番稼働時30%。大規模プロジェクトの場合はマイルストーンベースの支払いも可能です。'
+    },
+    {
+      icon: '⚙️',
+      question: '技術のカスタマイズは可能ですか？',
+      answer: 'もちろんです。既製テンプレートではなく、お客様のビジネスに合わせたカスタムソフトウェアを開発します。'
+    },
+    {
+      icon: '🗺️',
+      question: '他の都市/国の企業とも仕事をしていますか？',
+      answer: 'はい、効果的にリモートワークを行っています。ベトナム全土、日本、その他の国にクライアントがいます。'
+    },
+    {
+      icon: '🔒',
+      question: 'データセキュリティはどのように確保していますか？',
+      answer: 'NDA締結、ソースコードはクライアント所有、自動バックアップ、SSL/TLS暗号化、必要に応じてGDPR準拠。'
+    },
+    {
+      icon: '📈',
+      question: '後でシステムをスケールできますか？',
+      answer: 'はい、アーキテクチャはスケーリングを考慮して設計されています。機能追加、ユーザー増加、クラウド移行が容易です。'
+    }
+  ]
+};
+
+const currentFaqs = faqs[lang as keyof typeof faqs] || faqs.vi;
+const title = lang === 'ja' ? 'よくある質問' : lang === 'en' ? 'Frequently Asked Questions' : 'Câu hỏi thường gặp';
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      <div class="w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="space-y-4" x-data="{ openIndex: null }">
+      {currentFaqs.map((faq, index) => (
+        <div
+          class="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-blue-300"
+          :class="openIndex === {index} ? 'shadow-lg border-blue-400' : 'shadow-sm'"
+        >
+          <button
+            type="button"
+            class="w-full px-6 py-5 text-left flex items-center justify-between gap-4 bg-white hover:bg-gray-50 transition-colors"
+            @click={`openIndex = openIndex === ${index} ? null : ${index}`}
+            aria-expanded="false"
+            :aria-expanded={`openIndex === ${index}`}
+          >
+            <div class="flex items-center gap-4">
+              <span class="text-2xl flex-shrink-0">{faq.icon}</span>
+              <span class="font-semibold text-gray-900 text-lg">{faq.question}</span>
+            </div>
+            <svg
+              class="w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300"
+              :class={`openIndex === ${index} ? 'rotate-180' : ''`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+
+          <div
+            class="overflow-hidden transition-all duration-300 ease-out"
+            x-show={`openIndex === ${index}`}
+            x-collapse
+          >
+            <div class="px-6 pb-5 pt-0">
+              <div class="pl-12 text-gray-600 leading-relaxed border-l-2 border-blue-200 ml-1">
+                {faq.answer}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  [x-cloak] { display: none !important; }
+</style>

@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import Header from '../../../components/Header.astro'
+import Footer from '../../../components/Footer.astro'
+import CTA from '../../../components/CTA.astro'
+---
+
+<BaseLayout
+  title='DXコンサルティング＆開発'
+  description='企業のプロセス近代化と運営最適化を支援する包括的なデジタルトランスフォーメーションソリューション。'
+  lang='ja'>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section
+      class='relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
+      </div>
+
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <div class='text-6xl mb-6'>🚀</div>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'
+            >DXコンサルティング＆開発</h1
+          >
+          <p class='text-2xl text-blue-100'>
+            戦略から実装まで、企業のプロセス近代化をパートナーとして支援
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >どのような課題をお持ちですか？</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>手作業プロセス</h3>
+            <p class='text-gray-600'>時間がかかりミスが発生しやすい</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>データが分散</h3>
+            <p class='text-gray-600'>管理と意思決定が困難</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>競合に後れを取る</h3>
+            <p class='text-gray-600'>デジタルトレンドについていけない</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>高コスト</h3>
+            <p class='text-gray-600'>非効率な運営</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >ソリューション</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 gap-8 mb-12'>
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-green-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >アセスメント＆戦略コンサルティング</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>現行システム分析</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>DXニーズの特定</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>12-24ヶ月の変革ロードマップ</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>コスト見積もりとROI分析</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-blue-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >管理ソフトウェア開発</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>カスタムERP、CRM、HRM</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>既存システムとの統合</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>従業員向けモバイルアプリ</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>リアルタイムレポートダッシュボード</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-purple-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >システム統合</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>レガシーソフトウェアとのAPI連携</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>安全なデータ移行</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>リアルタイムデータ同期</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>サードパーティサービス統合</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-orange-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >トレーニング＆チェンジマネジメント</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>従業員向け利用トレーニング</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>プロセス移行サポート</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>詳細なドキュメントガイド</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>初期フェーズのサポートチーム</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >導入プロセス</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='relative'>
+          <div
+            class='absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-linear-to-b from-blue-600 to-blue-300 hidden lg:block'
+          ></div>
+
+          <div class='space-y-12'>
+            {
+              [
+                {
+                  step: '1',
+                  title: 'ディスカバリー＆分析',
+                  desc: '現状評価、ニーズ分析、目標設定',
+                  duration: '1-2週間',
+                },
+                {
+                  step: '2',
+                  title: '戦略＆計画',
+                  desc: 'システムアーキテクチャ設計、ロードマップ作成、コスト見積もり',
+                  duration: '2-3週間',
+                },
+                {
+                  step: '3',
+                  title: '開発',
+                  desc: 'フェーズごとの開発、定期デモ、継続的フィードバック',
+                  duration: '2-4ヶ月',
+                },
+                {
+                  step: '4',
+                  title: 'テスト＆UAT',
+                  desc: '包括的テスト、実ユーザーによる受入テスト',
+                  duration: '2-4週間',
+                },
+                {
+                  step: '5',
+                  title: 'デプロイ＆サポート',
+                  desc: 'プロダクトデプロイ、トレーニング、24時間365日サポート',
+                  duration: '継続的',
+                },
+              ].map((item, index) => (
+                <div
+                  class={`relative flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+                  <div
+                    class={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:text-right lg:pr-12' : 'lg:text-left lg:pl-12'}`}>
+                    <div class='bg-linear-to-br from-blue-50 to-white rounded-xl p-6 shadow-lg border-2 border-blue-100'>
+                      <div class='text-4xl font-bold text-blue-600 mb-2'>
+                        0{item.step}
+                      </div>
+                      <h3 class='text-xl font-bold text-gray-900 mb-2'>
+                        {item.title}
+                      </h3>
+                      <p class='text-gray-600 mb-2'>{item.desc}</p>
+                      <span class='inline-block bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium'>
+                        {item.duration}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class='hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-blue-600 rounded-full items-center justify-center shadow-lg z-10'>
+                    <span class='text-white font-bold'>{item.step}</span>
+                  </div>
+
+                  <div class='hidden lg:block w-5/12' />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
+        <h2 class='text-4xl font-bold text-gray-900 mb-4'>プロジェクト費用</h2>
+        <div
+          class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full mb-8'
+        ></div>
+
+        <div class='bg-white rounded-2xl p-8 shadow-xl'>
+          <div class='text-5xl font-bold text-blue-600 mb-4'
+            >30万〜300万円</div
+          >
+          <p class='text-xl text-gray-600 mb-6'
+            >プロジェクトの規模と複雑さにより異なります</p
+          >
+
+          <div class='grid md:grid-cols-3 gap-4 text-left'>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >小規模SME（10-50名）</div
+              >
+              <div class='text-blue-600 font-bold'>30-90万円</div>
+            </div>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >中規模SME（50-150名）</div
+              >
+              <div class='text-blue-600 font-bold'>90-180万円</div>
+            </div>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >大企業（150名以上）</div
+              >
+              <div class='text-blue-600 font-bold'>180-300万円</div>
+            </div>
+          </div>
+
+          <div class='mt-6 text-sm text-gray-500'>
+            ※詳細なコンサルティングとお見積もりについてはお問い合わせください
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>

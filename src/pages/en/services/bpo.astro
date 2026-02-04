@@ -1,0 +1,521 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import Header from '../../../components/Header.astro'
+import Footer from '../../../components/Footer.astro'
+import CTA from '../../../components/CTA.astro'
+---
+
+<BaseLayout
+  title='BPO - IT Support & Maintenance'
+  description='Virtual IT department for SMEs. 24/7 monitoring, system maintenance, rapid incident response.'
+  lang='en'>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section
+      class='relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
+      </div>
+
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <div class='text-6xl mb-6'>🛠️</div>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'
+            >BPO - IT Support & Maintenance</h1
+          >
+          <p class='text-2xl text-blue-100'>
+            Virtual IT department for your business. 24/7 monitoring, maintenance, and incident response
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >Does your business face these challenges?</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>No IT department</h3>
+            <p class='text-gray-600'>No one to handle system issues when they arise</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'
+              >Frequent system downtime</h3
+            >
+            <p class='text-gray-600'
+              >Severely impacting business operations</p
+            >
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'
+              >Slow website/applications</h3
+            >
+            <p class='text-gray-600'>Customer complaints about performance</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>Weak security</h3>
+            <p class='text-gray-600'>Data safety concerns</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >Our services</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 gap-8'>
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-blue-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Technical Support</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>24/7 or 8x5 hotline</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Email/chat support</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Request tracking system</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Remote incident handling</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>User training</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-green-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Server & Infrastructure Management</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>VPS/Cloud setup & configuration</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Performance optimization</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Load balancing</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Database tuning</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>SSL certificate management</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-purple-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Monitoring & Alerts</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>24/7 uptime monitoring</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Performance metrics tracking</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Automated alert notifications</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Log analysis</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Monthly reports</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-orange-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Security & Backup</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Firewall configuration</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Security patch updates</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Daily automated backups</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Disaster recovery planning</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Malware scanning</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-red-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z'
+                ></path>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Application Maintenance</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Bug fixes & patches</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Feature enhancements</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Dependency updates</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Performance optimization</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Code refactoring</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-indigo-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Documentation & Consulting</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Technical documentation</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>User guides</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Best practices consulting</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Technology consulting</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Quarterly reviews</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLA -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'>SLA Commitment</h2>
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-3 gap-8'>
+          <div
+            class='text-center bg-linear-to-br from-blue-50 to-white rounded-2xl p-8'>
+            <div class='text-5xl font-bold text-blue-600 mb-4'>&lt; 2h</div>
+            <h3 class='text-xl font-bold text-gray-900 mb-2'
+              >Response time</h3
+            >
+            <p class='text-gray-600'>Request response within 2 hours</p>
+          </div>
+
+          <div
+            class='text-center bg-linear-to-br from-green-50 to-white rounded-2xl p-8'>
+            <div class='text-5xl font-bold text-green-600 mb-4'>&lt; 4h</div>
+            <h3 class='text-xl font-bold text-gray-900 mb-2'
+              >Critical incidents</h3
+            >
+            <p class='text-gray-600'>Critical incident resolution within 4 hours</p>
+          </div>
+
+          <div
+            class='text-center bg-linear-to-br from-purple-50 to-white rounded-2xl p-8'>
+            <div class='text-5xl font-bold text-purple-600 mb-4'>99.5%</div>
+            <h3 class='text-xl font-bold text-gray-900 mb-2'
+              >Uptime</h3
+            >
+            <p class='text-gray-600'>Guaranteed 99.5% system uptime</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'>Service packages</h2>
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-3 gap-8'>
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>Basic</h3>
+            <div class='text-4xl font-bold text-blue-600 mb-6'
+              >$200-320<span class='text-lg text-gray-500'>/month</span></div
+            >
+            <ul class='space-y-3 text-gray-600 mb-8'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>8x5 support (business hours)</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>1 server/website</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Basic monitoring</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Daily backup</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Response &lt; 4h</span>
+              </li>
+            </ul>
+            <p class='text-sm text-gray-500'
+              >Ideal for: Small businesses, 1 website/app</p
+            >
+          </div>
+
+          <div
+            class='bg-linear-to-br from-blue-600 to-blue-700 rounded-2xl p-8 shadow-2xl transform scale-105'>
+            <div
+              class='bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full inline-block mb-4'
+              >POPULAR</div
+            >
+            <h3 class='text-2xl font-bold text-white mb-4'>Professional</h3>
+            <div class='text-4xl font-bold text-white mb-6'
+              >$480-720<span class='text-lg text-blue-200'>/month</span></div
+            >
+            <ul class='space-y-3 text-blue-50 mb-8'>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>24/7 support</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>Up to 3 servers/websites</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>Advanced monitoring</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>Hourly backup + Recovery plan</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>Response &lt; 2h</span>
+              </li>
+            </ul>
+            <p class='text-sm text-blue-100'
+              >Ideal for: Medium businesses, multiple systems</p
+            >
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>Enterprise</h3>
+            <div class='text-4xl font-bold text-blue-600 mb-6'>Custom</div>
+            <ul class='space-y-3 text-gray-600 mb-8'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>24/7 support + dedicated team</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Unlimited servers/websites</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Enterprise monitoring</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Real-time backup + HA setup</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Response &lt; 1h</span>
+              </li>
+            </ul>
+            <p class='text-sm text-gray-500'
+              >Ideal for: Large enterprises, critical systems</p
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>

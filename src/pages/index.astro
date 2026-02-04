@@ -5,8 +5,11 @@ import Footer from '../components/Footer.astro'
 import Hero from '../components/Hero.astro'
 import ServiceCard from '../components/ServiceCard.astro'
 import Stats from '../components/Stats.astro'
+import TrustBadges from '../components/TrustBadges.astro'
 import WhyChooseUs from '../components/WhyChooseUs.astro'
 import Process from '../components/Process.astro'
+import Testimonials from '../components/Testimonials.astro'
+import FreeAuditBanner from '../components/FreeAuditBanner.astro'
 import ContactForm from '../components/ContactForm.astro'
 import CTA from '../components/CTA.astro'
 import { useTranslations } from '../i18n/utils'
@@ -40,27 +43,30 @@ const t = useTranslations('vi')
             title={t('services.digital.title')}
             description={t('services.digital.desc')}
             icon='🚀'
-            href='/services'
+            href='/services/digital-transformation'
           />
           <ServiceCard
             title={t('services.outsourcing.title')}
             description={t('services.outsourcing.desc')}
             icon='👥'
-            href='/services'
+            href='/services/outsourcing'
           />
           <ServiceCard
             title={t('services.bpo.title')}
             description={t('services.bpo.desc')}
             icon='🛠️'
-            href='/services'
+            href='/services/bpo'
           />
         </div>
       </div>
     </section>
 
     <Stats />
+    <TrustBadges />
     <WhyChooseUs />
     <Process />
+    <Testimonials />
+    <FreeAuditBanner />
     <CTA />
     <ContactForm />
   </main>

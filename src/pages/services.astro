@@ -3,6 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import ROICalculator from '../components/ROICalculator.astro';
+import FAQ from '../components/FAQ.astro';
+import FreeAuditBanner from '../components/FreeAuditBanner.astro';
 import CTA from '../components/CTA.astro';
 import { useTranslations } from '../i18n/utils';
 
@@ -117,6 +121,18 @@ const t = useTranslations('vi');
         </div>
       </div>
     </section>
+
+    <!-- Comparison Table -->
+    <ComparisonTable />
+
+    <!-- ROI Calculator -->
+    <ROICalculator />
+
+    <!-- FAQ -->
+    <FAQ />
+
+    <!-- Free Audit Banner -->
+    <FreeAuditBanner />
 
     <CTA />
   </main>

@@ -1,0 +1,428 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import Header from '../../../components/Header.astro'
+import Footer from '../../../components/Footer.astro'
+import CTA from '../../../components/CTA.astro'
+---
+
+<BaseLayout
+  title='ITアウトソーシング - オフショア開発'
+  description='高品質な開発者、テスター、BA。柔軟なスケーリング、コスト削減。'
+  lang='ja'>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section
+      class='relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
+      </div>
+
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <div class='text-6xl mb-6'>👥</div>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'
+            >オフショアソフトウェア開発サービス</h1
+          >
+          <p class='text-2xl text-blue-100'>
+            プロフェッショナルなエンジニアチーム、柔軟なスケーリング、コスト効率の高いソリューション
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >どのような課題をお持ちですか？</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>IT人材の採用が困難</h3>
+            <p class='text-gray-600'>市場で質の高い人材が不足</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>人件費が高い</h3>
+            <p class='text-gray-600'>給与、保険、研修費用</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>短期プロジェクト</h3>
+            <p class='text-gray-600'>フルタイム開発者は不要</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>スキルギャップ</h3>
+            <p class='text-gray-600'>プロジェクトに専門スキルが必要</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Options -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >プロフェッショナルチーム</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div
+            class='bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition'>
+            <div
+              class='w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-blue-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >バックエンド開発者</h3
+            >
+            <ul class='space-y-2 text-gray-600 mb-6'>
+              <li>• PHP, Laravel, Symfony</li>
+              <li>• Python, Django, FastAPI</li>
+              <li>• Java, Spring Boot</li>
+              <li>• Node.js, NestJS</li>
+              <li>• .NET Core, C#</li>
+              <li>• Elixir, Phoenix</li>
+            </ul>
+            <div class='text-blue-600 font-bold text-xl'>9-18万円/月</div>
+          </div>
+
+          <div
+            class='bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition'>
+            <div
+              class='w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-green-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >フロントエンド開発者</h3
+            >
+            <ul class='space-y-2 text-gray-600 mb-6'>
+              <li>• React, Next.js</li>
+              <li>• Vue.js, Nuxt.js</li>
+              <li>• Angular</li>
+              <li>• React Native, Flutter</li>
+              <li>• iOS (Swift), Android (Kotlin)</li>
+              <li>• UI/UX実装</li>
+            </ul>
+            <div class='text-green-600 font-bold text-xl'>9-17万円/月</div>
+          </div>
+
+          <div
+            class='bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition'>
+            <div
+              class='w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-purple-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >QAテスター</h3
+            >
+            <ul class='space-y-2 text-gray-600 mb-6'>
+              <li>• 手動テスト</li>
+              <li>• 自動テスト</li>
+              <li>• Selenium, Cypress</li>
+              <li>• パフォーマンステスト</li>
+              <li>• セキュリティテスト</li>
+              <li>• テストケース設計</li>
+            </ul>
+            <div class='text-purple-600 font-bold text-xl'>7-12万円/月</div>
+          </div>
+
+          <div
+            class='bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition'>
+            <div
+              class='w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-orange-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >ビジネスアナリスト</h3
+            >
+            <ul class='space-y-2 text-gray-600 mb-6'>
+              <li>• 要件収集</li>
+              <li>• プロセス分析</li>
+              <li>• ドキュメント作成</li>
+              <li>• ユーザーストーリー作成</li>
+              <li>• ステークホルダー管理</li>
+              <li>• プロダクトバックログ管理</li>
+            </ul>
+            <div class='text-orange-600 font-bold text-xl'>11-15万円/月</div>
+          </div>
+
+          <div
+            class='bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition'>
+            <div
+              class='w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-red-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>プロジェクトマネージャー</h3>
+            <ul class='space-y-2 text-gray-600 mb-6'>
+              <li>• アジャイル/スクラムマスター</li>
+              <li>• プロジェクト計画</li>
+              <li>• リソース管理</li>
+              <li>• リスク管理</li>
+              <li>• クライアントコミュニケーション</li>
+              <li>• 進捗追跡</li>
+            </ul>
+            <div class='text-red-600 font-bold text-xl'>15-21万円/月</div>
+          </div>
+
+          <div
+            class='bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition'>
+            <div
+              class='w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-indigo-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>UI/UXデザイナー</h3>
+            <ul class='space-y-2 text-gray-600 mb-6'>
+              <li>• ユーザーリサーチ</li>
+              <li>• ワイヤーフレーム、プロトタイプ</li>
+              <li>• Figma, Adobe XD</li>
+              <li>• デザインシステム</li>
+              <li>• ユーザビリティテスト</li>
+              <li>• レスポンシブデザイン</li>
+            </ul>
+            <div class='text-indigo-600 font-bold text-xl'>9-15万円/月</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engagement Models -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'>契約モデル</h2>
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-3 gap-8'>
+          <div
+            class='bg-linear-to-br from-blue-50 to-white rounded-2xl p-8 border-2 border-blue-200'>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >タイム＆マテリアル</h3
+            >
+            <p class='text-gray-600 mb-6'>実際の稼働時間に応じた支払い</p>
+            <ul class='space-y-3 text-gray-600 mb-6'>
+              <li class='flex items-start'>
+                <span class='text-blue-500 mr-2'>✓</span>
+                <span>スコープ変更に柔軟対応</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-blue-500 mr-2'>✓</span>
+                <span>R&Dプロジェクトに最適</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-blue-500 mr-2'>✓</span>
+                <span>月次請求</span>
+              </li>
+            </ul>
+            <div class='text-sm text-gray-500'
+              >最適：MVP、プロトタイプ、リサーチ</div
+            >
+          </div>
+
+          <div
+            class='bg-linear-to-br from-green-50 to-white rounded-2xl p-8 border-2 border-green-200'>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >専任チーム</h3
+            >
+            <p class='text-gray-600 mb-6'
+              >プロダクトにコミットする長期開発チーム</p
+            >
+            <ul class='space-y-3 text-gray-600 mb-6'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>安定したコミットチーム</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>プロダクトへの深い理解</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>月額固定費</span>
+              </li>
+            </ul>
+            <div class='text-sm text-gray-500'
+              >最適：長期プロダクト、スタートアップ</div
+            >
+          </div>
+
+          <div
+            class='bg-linear-to-br from-purple-50 to-white rounded-2xl p-8 border-2 border-purple-200'>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>固定価格</h3>
+            <p class='text-gray-600 mb-6'
+              >事前にコストとスコープを合意</p
+            >
+            <ul class='space-y-3 text-gray-600 mb-6'>
+              <li class='flex items-start'>
+                <span class='text-purple-500 mr-2'>✓</span>
+                <span>予測可能な予算</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-purple-500 mr-2'>✓</span>
+                <span>最初から明確なスコープ</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-purple-500 mr-2'>✓</span>
+                <span>コミットしたタイムライン</span>
+              </li>
+            </ul>
+            <div class='text-sm text-gray-500'
+              >最適：要件が明確なプロジェクト</div
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >SOBAと協業するメリット</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {
+            [
+              {
+                icon: '💰',
+                title: 'コスト40-60%削減',
+                desc: 'フルタイム採用と比較して',
+              },
+              {
+                icon: '⚡',
+                title: '1-2週間でオンボーディング',
+                desc: '採用時間不要',
+              },
+              {
+                icon: '📈',
+                title: '柔軟なスケーリング',
+                desc: '必要に応じてチームを拡大/縮小',
+              },
+              {
+                icon: '🎯',
+                title: '高い専門性',
+                desc: 'シニア開発者へのアクセス',
+              },
+              {
+                icon: '🔄',
+                title: '無料交換',
+                desc: 'チームメンバーがフィットしない場合',
+              },
+              {
+                icon: '🛡️',
+                title: 'NDA＆セキュリティ',
+                desc: '情報セキュリティへのコミットメント',
+              },
+            ].map((item) => (
+              <div class='bg-white rounded-xl p-6 shadow-lg text-center'>
+                <div class='text-5xl mb-4'>{item.icon}</div>
+                <h3 class='text-xl font-bold text-gray-900 mb-2'>
+                  {item.title}
+                </h3>
+                <p class='text-gray-600'>{item.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>

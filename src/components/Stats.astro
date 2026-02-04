@@ -7,41 +7,51 @@ const t = useTranslations(lang);
 
 <section class="bg-linear-to-br from-blue-50 to-white py-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Stat 1 -->
-      <div class="text-center">
+    <div
+      class="grid grid-cols-2 lg:grid-cols-4 gap-8"
+      x-data="statsCounter()"
+      x-init="init()"
+    >
+      <!-- Stat 1 - Projects -->
+      <div class="text-center" x-intersect:enter.once="startCounting()">
         <div class="flex items-center justify-center mb-3">
           <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
-        <div class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">50+</div>
+        <div class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+          <span x-text="projects"></span>+
+        </div>
         <div class="text-gray-600 font-medium">{t('stats.projects')}</div>
       </div>
 
-      <!-- Stat 2 -->
+      <!-- Stat 2 - Years -->
       <div class="text-center">
         <div class="flex items-center justify-center mb-3">
           <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
-        <div class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">5+</div>
+        <div class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+          <span x-text="years"></span>+
+        </div>
         <div class="text-gray-600 font-medium">{t('stats.years')}</div>
       </div>
 
-      <!-- Stat 3 -->
+      <!-- Stat 3 - Satisfaction -->
       <div class="text-center">
         <div class="flex items-center justify-center mb-3">
           <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
-        <div class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">98%</div>
+        <div class="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+          <span x-text="satisfaction"></span>%
+        </div>
         <div class="text-gray-600 font-medium">{t('stats.satisfaction')}</div>
       </div>
 
-      <!-- Stat 4 -->
+      <!-- Stat 4 - Support (no animation) -->
       <div class="text-center">
         <div class="flex items-center justify-center mb-3">
           <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,3 +64,60 @@ const t = useTranslations(lang);
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('statsCounter', () => ({
+      projects: 0,
+      years: 0,
+      satisfaction: 0,
+      hasStarted: false,
+
+      init() {
+        // Initial values
+        this.projects = 0;
+        this.years = 0;
+        this.satisfaction = 0;
+      },
+
+      startCounting() {
+        if (this.hasStarted) return;
+        this.hasStarted = true;
+
+        const duration = 2000; // 2 seconds
+        const fps = 60;
+        const totalFrames = (duration / 1000) * fps;
+
+        const targets = {
+          projects: 50,
+          years: 5,
+          satisfaction: 98
+        };
+
+        let frame = 0;
+
+        const animate = () => {
+          frame++;
+          const progress = frame / totalFrames;
+          // Ease-out function: 1 - (1 - x)^3
+          const eased = 1 - Math.pow(1 - progress, 3);
+
+          this.projects = Math.round(targets.projects * eased);
+          this.years = Math.round(targets.years * eased);
+          this.satisfaction = Math.round(targets.satisfaction * eased);
+
+          if (frame < totalFrames) {
+            requestAnimationFrame(animate);
+          } else {
+            // Ensure final values are exact
+            this.projects = targets.projects;
+            this.years = targets.years;
+            this.satisfaction = targets.satisfaction;
+          }
+        };
+
+        requestAnimationFrame(animate);
+      }
+    }));
+  });
+</script>

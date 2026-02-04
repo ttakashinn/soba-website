@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import Header from '../../../components/Header.astro'
+import Footer from '../../../components/Footer.astro'
+import CTA from '../../../components/CTA.astro'
+---
+
+<BaseLayout
+  title='Digital Transformation Consulting & Development'
+  description='Comprehensive digital transformation solutions to help businesses modernize processes and optimize operations.'
+  lang='en'>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section
+      class='relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
+      </div>
+
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <div class='text-6xl mb-6'>🚀</div>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'
+            >Digital Transformation Consulting & Development</h1
+          >
+          <p class='text-2xl text-blue-100'>
+            From strategy to implementation, we partner with businesses to modernize their processes
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >What challenges is your business facing?</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>Manual processes</h3>
+            <p class='text-gray-600'>Time-consuming and error-prone</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>Fragmented data</h3>
+            <p class='text-gray-600'>Difficult to manage and make decisions</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>Falling behind competitors</h3>
+            <p class='text-gray-600'>Unable to keep up with digital trends</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>High costs</h3>
+            <p class='text-gray-600'>Inefficient operations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >Our solutions</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 gap-8 mb-12'>
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-green-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Assessment & Strategy Consulting</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Current system analysis</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Digital transformation needs identification</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>12-24 month transformation roadmap</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Cost estimation and ROI analysis</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-blue-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Management Software Development</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Custom ERP, CRM, HRM</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Integration with existing systems</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Mobile apps for employees</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Real-time reporting dashboards</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-purple-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >System Integration</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>API connection with legacy software</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Safe data migration</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Real-time data synchronization</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Third-party service integration</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-orange-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >Training & Change Management</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Employee usage training</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Process transition support</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Detailed documentation guides</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>Support team during initial phase</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >Implementation process</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='relative'>
+          <div
+            class='absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-linear-to-b from-blue-600 to-blue-300 hidden lg:block'
+          ></div>
+
+          <div class='space-y-12'>
+            {
+              [
+                {
+                  step: '1',
+                  title: 'Discovery & Analysis',
+                  desc: 'Current state assessment, needs analysis, goal identification',
+                  duration: '1-2 weeks',
+                },
+                {
+                  step: '2',
+                  title: 'Strategy & Planning',
+                  desc: 'System architecture design, roadmap creation, cost estimation',
+                  duration: '2-3 weeks',
+                },
+                {
+                  step: '3',
+                  title: 'Development',
+                  desc: 'Phased development, regular demos, continuous feedback',
+                  duration: '2-4 months',
+                },
+                {
+                  step: '4',
+                  title: 'Testing & UAT',
+                  desc: 'Comprehensive testing, user acceptance testing with real users',
+                  duration: '2-4 weeks',
+                },
+                {
+                  step: '5',
+                  title: 'Deployment & Support',
+                  desc: 'Product deployment, training, 24/7 support',
+                  duration: 'Ongoing',
+                },
+              ].map((item, index) => (
+                <div
+                  class={`relative flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+                  <div
+                    class={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:text-right lg:pr-12' : 'lg:text-left lg:pl-12'}`}>
+                    <div class='bg-linear-to-br from-blue-50 to-white rounded-xl p-6 shadow-lg border-2 border-blue-100'>
+                      <div class='text-4xl font-bold text-blue-600 mb-2'>
+                        0{item.step}
+                      </div>
+                      <h3 class='text-xl font-bold text-gray-900 mb-2'>
+                        {item.title}
+                      </h3>
+                      <p class='text-gray-600 mb-2'>{item.desc}</p>
+                      <span class='inline-block bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium'>
+                        {item.duration}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class='hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-blue-600 rounded-full items-center justify-center shadow-lg z-10'>
+                    <span class='text-white font-bold'>{item.step}</span>
+                  </div>
+
+                  <div class='hidden lg:block w-5/12' />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
+        <h2 class='text-4xl font-bold text-gray-900 mb-4'>Project cost</h2>
+        <div
+          class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full mb-8'
+        ></div>
+
+        <div class='bg-white rounded-2xl p-8 shadow-xl'>
+          <div class='text-5xl font-bold text-blue-600 mb-4'
+            >$2,000 - $20,000 USD</div
+          >
+          <p class='text-xl text-gray-600 mb-6'
+            >Depending on project scale and complexity</p
+          >
+
+          <div class='grid md:grid-cols-3 gap-4 text-left'>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >Small SME (10-50 people)</div
+              >
+              <div class='text-blue-600 font-bold'>$2,000 - $6,000</div>
+            </div>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >Medium SME (50-150 people)</div
+              >
+              <div class='text-blue-600 font-bold'>$6,000 - $12,000</div>
+            </div>
+            <div class='bg-blue-50 rounded-lg p-4'>
+              <div class='font-bold text-gray-900 mb-1'
+                >Large enterprise (150+ people)</div
+              >
+              <div class='text-blue-600 font-bold'>$12,000 - $20,000</div>
+            </div>
+          </div>
+
+          <div class='mt-6 text-sm text-gray-500'>
+            * Contact us for detailed consultation and quotation
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>

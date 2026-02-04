@@ -1,0 +1,521 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import Header from '../../../components/Header.astro'
+import Footer from '../../../components/Footer.astro'
+import CTA from '../../../components/CTA.astro'
+---
+
+<BaseLayout
+  title='BPO - ITサポート＆メンテナンス'
+  description='中小企業向けバーチャルIT部門。24時間365日監視、システム保守、迅速なインシデント対応。'
+  lang='ja'>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section
+      class='relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
+      </div>
+
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <div class='text-6xl mb-6'>🛠️</div>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'
+            >BPO - ITサポート＆メンテナンス</h1
+          >
+          <p class='text-2xl text-blue-100'>
+            企業向けバーチャルIT部門。24時間365日監視、保守、インシデント対応
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >こんな課題はありませんか？</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>IT部門がない</h3>
+            <p class='text-gray-600'>システム障害時に対応できる人がいない</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'
+              >システムダウンが頻発</h3
+            >
+            <p class='text-gray-600'
+              >業務に深刻な影響を及ぼしている</p
+            >
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'
+              >Webサイト/アプリが遅い</h3
+            >
+            <p class='text-gray-600'>顧客からパフォーマンスの苦情</p>
+          </div>
+
+          <div class='bg-red-50 border-l-4 border-red-500 p-6 rounded-lg'>
+            <div class='text-red-500 text-3xl mb-3'>❌</div>
+            <h3 class='font-bold text-gray-900 mb-2'>セキュリティが脆弱</h3>
+            <p class='text-gray-600'>データ安全性への懸念</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >サービス内容</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-2 gap-8'>
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-blue-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >テクニカルサポート</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>24時間365日または8x5ホットライン</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>メール/チャットサポート</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>リクエスト追跡システム</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>リモートインシデント対応</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>ユーザートレーニング</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-green-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >サーバー＆インフラ管理</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>VPS/クラウドセットアップ＆設定</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>パフォーマンス最適化</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>負荷分散</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>データベースチューニング</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>SSL証明書管理</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-purple-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >監視＆アラート</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>24時間365日稼働監視</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>パフォーマンス指標追跡</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>自動アラート通知</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>ログ分析</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>月次レポート</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-orange-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >セキュリティ＆バックアップ</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>ファイアウォール設定</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>セキュリティパッチ更新</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>日次自動バックアップ</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>災害復旧計画</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>マルウェアスキャン</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-red-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z'
+                ></path>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >アプリケーション保守</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>バグ修正＆パッチ</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>機能強化</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>依存関係の更新</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>パフォーマンス最適化</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>コードリファクタリング</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <div
+              class='w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-indigo-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'
+              >ドキュメント＆コンサルティング</h3
+            >
+            <ul class='space-y-3 text-gray-600'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>技術ドキュメント</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>ユーザーガイド</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>ベストプラクティスコンサルティング</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>技術コンサルティング</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>四半期レビュー</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLA -->
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'>SLAコミットメント</h2>
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-3 gap-8'>
+          <div
+            class='text-center bg-linear-to-br from-blue-50 to-white rounded-2xl p-8'>
+            <div class='text-5xl font-bold text-blue-600 mb-4'>&lt; 2時間</div>
+            <h3 class='text-xl font-bold text-gray-900 mb-2'
+              >応答時間</h3
+            >
+            <p class='text-gray-600'>リクエストに2時間以内に応答</p>
+          </div>
+
+          <div
+            class='text-center bg-linear-to-br from-green-50 to-white rounded-2xl p-8'>
+            <div class='text-5xl font-bold text-green-600 mb-4'>&lt; 4時間</div>
+            <h3 class='text-xl font-bold text-gray-900 mb-2'
+              >重大インシデント</h3
+            >
+            <p class='text-gray-600'>重大インシデントを4時間以内に解決</p>
+          </div>
+
+          <div
+            class='text-center bg-linear-to-br from-purple-50 to-white rounded-2xl p-8'>
+            <div class='text-5xl font-bold text-purple-600 mb-4'>99.5%</div>
+            <h3 class='text-xl font-bold text-gray-900 mb-2'
+              >稼働時間</h3
+            >
+            <p class='text-gray-600'>99.5%のシステム稼働を保証</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'>サービスプラン</h2>
+          <div
+            class='w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full'
+          ></div>
+        </div>
+
+        <div class='grid md:grid-cols-3 gap-8'>
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>ベーシック</h3>
+            <div class='text-4xl font-bold text-blue-600 mb-6'
+              >3-5万円<span class='text-lg text-gray-500'>/月</span></div
+            >
+            <ul class='space-y-3 text-gray-600 mb-8'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>8x5サポート（営業時間内）</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>サーバー/Webサイト1台</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>基本監視</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>日次バックアップ</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>応答 &lt; 4時間</span>
+              </li>
+            </ul>
+            <p class='text-sm text-gray-500'
+              >最適：小規模企業、Webサイト/アプリ1つ</p
+            >
+          </div>
+
+          <div
+            class='bg-linear-to-br from-blue-600 to-blue-700 rounded-2xl p-8 shadow-2xl transform scale-105'>
+            <div
+              class='bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full inline-block mb-4'
+              >人気</div
+            >
+            <h3 class='text-2xl font-bold text-white mb-4'>プロフェッショナル</h3>
+            <div class='text-4xl font-bold text-white mb-6'
+              >7-11万円<span class='text-lg text-blue-200'>/月</span></div
+            >
+            <ul class='space-y-3 text-blue-50 mb-8'>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>24時間365日サポート</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>サーバー/Webサイト最大3台</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>高度な監視</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>時間単位バックアップ + 復旧計画</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-yellow-400 mr-2'>✓</span>
+                <span>応答 &lt; 2時間</span>
+              </li>
+            </ul>
+            <p class='text-sm text-blue-100'
+              >最適：中規模企業、複数システム</p
+            >
+          </div>
+
+          <div class='bg-white rounded-2xl p-8 shadow-lg'>
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>エンタープライズ</h3>
+            <div class='text-4xl font-bold text-blue-600 mb-6'>カスタム</div>
+            <ul class='space-y-3 text-gray-600 mb-8'>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>24時間365日サポート + 専任チーム</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>サーバー/Webサイト無制限</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>エンタープライズ監視</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>リアルタイムバックアップ + HA構成</span>
+              </li>
+              <li class='flex items-start'>
+                <span class='text-green-500 mr-2'>✓</span>
+                <span>応答 &lt; 1時間</span>
+              </li>
+            </ul>
+            <p class='text-sm text-gray-500'
+              >最適：大企業、ミッションクリティカルシステム</p
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</BaseLayout>
