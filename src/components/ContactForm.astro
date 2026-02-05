@@ -109,22 +109,15 @@ const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || ''
           message: formData.get('message'),
           language: formData.get('language')
         };
-        try {
-          await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(contactData)
-          });
-        } catch (webhookErr) {
-          console.warn('Webhook notification failed:', webhookErr);
-        }
-        const netlifyResponse = await fetch(e.target.action, {
+        const response = await fetch('/api/contact', {
           method: 'POST',
-          body: new FormData(e.target)
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(contactData)
         });
-        if (netlifyResponse.ok) {
+        if (response.ok) {
           this.submitted = true;
           this.loading = false;
+          e.target.reset();
         } else {
           throw new Error('Form submission failed');
         }
@@ -179,22 +172,12 @@ const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || ''
         </div>
 
         <form
-          name={`contact-${lang}`}
-          method='POST'
-          data-netlify='true'
-          data-netlify-honeypot='bot-field'
-          data-netlify-recaptcha='true'
-          action='/'
           @submit='handleSubmit'
           class='space-y-4 sm:space-y-5'
           x-show='!submitted'
           x-cloak>
-          <input type='hidden' name='form-name' value={`contact-${lang}`} />
           <input type='hidden' name='language' value={lang} />
           <input type='hidden' name='g-recaptcha-response' value='' />
-          <p class='hidden'>
-            <label>Don't fill this out if you're human: <input name='bot-field' /></label>
-          </p>
 
           <div class='grid sm:grid-cols-2 gap-4 sm:gap-5'>
             <!-- Name -->

@@ -1,3 +1,5 @@
+/// <reference types="@cloudflare/workers-types" />
+
 interface ContactFormData {
   name: string
   email: string

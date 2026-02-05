@@ -17,5 +17,8 @@
     "astro": "^5.17.1",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260205.0"
   }
 }
