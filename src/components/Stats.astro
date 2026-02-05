@@ -5,97 +5,62 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<section
-  class='bg-gradient-to-br from-blue-50 to-white py-16'
-  id='stats-section'>
+<section class='py-12 sm:py-16 lg:py-20 bg-white' id='stats-section'>
   <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
     <div
-      class='grid grid-cols-2 lg:grid-cols-4 gap-8'
+      class='bg-gradient-to-r from-slate-50 to-indigo-50/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12'
       x-data='statsCounter()'
       x-init='init()'>
-      <!-- Stat 1 - Projects -->
-      <div class='text-center'>
-        <div class='flex items-center justify-center mb-3'>
-          <svg
-            class='w-12 h-12 text-indigo-600'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'>
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
-              d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path>
-          </svg>
+      <div class='grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8'>
+        <!-- Stat 1 - Projects -->
+        <div class='text-center'>
+          <div class='inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-indigo-100 rounded-xl mb-3 sm:mb-4'>
+            <svg class='w-6 h-6 sm:w-7 sm:h-7 text-indigo-600' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+            </svg>
+          </div>
+          <div class='text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-1 sm:mb-2'>
+            <span x-text='projects'></span>+
+          </div>
+          <div class='text-slate-600 text-sm sm:text-base font-medium'>{t('stats.projects')}</div>
         </div>
-        <div class='text-4xl lg:text-5xl font-bold text-gray-900 mb-2'>
-          <span x-text='projects'></span>+
-        </div>
-        <div class='text-gray-600 font-medium'>{t('stats.projects')}</div>
-      </div>
 
-      <!-- Stat 2 - Years -->
-      <div class='text-center'>
-        <div class='flex items-center justify-center mb-3'>
-          <svg
-            class='w-12 h-12 text-indigo-600'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'>
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
-              d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'></path>
-          </svg>
+        <!-- Stat 2 - Years -->
+        <div class='text-center'>
+          <div class='inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-violet-100 rounded-xl mb-3 sm:mb-4'>
+            <svg class='w-6 h-6 sm:w-7 sm:h-7 text-violet-600' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+            </svg>
+          </div>
+          <div class='text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-1 sm:mb-2'>
+            <span x-text='years'></span>+
+          </div>
+          <div class='text-slate-600 text-sm sm:text-base font-medium'>{t('stats.years')}</div>
         </div>
-        <div class='text-4xl lg:text-5xl font-bold text-gray-900 mb-2'>
-          <span x-text='years'></span>+
-        </div>
-        <div class='text-gray-600 font-medium'>{t('stats.years')}</div>
-      </div>
 
-      <!-- Stat 3 - Satisfaction -->
-      <div class='text-center'>
-        <div class='flex items-center justify-center mb-3'>
-          <svg
-            class='w-12 h-12 text-indigo-600'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'>
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
-              d='M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-            ></path>
-          </svg>
+        <!-- Stat 3 - Satisfaction -->
+        <div class='text-center'>
+          <div class='inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-emerald-100 rounded-xl mb-3 sm:mb-4'>
+            <svg class='w-6 h-6 sm:w-7 sm:h-7 text-emerald-600' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+            </svg>
+          </div>
+          <div class='text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-1 sm:mb-2'>
+            <span x-text='satisfaction'></span>%
+          </div>
+          <div class='text-slate-600 text-sm sm:text-base font-medium'>{t('stats.satisfaction')}</div>
         </div>
-        <div class='text-4xl lg:text-5xl font-bold text-gray-900 mb-2'>
-          <span x-text='satisfaction'></span>%
-        </div>
-        <div class='text-gray-600 font-medium'>{t('stats.satisfaction')}</div>
-      </div>
 
-      <!-- Stat 4 - Support (no animation) -->
-      <div class='text-center'>
-        <div class='flex items-center justify-center mb-3'>
-          <svg
-            class='w-12 h-12 text-indigo-600'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'>
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
-              d='M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z'
-            ></path>
-          </svg>
+        <!-- Stat 4 - Support -->
+        <div class='text-center'>
+          <div class='inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-amber-100 rounded-xl mb-3 sm:mb-4'>
+            <svg class='w-6 h-6 sm:w-7 sm:h-7 text-amber-600' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z'></path>
+            </svg>
+          </div>
+          <div class='text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-1 sm:mb-2'>24/7</div>
+          <div class='text-slate-600 text-sm sm:text-base font-medium'>{t('stats.support')}</div>
         </div>
-        <div class='text-4xl lg:text-5xl font-bold text-gray-900 mb-2'>24/7</div
-        >
-        <div class='text-gray-600 font-medium'>{t('stats.support')}</div>
       </div>
     </div>
   </div>
@@ -110,12 +75,10 @@ const t = useTranslations(lang)
       hasStarted: false,
 
       init() {
-        // Initial values
         this.projects = 0
         this.years = 0
         this.satisfaction = 0
 
-        // Use Intersection Observer for scroll trigger
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -124,7 +87,7 @@ const t = useTranslations(lang)
               }
             })
           },
-          { threshold: 0.3 },
+          { threshold: 0.3 }
         )
 
         const statsSection = document.getElementById('stats-section')
@@ -137,7 +100,7 @@ const t = useTranslations(lang)
         if (this.hasStarted) return
         this.hasStarted = true
 
-        const duration = 2000 // 2 seconds
+        const duration = 2000
         const fps = 60
         const totalFrames = (duration / 1000) * fps
 
@@ -152,7 +115,6 @@ const t = useTranslations(lang)
         const animate = () => {
           frame++
           const progress = frame / totalFrames
-          // Ease-out function: 1 - (1 - x)^3
           const eased = 1 - Math.pow(1 - progress, 3)
 
           this.projects = Math.round(targets.projects * eased)
@@ -162,7 +124,6 @@ const t = useTranslations(lang)
           if (frame < totalFrames) {
             requestAnimationFrame(animate)
           } else {
-            // Ensure final values are exact
             this.projects = targets.projects
             this.years = targets.years
             this.satisfaction = targets.satisfaction

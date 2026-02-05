@@ -1,69 +1,76 @@
 ---
-import { getLangFromUrl } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils'
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url)
 
 const testimonials = {
   vi: [
     {
-      quote: 'Hệ thống ERP giúp công ty chúng tôi quản lý sản xuất hiệu quả hơn rất nhiều. SOBA GROUP support nhiệt tình, training kỹ lưỡng.',
+      quote:
+        'Hệ thống ERP giúp công ty chúng tôi quản lý sản xuất hiệu quả hơn rất nhiều. SOBA GROUP support nhiệt tình, training kỹ lưỡng.',
       name: 'Nguyễn Văn A',
       position: 'Giám đốc',
       company: 'Công ty Dệt May ABC',
       rating: 5,
-      avatar: 'NV'
+      avatar: 'NV',
     },
     {
-      quote: 'Professional team, timeline đúng cam kết, budget trong tầm kiểm soát. Đã recommend cho nhiều đối tác.',
+      quote:
+        'Professional team, timeline đúng cam kết, budget trong tầm kiểm soát. Đã recommend cho nhiều đối tác.',
       name: 'Trần Thị B',
       position: 'CEO',
       company: 'Chuỗi Nhà Hàng XYZ',
       rating: 5,
-      avatar: 'TT'
+      avatar: 'TT',
     },
     {
-      quote: 'Hệ thống tracking giúp chúng tôi cải thiện đáng kể customer satisfaction. Real-time data thay đổi cách chúng tôi vận hành.',
+      quote:
+        'Hệ thống tracking giúp chúng tôi cải thiện đáng kể customer satisfaction. Real-time data thay đổi cách chúng tôi vận hành.',
       name: 'Lê Văn C',
       position: 'COO',
       company: 'Công ty Logistics DEF',
       rating: 5,
-      avatar: 'LV'
-    }
+      avatar: 'LV',
+    },
   ],
   en: [
     {
-      quote: 'The ERP system has greatly improved our production management. SOBA GROUP provides enthusiastic support and thorough training.',
+      quote:
+        'The ERP system has greatly improved our production management. SOBA GROUP provides enthusiastic support and thorough training.',
       name: 'Nguyen Van A',
       position: 'Director',
       company: 'ABC Textile Company',
       rating: 5,
-      avatar: 'NV'
+      avatar: 'NV',
     },
     {
-      quote: 'Professional team, timeline as committed, budget under control. Have recommended to many partners.',
+      quote:
+        'Professional team, timeline as committed, budget under control. Have recommended to many partners.',
       name: 'Tran Thi B',
       position: 'CEO',
       company: 'XYZ Restaurant Chain',
       rating: 5,
-      avatar: 'TT'
+      avatar: 'TT',
     },
     {
-      quote: 'The tracking system has significantly improved our customer satisfaction. Real-time data has changed how we operate.',
+      quote:
+        'The tracking system has significantly improved our customer satisfaction. Real-time data has changed how we operate.',
       name: 'Le Van C',
       position: 'COO',
       company: 'DEF Logistics Company',
       rating: 5,
-      avatar: 'LV'
-    }
+      avatar: 'LV',
+    },
   ],
   ja: [
     {
-      quote: 'ERPシステムにより生産管理が大幅に改善されました。SOBA GROUPは熱心なサポートと徹底したトレーニングを提供してくれます。',
+      quote:
+        'ERPシステムにより生産管理が大幅に改善されました。SOBA GROUPは熱心なサポートと徹底したトレーニングを提供してくれます。',
       name: 'Nguyen Van A',
       position: '取締役',
       company: 'ABC繊維会社',
       rating: 5,
-      avatar: 'NV'
+      avatar: 'NV',
     },
     {
       quote: '最高のパートナーです。技術力が高く、コミュニケーションもスムーズでした。',
@@ -71,117 +78,124 @@ const testimonials = {
       position: 'CTO',
       company: 'ABC Corporation (Japan)',
       rating: 5,
-      avatar: 'TK'
+      avatar: 'TK',
     },
     {
-      quote: 'トラッキングシステムにより顧客満足度が大幅に向上しました。リアルタイムデータが運用方法を変えました。',
+      quote:
+        'トラッキングシステムにより顧客満足度が大幅に向上しました。リアルタイムデータが運用方法を変えました。',
       name: 'Le Van C',
       position: 'COO',
       company: 'DEF物流会社',
       rating: 5,
-      avatar: 'LV'
-    }
-  ]
-};
+      avatar: 'LV',
+    },
+  ],
+}
 
-const currentTestimonials = testimonials[lang as keyof typeof testimonials] || testimonials.vi;
-const title = lang === 'ja' ? 'お客様の声' : lang === 'en' ? 'What Our Clients Say' : 'Khách hàng nói gì về chúng tôi';
+const currentTestimonials = testimonials[lang as keyof typeof testimonials] || testimonials.vi
+const title =
+  lang === 'ja' ? 'お客様の声' : lang === 'en' ? 'What Our Clients Say' : 'Khách hàng nói gì về chúng tôi'
 ---
 
-<section class="py-20 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">{title}</h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-400 mx-auto rounded-full"></div>
+<section class='py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-indigo-50/50 to-white overflow-hidden'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='text-center mb-12 sm:mb-16'>
+      <h2 class='text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 mb-4'>{title}</h2>
+      <div class='w-20 h-1 bg-gradient-to-r from-indigo-500 to-violet-400 mx-auto rounded-full'></div>
     </div>
 
     <div
-      x-data="testimonialCarousel()"
-      x-init="startAutoplay()"
-      @mouseenter="pauseAutoplay()"
-      @mouseleave="resumeAutoplay()"
-      class="relative"
-    >
+      x-data='testimonialCarousel()'
+      x-init='startAutoplay()'
+      @mouseenter='pauseAutoplay()'
+      @mouseleave='resumeAutoplay()'
+      class='relative'>
       <!-- Carousel container -->
-      <div class="overflow-hidden">
+      <div class='overflow-hidden'>
         <div
-          class="flex transition-transform duration-500 ease-out"
-          :style="`transform: translateX(-${activeIndex * 100}%)`"
-        >
-          {currentTestimonials.map((testimonial, index) => (
-            <div class="w-full flex-shrink-0 px-4">
-              <div class="max-w-3xl mx-auto">
-                <div class="bg-white rounded-2xl p-8 lg:p-12 shadow-xl relative">
-                  <!-- Quote icon -->
-                  <div class="absolute -top-4 left-8 text-6xl text-indigo-200">"</div>
-
-                  <!-- Rating -->
-                  <div class="flex justify-center mb-6">
-                    {[...Array(5)].map((_, i) => (
-                      <svg
-                        class={`w-6 h-6 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-200'}`}
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                      </svg>
-                    ))}
-                  </div>
-
-                  <!-- Quote -->
-                  <blockquote class="text-xl lg:text-2xl text-gray-700 text-center leading-relaxed mb-8">
-                    "{testimonial.quote}"
-                  </blockquote>
-
-                  <!-- Author -->
-                  <div class="flex items-center justify-center gap-4">
-                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                      {testimonial.avatar}
+          class='flex transition-transform duration-500 ease-out'
+          :style='`transform: translateX(-${activeIndex * 100}%)`'>
+          {
+            currentTestimonials.map((testimonial, index) => (
+              <div class='w-full flex-shrink-0 px-2 sm:px-4'>
+                <div class='max-w-3xl mx-auto'>
+                  <div class='bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-elegant-lg relative border border-slate-100'>
+                    <!-- Quote icon -->
+                    <div class='absolute -top-3 sm:-top-4 left-6 sm:left-8 text-4xl sm:text-6xl text-indigo-200'>
+                      "
                     </div>
-                    <div class="text-left">
-                      <div class="font-bold text-gray-900">{testimonial.name}</div>
-                      <div class="text-gray-600">{testimonial.position}</div>
-                      <div class="text-indigo-600 text-sm">{testimonial.company}</div>
+
+                    <!-- Rating -->
+                    <div class='flex justify-center mb-4 sm:mb-6'>
+                      {[...Array(5)].map((_, i) => (
+                        <svg
+                          class={`w-5 h-5 sm:w-6 sm:h-6 ${i < testimonial.rating ? 'text-amber-400' : 'text-slate-200'}`}
+                          fill='currentColor'
+                          viewBox='0 0 20 20'>
+                          <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
+                        </svg>
+                      ))}
+                    </div>
+
+                    <!-- Quote -->
+                    <blockquote class='text-base sm:text-lg lg:text-xl text-slate-700 text-center leading-relaxed mb-6 sm:mb-8'>
+                      "{testimonial.quote}"
+                    </blockquote>
+
+                    <!-- Author -->
+                    <div class='flex items-center justify-center gap-3 sm:gap-4'>
+                      <div class='w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-lg shadow-indigo-500/25'>
+                        {testimonial.avatar}
+                      </div>
+                      <div class='text-left'>
+                        <div class='font-bold text-slate-800 text-sm sm:text-base'>
+                          {testimonial.name}
+                        </div>
+                        <div class='text-slate-600 text-xs sm:text-sm'>{testimonial.position}</div>
+                        <div class='text-indigo-600 text-xs sm:text-sm font-medium'>
+                          {testimonial.company}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
 
       <!-- Navigation arrows -->
       <button
-        @click="prev()"
-        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:translate-x-0 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-colors z-10"
-        aria-label="Previous testimonial"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        @click='prev()'
+        class='absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:translate-x-0 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-elegant flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all z-10'
+        aria-label='Previous testimonial'>
+        <svg class='w-5 h-5 sm:w-6 sm:h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7'></path>
         </svg>
       </button>
 
       <button
-        @click="next()"
-        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-0 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-colors z-10"
-        aria-label="Next testimonial"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        @click='next()'
+        class='absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-0 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-elegant flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all z-10'
+        aria-label='Next testimonial'>
+        <svg class='w-5 h-5 sm:w-6 sm:h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path>
         </svg>
       </button>
 
       <!-- Dots navigation -->
-      <div class="flex justify-center gap-3 mt-8">
-        {currentTestimonials.map((_, index) => (
-          <button
-            @click={`goTo(${index})`}
-            class="w-3 h-3 rounded-full transition-all duration-300"
-            :class={`activeIndex === ${index} ? 'bg-indigo-600 w-8' : 'bg-gray-300 hover:bg-gray-400'`}
-            aria-label={`Go to testimonial ${index + 1}`}
-          />
-        ))}
+      <div class='flex justify-center gap-2 sm:gap-3 mt-6 sm:mt-8'>
+        {
+          currentTestimonials.map((_, index) => (
+            <button
+              @click={`goTo(${index})`}
+              class='w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300'
+              :class={`activeIndex === ${index} ? 'bg-indigo-600 w-6 sm:w-8' : 'bg-slate-300 hover:bg-slate-400'`}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
@@ -196,32 +210,32 @@ const title = lang === 'ja' ? 'お客様の声' : lang === 'en' ? 'What Our Clie
       isPaused: false,
 
       next() {
-        this.activeIndex = (this.activeIndex + 1) % this.total;
+        this.activeIndex = (this.activeIndex + 1) % this.total
       },
 
       prev() {
-        this.activeIndex = (this.activeIndex - 1 + this.total) % this.total;
+        this.activeIndex = (this.activeIndex - 1 + this.total) % this.total
       },
 
       goTo(index) {
-        this.activeIndex = index;
+        this.activeIndex = index
       },
 
       startAutoplay() {
         this.autoplayInterval = setInterval(() => {
           if (!this.isPaused) {
-            this.next();
+            this.next()
           }
-        }, 5000);
+        }, 5000)
       },
 
       pauseAutoplay() {
-        this.isPaused = true;
+        this.isPaused = true
       },
 
       resumeAutoplay() {
-        this.isPaused = false;
-      }
-    }));
-  });
+        this.isPaused = false
+      },
+    }))
+  })
 </script>

@@ -1,62 +1,79 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url)
 
 const badges = {
   vi: [
-    { icon: '✅', text: '50+ Dự án hoàn thành', color: 'blue' },
-    { icon: '😊', text: '98% Khách hàng hài lòng', color: 'green' },
-    { icon: '📅', text: '5+ Năm kinh nghiệm', color: 'purple' },
-    { icon: '🕐', text: 'Support 24/7', color: 'orange' },
-    { icon: '🔒', text: 'Bảo mật SSL', color: 'red' },
-    { icon: '📝', text: 'NDA ký kết', color: 'indigo' }
+    { icon: '50+', text: 'Dự án hoàn thành', color: 'indigo' },
+    { icon: '98%', text: 'Khách hàng hài lòng', color: 'emerald' },
+    { icon: '5+', text: 'Năm kinh nghiệm', color: 'violet' },
+    { icon: '24/7', text: 'Hỗ trợ kỹ thuật', color: 'amber' },
+    { icon: 'SSL', text: 'Bảo mật cao', color: 'rose' },
+    { icon: 'NDA', text: 'Cam kết bảo mật', color: 'blue' },
   ],
   en: [
-    { icon: '✅', text: '50+ Projects Completed', color: 'blue' },
-    { icon: '😊', text: '98% Client Satisfaction', color: 'green' },
-    { icon: '📅', text: '5+ Years Experience', color: 'purple' },
-    { icon: '🕐', text: '24/7 Support', color: 'orange' },
-    { icon: '🔒', text: 'SSL Security', color: 'red' },
-    { icon: '📝', text: 'NDA Signed', color: 'indigo' }
+    { icon: '50+', text: 'Projects Completed', color: 'indigo' },
+    { icon: '98%', text: 'Client Satisfaction', color: 'emerald' },
+    { icon: '5+', text: 'Years Experience', color: 'violet' },
+    { icon: '24/7', text: 'Technical Support', color: 'amber' },
+    { icon: 'SSL', text: 'High Security', color: 'rose' },
+    { icon: 'NDA', text: 'Confidentiality', color: 'blue' },
   ],
   ja: [
-    { icon: '✅', text: '50以上のプロジェクト完了', color: 'blue' },
-    { icon: '😊', text: '98%の顧客満足度', color: 'green' },
-    { icon: '📅', text: '5年以上の経験', color: 'purple' },
-    { icon: '🕐', text: '24時間365日サポート', color: 'orange' },
-    { icon: '🔒', text: 'SSLセキュリティ', color: 'red' },
-    { icon: '📝', text: 'NDA締結', color: 'indigo' }
-  ]
-};
+    { icon: '50+', text: 'プロジェクト完了', color: 'indigo' },
+    { icon: '98%', text: '顧客満足度', color: 'emerald' },
+    { icon: '5+', text: '年の経験', color: 'violet' },
+    { icon: '24/7', text: '技術サポート', color: 'amber' },
+    { icon: 'SSL', text: '高セキュリティ', color: 'rose' },
+    { icon: 'NDA', text: '機密保持', color: 'blue' },
+  ],
+}
 
-const currentBadges = badges[lang as keyof typeof badges] || badges.vi;
+const currentBadges = badges[lang as keyof typeof badges] || badges.vi
+
+const colorClasses: Record<string, { bg: string; text: string }> = {
+  indigo: { bg: 'bg-indigo-100', text: 'text-indigo-600' },
+  emerald: { bg: 'bg-emerald-100', text: 'text-emerald-600' },
+  violet: { bg: 'bg-violet-100', text: 'text-violet-600' },
+  amber: { bg: 'bg-amber-100', text: 'text-amber-600' },
+  rose: { bg: 'bg-rose-100', text: 'text-rose-600' },
+  blue: { bg: 'bg-blue-100', text: 'text-blue-600' },
+}
 ---
 
-<section class="py-12 bg-white border-y border-gray-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class='py-8 sm:py-10 lg:py-12 bg-white border-y border-slate-100'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
     <!-- Mobile: Horizontal scroll -->
-    <div class="flex lg:hidden gap-4 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
-      {currentBadges.map((badge) => (
-        <div class="flex-shrink-0 flex items-center gap-3 bg-gray-50 hover:bg-gray-100 rounded-full px-5 py-3 transition-colors">
-          <span class="text-2xl">{badge.icon}</span>
-          <span class="text-gray-700 font-medium whitespace-nowrap">{badge.text}</span>
-        </div>
-      ))}
+    <div class='flex lg:hidden gap-3 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide'>
+      {
+        currentBadges.map((badge) => (
+          <div class='flex-shrink-0 flex items-center gap-2.5 bg-slate-50 hover:bg-slate-100 rounded-full px-4 py-2.5 transition-colors border border-slate-100'>
+            <span
+              class={`text-sm font-bold ${colorClasses[badge.color].text} ${colorClasses[badge.color].bg} px-2 py-0.5 rounded`}>
+              {badge.icon}
+            </span>
+            <span class='text-slate-700 font-medium whitespace-nowrap text-sm'>{badge.text}</span>
+          </div>
+        ))
+      }
     </div>
 
     <!-- Desktop: Grid -->
-    <div class="hidden lg:grid grid-cols-6 gap-4">
-      {currentBadges.map((badge) => (
-        <div class="group flex flex-col items-center text-center p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 cursor-default">
-          <div class="text-4xl mb-2 grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
-            {badge.icon}
+    <div class='hidden lg:grid grid-cols-6 gap-4'>
+      {
+        currentBadges.map((badge) => (
+          <div class='group flex flex-col items-center text-center p-4 rounded-xl hover:bg-slate-50 transition-all duration-300 cursor-default'>
+            <div
+              class={`${colorClasses[badge.color].bg} ${colorClasses[badge.color].text} text-xl font-bold px-3 py-1.5 rounded-lg mb-2 group-hover:scale-105 transition-transform`}>
+              {badge.icon}
+            </div>
+            <span class='text-sm text-slate-600 group-hover:text-slate-800 font-medium transition-colors'>
+              {badge.text}
+            </span>
           </div>
-          <span class="text-sm text-gray-600 group-hover:text-gray-900 font-medium transition-colors">
-            {badge.text}
-          </span>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

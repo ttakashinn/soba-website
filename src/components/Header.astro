@@ -7,53 +7,29 @@ const t = useTranslations(lang)
 
 // URL mapping between languages
 const urlMap: Record<string, Record<'vi' | 'en' | 'ja', string>> = {
-  // Home pages
   '/': { vi: '/', en: '/en/', ja: '/ja/' },
   '/en/': { vi: '/', en: '/en/', ja: '/ja/' },
   '/ja/': { vi: '/', en: '/en/', ja: '/ja/' },
-
-  // Contact pages
   '/contact': { vi: '/contact', en: '/en/contact', ja: '/ja/contact' },
   '/en/contact': { vi: '/contact', en: '/en/contact', ja: '/ja/contact' },
   '/ja/contact': { vi: '/contact', en: '/en/contact', ja: '/ja/contact' },
-
-  // About pages
   '/about': { vi: '/about', en: '/en/about', ja: '/ja/about' },
   '/en/about': { vi: '/about', en: '/en/about', ja: '/ja/about' },
   '/ja/about': { vi: '/about', en: '/en/about', ja: '/ja/about' },
-
-  // Services pages
   '/services': { vi: '/services', en: '/en/services', ja: '/ja/services' },
   '/en/services': { vi: '/services', en: '/en/services', ja: '/ja/services' },
   '/ja/services': { vi: '/services', en: '/en/services', ja: '/ja/services' },
-
-  // Portfolio pages
   '/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
-  '/en/portfolio': {
-    vi: '/portfolio',
-    en: '/en/portfolio',
-    ja: '/ja/portfolio',
-  },
-  '/ja/portfolio': {
-    vi: '/portfolio',
-    en: '/en/portfolio',
-    ja: '/ja/portfolio',
-  },
+  '/en/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
+  '/ja/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
 }
 
-// Get current path
 const currentPath = Astro.url.pathname
 
-// Get alternate URLs based on mapping
 const getAlternateUrl = (targetLang: 'vi' | 'en' | 'ja') => {
   const mapping = urlMap[currentPath]
-  if (mapping) {
-    return mapping[targetLang]
-  }
-  // Fallback: try to construct URL
-  if (targetLang === 'vi') {
-    return currentPath.replace(/^\/(en|ja)/, '') || '/'
-  }
+  if (mapping) return mapping[targetLang]
+  if (targetLang === 'vi') return currentPath.replace(/^\/(en|ja)/, '') || '/'
   return `/${targetLang}${currentPath.replace(/^\/(en|ja)/, '') || '/'}`
 }
 
@@ -63,7 +39,6 @@ const alternateUrls = {
   ja: getAlternateUrl('ja'),
 }
 
-// Navigation links
 const navLinks = {
   services: lang === 'vi' ? '/services' : `/${lang}/services`,
   portfolio: lang === 'vi' ? '/portfolio' : `/${lang}/portfolio`,
@@ -74,96 +49,87 @@ const navLinks = {
 ---
 
 <header
-  class='sticky top-0 bg-white shadow-sm z-50'
-  x-data='{ mobileMenuOpen: false, langMenuOpen: false }'>
-  <nav class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
-    <div class='flex items-center justify-between'>
+  class='fixed top-0 left-0 right-0 z-50 transition-all duration-300'
+  x-data='{ mobileMenuOpen: false, langMenuOpen: false, scrolled: false }'
+  x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 20 })"
+  :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'">
+  <nav class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='flex items-center justify-between h-16 lg:h-20'>
       <!-- Logo -->
-      <a href={navLinks.home} class='flex items-center space-x-3'>
+      <a href={navLinks.home} class='flex items-center gap-3 group'>
         <img
           src='/logo.png'
           alt='SOBA GROUP Logo'
-          class='w-10 h-10 rounded-lg object-contain'
+          class='w-9 h-9 lg:w-10 lg:h-10 rounded-lg object-contain transition-transform group-hover:scale-105'
         />
-        <span class='text-xl font-bold text-gray-900'>SOBA GROUP</span>
+        <span class='text-lg lg:text-xl font-bold text-slate-800'>SOBA GROUP</span>
       </a>
 
       <!-- Desktop Menu -->
-      <div class='hidden md:flex items-center space-x-8'>
+      <div class='hidden lg:flex items-center gap-1'>
         <a
           href={navLinks.services}
-          class='text-gray-700 hover:text-indigo-600 transition font-medium'>
+          class='px-4 py-2 text-slate-600 hover:text-indigo-600 transition-colors font-medium rounded-lg hover:bg-slate-50'>
           {t('nav.services')}
         </a>
         <a
           href={navLinks.portfolio}
-          class='text-gray-700 hover:text-indigo-600 transition font-medium'>
+          class='px-4 py-2 text-slate-600 hover:text-indigo-600 transition-colors font-medium rounded-lg hover:bg-slate-50'>
           {t('nav.portfolio')}
         </a>
         <a
           href={navLinks.about}
-          class='text-gray-700 hover:text-indigo-600 transition font-medium'>
+          class='px-4 py-2 text-slate-600 hover:text-indigo-600 transition-colors font-medium rounded-lg hover:bg-slate-50'>
           {t('nav.about')}
         </a>
 
         <!-- Language Switcher -->
-        <div class='relative' @click.away='langMenuOpen = false'>
+        <div class='relative ml-2' @click.away='langMenuOpen = false'>
           <button
             @click='langMenuOpen = !langMenuOpen'
-            class='flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition'>
-            <span class='text-xl'>
+            class='flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-indigo-600 transition-colors rounded-lg hover:bg-slate-50'>
+            <span class='text-lg'>
               {lang === 'vi' ? '🇻🇳' : lang === 'en' ? '🇬🇧' : '🇯🇵'}
             </span>
-            <span class='font-medium'>{languages[lang]}</span>
             <svg
               class='w-4 h-4 transition-transform'
               :class="{ 'rotate-180': langMenuOpen }"
               fill='none'
               stroke='currentColor'
               viewBox='0 0 24 24'>
-              <path
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
-                d='M19 9l-7 7-7-7'></path>
+              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'></path>
             </svg>
           </button>
 
           <div
             x-show='langMenuOpen'
             x-transition:enter='transition ease-out duration-200'
-            x-transition:enter-start='opacity-0 scale-95'
-            x-transition:enter-end='opacity-100 scale-100'
+            x-transition:enter-start='opacity-0 scale-95 -translate-y-2'
+            x-transition:enter-end='opacity-100 scale-100 translate-y-0'
             x-transition:leave='transition ease-in duration-150'
-            x-transition:leave-start='opacity-100 scale-100'
-            x-transition:leave-end='opacity-0 scale-95'
-            class='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 border border-gray-100'
+            x-transition:leave-start='opacity-100 scale-100 translate-y-0'
+            x-transition:leave-end='opacity-0 scale-95 -translate-y-2'
+            class='absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-elegant-lg py-2 border border-slate-100'
             style='display: none;'>
             <a
               href={alternateUrls.vi}
-              class='flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition'
-              class:list={[
-                { 'bg-blue-50 text-indigo-600 font-medium': lang === 'vi' },
-              ]}>
-              <span class='text-xl'>🇻🇳</span>
+              class='flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 transition-colors'
+              class:list={[{ 'bg-indigo-50 text-indigo-600 font-medium': lang === 'vi' }]}>
+              <span class='text-lg'>🇻🇳</span>
               <span>Tiếng Việt</span>
             </a>
             <a
               href={alternateUrls.en}
-              class='flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition'
-              class:list={[
-                { 'bg-blue-50 text-indigo-600 font-medium': lang === 'en' },
-              ]}>
-              <span class='text-xl'>🇬🇧</span>
+              class='flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 transition-colors'
+              class:list={[{ 'bg-indigo-50 text-indigo-600 font-medium': lang === 'en' }]}>
+              <span class='text-lg'>🇬🇧</span>
               <span>English</span>
             </a>
             <a
               href={alternateUrls.ja}
-              class='flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition'
-              class:list={[
-                { 'bg-blue-50 text-indigo-600 font-medium': lang === 'ja' },
-              ]}>
-              <span class='text-xl'>🇯🇵</span>
+              class='flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 transition-colors'
+              class:list={[{ 'bg-indigo-50 text-indigo-600 font-medium': lang === 'ja' }]}>
+              <span class='text-lg'>🇯🇵</span>
               <span>日本語</span>
             </a>
           </div>
@@ -171,7 +137,7 @@ const navLinks = {
 
         <a
           href={navLinks.contact}
-          class='bg-indigo-600 text-white px-6 py-2.5 rounded-xl hover:bg-indigo-700 transition font-medium shadow-sm'>
+          class='ml-4 bg-indigo-600 text-white px-5 py-2.5 rounded-xl font-medium hover:bg-indigo-700 transition-all shadow-sm hover:shadow-md btn-press'>
           {t('nav.contact')}
         </a>
       </div>
@@ -179,12 +145,9 @@ const navLinks = {
       <!-- Mobile Menu Button -->
       <button
         @click='mobileMenuOpen = !mobileMenuOpen'
-        class='md:hidden p-2 rounded-lg hover:bg-gray-100 transition'>
-        <svg
-          class='w-6 h-6 text-gray-700'
-          fill='none'
-          stroke='currentColor'
-          viewBox='0 0 24 24'>
+        class='lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors'
+        aria-label='Toggle menu'>
+        <svg class='w-6 h-6 text-slate-700' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
           <path
             x-show='!mobileMenuOpen'
             stroke-linecap='round'
@@ -206,63 +169,77 @@ const navLinks = {
     <div
       x-show='mobileMenuOpen'
       x-transition:enter='transition ease-out duration-200'
-      x-transition:enter-start='opacity-0 -translate-y-2'
+      x-transition:enter-start='opacity-0 -translate-y-4'
       x-transition:enter-end='opacity-100 translate-y-0'
       x-transition:leave='transition ease-in duration-150'
       x-transition:leave-start='opacity-100 translate-y-0'
-      x-transition:leave-end='opacity-0 -translate-y-2'
-      class='md:hidden mt-4 pb-4 space-y-3 border-t pt-4'
+      x-transition:leave-end='opacity-0 -translate-y-4'
+      class='lg:hidden py-4 border-t border-slate-100 bg-white'
       style='display: none;'>
-      <a
-        href={navLinks.services}
-        class='block py-2 text-gray-700 hover:text-indigo-600 transition font-medium'>
-        {t('nav.services')}
-      </a>
-      <a
-        href={navLinks.portfolio}
-        class='block py-2 text-gray-700 hover:text-indigo-600 transition font-medium'>
-        {t('nav.portfolio')}
-      </a>
-      <a
-        href={navLinks.about}
-        class='block py-2 text-gray-700 hover:text-indigo-600 transition font-medium'>
-        {t('nav.about')}
-      </a>
-
-      <!-- Mobile Language Switcher -->
-      <div class='pt-3 border-t space-y-2'>
-        <p
-          class='text-xs text-gray-500 uppercase tracking-wide font-medium mb-2'
-          >Language / 言語</p
-        >
+      <div class='space-y-1'>
         <a
-          href={alternateUrls.vi}
-          class='flex items-center space-x-2 py-2 text-gray-700 hover:text-indigo-600 transition'
-          class:list={[{ 'text-indigo-600 font-medium': lang === 'vi' }]}>
-          <span class='text-xl'>🇻🇳</span>
-          <span>Tiếng Việt</span>
+          href={navLinks.services}
+          class='block px-4 py-3 text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors font-medium'>
+          {t('nav.services')}
         </a>
         <a
-          href={alternateUrls.en}
-          class='flex items-center space-x-2 py-2 text-gray-700 hover:text-indigo-600 transition'
-          class:list={[{ 'text-indigo-600 font-medium': lang === 'en' }]}>
-          <span class='text-xl'>🇬🇧</span>
-          <span>English</span>
+          href={navLinks.portfolio}
+          class='block px-4 py-3 text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors font-medium'>
+          {t('nav.portfolio')}
         </a>
         <a
-          href={alternateUrls.ja}
-          class='flex items-center space-x-2 py-2 text-gray-700 hover:text-indigo-600 transition'
-          class:list={[{ 'text-indigo-600 font-medium': lang === 'ja' }]}>
-          <span class='text-xl'>🇯🇵</span>
-          <span>日本語</span>
+          href={navLinks.about}
+          class='block px-4 py-3 text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors font-medium'>
+          {t('nav.about')}
         </a>
       </div>
 
-      <a
-        href={navLinks.contact}
-        class='block py-3 text-center bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition font-medium mt-4'>
-        {t('nav.contact')}
-      </a>
+      <!-- Mobile Language Switcher -->
+      <div class='mt-4 pt-4 border-t border-slate-100'>
+        <p class='px-4 text-xs text-slate-400 uppercase tracking-wide font-medium mb-2'>
+          {lang === 'vi' ? 'Ngôn ngữ' : lang === 'en' ? 'Language' : '言語'}
+        </p>
+        <div class='flex gap-2 px-4'>
+          <a
+            href={alternateUrls.vi}
+            class='flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors'
+            class:list={[
+              lang === 'vi' ? 'bg-indigo-100 text-indigo-700 font-medium' : 'text-slate-600 hover:bg-slate-100'
+            ]}>
+            <span>🇻🇳</span>
+            <span>VI</span>
+          </a>
+          <a
+            href={alternateUrls.en}
+            class='flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors'
+            class:list={[
+              lang === 'en' ? 'bg-indigo-100 text-indigo-700 font-medium' : 'text-slate-600 hover:bg-slate-100'
+            ]}>
+            <span>🇬🇧</span>
+            <span>EN</span>
+          </a>
+          <a
+            href={alternateUrls.ja}
+            class='flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors'
+            class:list={[
+              lang === 'ja' ? 'bg-indigo-100 text-indigo-700 font-medium' : 'text-slate-600 hover:bg-slate-100'
+            ]}>
+            <span>🇯🇵</span>
+            <span>JA</span>
+          </a>
+        </div>
+      </div>
+
+      <div class='mt-4 px-4'>
+        <a
+          href={navLinks.contact}
+          class='block w-full text-center bg-indigo-600 text-white py-3 rounded-xl font-medium hover:bg-indigo-700 transition-colors'>
+          {t('nav.contact')}
+        </a>
+      </div>
     </div>
   </nav>
 </header>
+
+<!-- Spacer for fixed header -->
+<div class='h-16 lg:h-20'></div>

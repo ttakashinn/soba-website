@@ -23,31 +23,13 @@ export interface Props {
   }
 }
 
-const {
-  id,
-  industry,
-  client,
-  teamSize,
-  heroImage,
-  challenge,
-  solution,
-  results,
-  tech,
-  timeline,
-  testimonial,
-  labels,
-} = Astro.props
+const { id, industry, client, teamSize, heroImage, challenge, solution, results, tech, timeline, testimonial, labels } =
+  Astro.props
 
 const getIndustryEmoji = (ind: string) => {
   const key = ind.toLowerCase().replace(/[^a-z]/g, '')
-  if (
-    key.includes('sản') ||
-    key.includes('manufacturing') ||
-    key.includes('製造')
-  )
-    return '🏭'
-  if (key.includes('f&b') || key.includes('fnb') || key.includes('restaurant'))
-    return '🍽️'
+  if (key.includes('sản') || key.includes('manufacturing') || key.includes('製造')) return '🏭'
+  if (key.includes('f&b') || key.includes('fnb') || key.includes('restaurant')) return '🍽️'
   if (key.includes('logistics') || key.includes('物流')) return '🚚'
   return '💼'
 }
@@ -65,7 +47,7 @@ const getIndustryEmoji = (ind: string) => {
     x-transition:leave='transition ease-in duration-200'
     x-transition:leave-start='opacity-100'
     x-transition:leave-end='opacity-0'
-    class='fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4'
+    class='fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4'
     x-on:click.self='open = false'
     role='dialog'
     aria-modal='true'
@@ -75,81 +57,71 @@ const getIndustryEmoji = (ind: string) => {
       x-transition:enter='transition ease-out duration-300'
       x-transition:enter-start='opacity-0 transform scale-95'
       x-transition:enter-end='opacity-100 transform scale-100'
-      class='bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto'>
+      class='bg-white rounded-2xl sm:rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl'>
       <!-- Modal Header -->
       <div
-        class='relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden'>
+        class='relative h-40 sm:h-48 bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center overflow-hidden'>
         <img
           src={heroImage}
           alt={client}
           class='w-full h-full object-cover'
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
         />
-        <span
-          class='text-8xl hidden items-center justify-center'
-          aria-hidden='true'
-          style='display: none;'>{getIndustryEmoji(industry)}</span
+        <span class='text-7xl sm:text-8xl hidden items-center justify-center' aria-hidden='true' style='display: none;'
+          >{getIndustryEmoji(industry)}</span
         >
         <button
           x-on:click='open = false'
-          class='absolute top-4 right-4 text-white/80 hover:text-white bg-black/20 rounded-full p-2'
+          class='absolute top-3 sm:top-4 right-3 sm:right-4 text-white/80 hover:text-white bg-slate-900/20 hover:bg-slate-900/40 rounded-full p-2 transition-colors'
           aria-label='Close modal'>
-          <svg
-            class='w-6 h-6'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'
-            aria-hidden='true'>
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
-              d='M6 18L18 6M6 6l12 12'></path>
+          <svg class='w-5 h-5 sm:w-6 sm:h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'></path>
           </svg>
         </button>
       </div>
 
       <!-- Modal Content -->
-      <div class='p-8'>
-        <div class='flex items-center gap-3 mb-4'>
-          <span
-            class='bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium'>
+      <div class='p-5 sm:p-6 lg:p-8'>
+        <div class='flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4'>
+          <span class='bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs sm:text-sm font-medium'>
             {industry}
           </span>
-          <span class='text-gray-500'>{timeline}</span>
+          <span class='text-slate-500 text-xs sm:text-sm'>{timeline}</span>
         </div>
 
-        <h2
-          id={`modal-title-${id}`}
-          class='text-3xl font-bold text-gray-900 mb-2'>{client}</h2
-        >
-        <p class='text-gray-500 mb-6'>{teamSize}</p>
+        <h2 id={`modal-title-${id}`} class='text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 mb-1 sm:mb-2'>
+          {client}
+        </h2>
+        <p class='text-slate-500 text-sm sm:text-base mb-5 sm:mb-6'>{teamSize}</p>
 
         <!-- Challenge -->
-        <div class='mb-6'>
-          <h3 class='text-lg font-bold text-red-600 mb-2'
-            >🎯 {labels.challenge}</h3
-          >
-          <p class='text-gray-600'>{challenge}</p>
+        <div class='mb-5 sm:mb-6'>
+          <h3 class='text-base sm:text-lg font-bold text-rose-600 mb-2 flex items-center gap-2'>
+            <span class='text-lg sm:text-xl'>🎯</span>
+            {labels.challenge}
+          </h3>
+          <p class='text-slate-600 text-sm sm:text-base leading-relaxed'>{challenge}</p>
         </div>
 
         <!-- Solution -->
-        <div class='mb-6'>
-          <h3 class='text-lg font-bold text-indigo-600 mb-2'
-            >💡 {labels.solution}</h3
-          >
-          <p class='text-gray-600'>{solution}</p>
+        <div class='mb-5 sm:mb-6'>
+          <h3 class='text-base sm:text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2'>
+            <span class='text-lg sm:text-xl'>💡</span>
+            {labels.solution}
+          </h3>
+          <p class='text-slate-600 text-sm sm:text-base leading-relaxed'>{solution}</p>
         </div>
 
         <!-- Tech Stack -->
-        <div class='mb-6'>
-          <h3 class='text-lg font-bold text-gray-900 mb-3'
-            >🛠️ {labels.techStack}</h3
-          >
+        <div class='mb-5 sm:mb-6'>
+          <h3 class='text-base sm:text-lg font-bold text-slate-800 mb-2 sm:mb-3 flex items-center gap-2'>
+            <span class='text-lg sm:text-xl'>🛠️</span>
+            {labels.techStack}
+          </h3>
           <div class='flex flex-wrap gap-2'>
             {
               tech.map((t) => (
-                <span class='bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium'>
+                <span class='bg-slate-100 text-slate-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-medium text-xs sm:text-sm'>
                   {t}
                 </span>
               ))
@@ -158,18 +130,19 @@ const getIndustryEmoji = (ind: string) => {
         </div>
 
         <!-- Results -->
-        <div class='mb-6'>
-          <h3 class='text-lg font-bold text-green-600 mb-3'
-            >📊 {labels.results}</h3
-          >
-          <div class='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+        <div class='mb-5 sm:mb-6'>
+          <h3 class='text-base sm:text-lg font-bold text-emerald-600 mb-2 sm:mb-3 flex items-center gap-2'>
+            <span class='text-lg sm:text-xl'>📊</span>
+            {labels.results}
+          </h3>
+          <div class='grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4'>
             {
               results.map((result) => (
-                <div class='bg-green-50 rounded-lg p-4 flex items-center gap-3'>
-                  <span class='text-2xl' aria-hidden='true'>
+                <div class='bg-emerald-50 rounded-xl p-3 sm:p-4 flex items-center gap-2 sm:gap-3 border border-emerald-100'>
+                  <span class='text-xl sm:text-2xl' aria-hidden='true'>
                     {result.icon}
                   </span>
-                  <span class='text-gray-700 font-medium'>{result.text}</span>
+                  <span class='text-slate-700 font-medium text-sm sm:text-base'>{result.text}</span>
                 </div>
               ))
             }
@@ -177,18 +150,19 @@ const getIndustryEmoji = (ind: string) => {
         </div>
 
         <!-- Testimonial -->
-        <div
-          class='bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border-l-4 border-blue-500'>
-          <p class='text-gray-700 italic text-lg mb-4'>"{testimonial.quote}"</p>
+        <div class='bg-gradient-to-r from-indigo-50 to-violet-50 rounded-xl sm:rounded-2xl p-5 sm:p-6 border-l-4 border-indigo-500'>
+          <p class='text-slate-700 italic text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 leading-relaxed'>
+            "{testimonial.quote}"
+          </p>
           <div class='flex items-center gap-3'>
             <div
-              class='w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold'
+              class='w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-lg shadow-indigo-500/25'
               aria-hidden='true'>
               {testimonial.author.charAt(0)}
             </div>
             <div>
-              <div class='font-bold text-gray-900'>{testimonial.author}</div>
-              <div class='text-gray-500 text-sm'>{testimonial.position}</div>
+              <div class='font-bold text-slate-800 text-sm sm:text-base'>{testimonial.author}</div>
+              <div class='text-slate-500 text-xs sm:text-sm'>{testimonial.position}</div>
             </div>
           </div>
         </div>
