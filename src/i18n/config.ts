@@ -10,6 +10,7 @@ export const ui = {
   vi: {
     // Navigation
     'nav.services': 'Dịch vụ',
+    'nav.portfolio': 'Dự án',
     'nav.about': 'Về chúng tôi',
     'nav.contact': 'Liên hệ',
 
@@ -27,6 +28,7 @@ export const ui = {
     'services.outsourcing.desc': 'Thuê ngoài lập trình viên, BA, tester chất lượng cao. Linh hoạt quy mô, tiết kiệm chi phí',
     'services.bpo.title': 'Bảo trì & vận hành IT',
     'services.bpo.desc': 'Phòng IT ảo cho SME. Giám sát 24/7, bảo trì hệ thống, xử lý sự cố nhanh chóng',
+    'services.learn.more': 'Tìm hiểu thêm',
 
     // Why Choose Us
     'why.title': 'Tại sao chọn SOBA GROUP?',
@@ -91,6 +93,7 @@ export const ui = {
   en: {
     // Navigation
     'nav.services': 'Services',
+    'nav.portfolio': 'Portfolio',
     'nav.about': 'About Us',
     'nav.contact': 'Contact',
 
@@ -108,6 +111,7 @@ export const ui = {
     'services.outsourcing.desc': 'Outsource high-quality developers, BAs, and testers. Flexible scaling, cost-effective solutions',
     'services.bpo.title': 'IT Maintenance & Operations',
     'services.bpo.desc': 'Virtual IT department for SMEs. 24/7 monitoring, system maintenance, rapid incident response',
+    'services.learn.more': 'Learn more',
 
     // Why Choose Us
     'why.title': 'Why Choose SOBA GROUP?',
@@ -172,6 +176,7 @@ export const ui = {
   ja: {
     // Navigation
     'nav.services': 'サービス',
+    'nav.portfolio': '実績',
     'nav.about': '会社概要',
     'nav.contact': 'お問い合わせ',
 
@@ -189,6 +194,7 @@ export const ui = {
     'services.outsourcing.desc': '高品質な開発者、BA、テスターのアウトソーシング。柔軟なスケーリング、コスト効率的なソリューション',
     'services.bpo.title': 'IT保守・運用',
     'services.bpo.desc': '中小企業向けの仮想IT部門。24時間365日監視、システム保守、迅速なインシデント対応',
+    'services.learn.more': '詳しく見る',
 
     // Why Choose Us
     'why.title': 'SOBA GROUPを選ぶ理由',

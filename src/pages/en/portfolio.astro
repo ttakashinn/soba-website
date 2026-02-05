@@ -1,79 +1,50 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CTA from '../../components/CTA.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import CaseStudyModal from '../../components/CaseStudyModal.astro';
 
-const caseStudies = [
-  {
-    id: 'textile-abc',
-    industry: 'Manufacturing',
-    client: 'ABC Textile Company',
-    teamSize: '50 employees',
-    heroEmoji: '🏭',
-    challenge: 'Manual order management, frequent errors, unable to track production progress',
-    solution: 'Custom ERP with modules: Order Management, Production Planning, Inventory Management, Real-time Reporting',
-    tech: ['PHP', 'Laravel', 'PostgreSQL', 'Vue.js', 'Docker'],
-    timeline: '3 months',
-    results: [
-      { icon: '⏱️', text: '70% reduction in reporting time' },
-      { icon: '📉', text: '85% reduction in order errors' },
-      { icon: '💰', text: 'ROI achieved in 8 months' },
-      { icon: '⭐', text: '50 users trained in 2 weeks' }
-    ],
-    testimonial: {
-      quote: 'The ERP system has greatly improved our production management efficiency.',
-      author: 'Nguyen Van A',
-      position: 'Director'
-    }
-  },
-  {
-    id: 'restaurant-xyz',
-    industry: 'F&B',
-    client: 'XYZ Restaurant Chain',
-    teamSize: '120 employees (5 branches)',
-    heroEmoji: '🍽️',
-    challenge: 'Difficult multi-branch management, no inventory control, inventory losses',
-    solution: 'F&B Management System + Mobile app for staff',
-    tech: ['Node.js', 'React', 'MongoDB', 'React Native'],
-    timeline: '4 months',
-    results: [
-      { icon: '📱', text: '5 branches connected real-time' },
-      { icon: '📊', text: '60% reduction in inventory loss' },
-      { icon: '⚡', text: '3x faster order processing' },
-      { icon: '💵', text: '25% revenue increase after 6 months' }
-    ],
-    testimonial: {
-      quote: 'Professional team, timeline as committed, budget under control.',
-      author: 'Tran Thi B',
-      position: 'CEO'
-    }
-  },
-  {
-    id: 'logistics-def',
-    industry: 'Logistics',
-    client: 'DEF Logistics Company',
-    teamSize: '80 employees',
-    heroEmoji: '🚚',
-    challenge: 'Manual order tracking, customer complaints about lack of visibility',
-    solution: 'TMS (Transportation Management System) + Customer portal',
-    tech: ['Python', 'Django', 'PostgreSQL', 'Flutter'],
-    timeline: '5 months',
-    results: [
-      { icon: '🚚', text: 'Real-time tracking for 100% of orders' },
-      { icon: '😊', text: 'Customer satisfaction up from 70% to 95%' },
-      { icon: '⏰', text: 'On-time delivery from 78% to 93%' },
-      { icon: '📈', text: '40% more orders with same workforce' }
-    ],
-    testimonial: {
-      quote: 'The tracking system has completely transformed how we operate.',
-      author: 'Le Van C',
-      position: 'COO'
-    }
-  }
-];
+const lang = 'en';
 
-const industries = ['All', 'Manufacturing', 'F&B', 'Logistics'];
+// Load case studies from content collection
+const caseStudiesRaw = await getCollection('case-studies');
+const caseStudies = caseStudiesRaw
+  .sort((a, b) => a.data.index - b.data.index)
+  .map(study => ({
+    id: study.data.id,
+    industry: study.data.industry[lang],
+    industryKey: study.data.industryKey,
+    client: study.data.client[lang],
+    teamSize: study.data.teamSize[lang],
+    heroImage: study.data.heroImage,
+    challenge: study.data.challenge[lang],
+    solution: study.data.solution[lang],
+    tech: study.data.tech,
+    timeline: study.data.timeline[lang],
+    results: study.data.results.map(r => ({
+      icon: r.icon,
+      text: r[lang]
+    })),
+    testimonial: {
+      quote: study.data.testimonial.quote[lang],
+      author: study.data.testimonial.author,
+      position: study.data.testimonial.position[lang]
+    }
+  }));
+
+// Get unique industries for filter
+const industries = ['All', ...new Set(caseStudies.map(s => s.industry))];
+
+const labels = {
+  challenge: 'Challenge',
+  solution: 'Solution',
+  techStack: 'Tech Stack',
+  results: 'Results',
+  viewDetails: 'View Details'
+};
 ---
 
 <BaseLayout
@@ -104,12 +75,14 @@ const industries = ['All', 'Manufacturing', 'F&B', 'Logistics'];
     <section class="py-20 bg-white" x-data="{ activeFilter: 'All' }">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Industry Filter -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <div class="flex flex-wrap justify-center gap-3 mb-12" role="tablist" aria-label="Filter by industry">
           {industries.map((industry) => (
             <button
-              @click={`activeFilter = '${industry}'`}
-              class="px-6 py-2 rounded-full font-medium transition-all duration-300"
-              :class={`activeFilter === '${industry}' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
+              x-on:click={`activeFilter = '${industry}'`}
+              class="px-6 py-2 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              x-bind:class={`activeFilter === '${industry}' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
+              role="tab"
+              x-bind:aria-selected={`activeFilter === '${industry}'`}
             >
               {industry}
             </button>
@@ -120,64 +93,23 @@ const industries = ['All', 'Manufacturing', 'F&B', 'Logistics'];
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {caseStudies.map((study) => (
             <div
-              class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100"
               x-show={`activeFilter === 'All' || activeFilter === '${study.industry}'`}
               x-transition:enter="transition ease-out duration-300"
               x-transition:enter-start="opacity-0 transform scale-95"
               x-transition:enter-end="opacity-100 transform scale-100"
             >
-              <!-- Hero Image Placeholder -->
-              <div class="relative h-48 bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <span class="text-7xl">{study.heroEmoji}</span>
-                <div class="absolute top-4 left-4">
-                  <span class="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {study.industry}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Content -->
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  {study.client}
-                </h3>
-                <p class="text-gray-500 text-sm mb-4">{study.teamSize} • {study.timeline}</p>
-
-                <!-- Challenge -->
-                <div class="mb-4">
-                  <span class="text-red-600 font-medium text-sm">Challenge:</span>
-                  <p class="text-gray-600 text-sm mt-1 line-clamp-2">{study.challenge}</p>
-                </div>
-
-                <!-- Results Preview -->
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {study.results.slice(0, 2).map((result) => (
-                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 px-2 py-1 rounded text-xs">
-                      {result.icon} {result.text.split(' ').slice(0, 3).join(' ')}...
-                    </span>
-                  ))}
-                </div>
-
-                <!-- Tech Stack -->
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {study.tech.map((t) => (
-                    <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-medium">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <!-- View Details Button -->
-                <button
-                  @click={`$dispatch('open-modal', { id: '${study.id}' })`}
-                  class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
-                >
-                  View Details
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
-                </button>
-              </div>
+              <CaseStudyCard
+                id={study.id}
+                industry={study.industry}
+                client={study.client}
+                teamSize={study.teamSize}
+                heroImage={study.heroImage}
+                challenge={study.challenge}
+                results={study.results}
+                tech={study.tech}
+                timeline={study.timeline}
+                labels={labels}
+              />
             </div>
           ))}
         </div>
@@ -186,108 +118,20 @@ const industries = ['All', 'Manufacturing', 'F&B', 'Logistics'];
 
     <!-- Case Study Modals -->
     {caseStudies.map((study) => (
-      <div
-        x-data="{ open: false }"
-        @open-modal.window={`if ($event.detail.id === '${study.id}') open = true`}
-        @keydown.escape.window="open = false"
-      >
-        <div
-          x-show="open"
-          x-transition:enter="transition ease-out duration-300"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="transition ease-in duration-200"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-          class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
-          @click.self="open = false"
-        >
-          <div
-            x-show="open"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 transform scale-95"
-            x-transition:enter-end="opacity-100 transform scale-100"
-            class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-          >
-            <!-- Modal Header -->
-            <div class="relative h-48 bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <span class="text-8xl">{study.heroEmoji}</span>
-              <button
-                @click="open = false"
-                class="absolute top-4 right-4 text-white/80 hover:text-white"
-              >
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Modal Content -->
-            <div class="p-8">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                  {study.industry}
-                </span>
-                <span class="text-gray-500">{study.timeline}</span>
-              </div>
-
-              <h2 class="text-3xl font-bold text-gray-900 mb-2">{study.client}</h2>
-              <p class="text-gray-500 mb-6">{study.teamSize}</p>
-
-              <!-- Challenge -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-red-600 mb-2">🎯 Challenge</h3>
-                <p class="text-gray-600">{study.challenge}</p>
-              </div>
-
-              <!-- Solution -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-blue-600 mb-2">💡 Solution</h3>
-                <p class="text-gray-600">{study.solution}</p>
-              </div>
-
-              <!-- Tech Stack -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-3">🛠️ Tech Stack</h3>
-                <div class="flex flex-wrap gap-2">
-                  {study.tech.map((t) => (
-                    <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Results -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-green-600 mb-3">📊 Results</h3>
-                <div class="grid grid-cols-2 gap-4">
-                  {study.results.map((result) => (
-                    <div class="bg-green-50 rounded-lg p-4 flex items-center gap-3">
-                      <span class="text-2xl">{result.icon}</span>
-                      <span class="text-gray-700 font-medium">{result.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Testimonial -->
-              <div class="bg-linear-to-r from-blue-50 to-purple-50 rounded-xl p-6 border-l-4 border-blue-500">
-                <p class="text-gray-700 italic text-lg mb-4">"{study.testimonial.quote}"</p>
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                    {study.testimonial.author.charAt(0)}
-                  </div>
-                  <div>
-                    <div class="font-bold text-gray-900">{study.testimonial.author}</div>
-                    <div class="text-gray-500 text-sm">{study.testimonial.position}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CaseStudyModal
+        id={study.id}
+        industry={study.industry}
+        client={study.client}
+        teamSize={study.teamSize}
+        heroImage={study.heroImage}
+        challenge={study.challenge}
+        solution={study.solution}
+        results={study.results}
+        tech={study.tech}
+        timeline={study.timeline}
+        testimonial={study.testimonial}
+        labels={labels}
+      />
     ))}
 
     <CTA />
@@ -295,12 +139,3 @@ const industries = ['All', 'Manufacturing', 'F&B', 'Logistics'];
 
   <Footer />
 </BaseLayout>
-
-<style>
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>

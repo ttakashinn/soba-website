@@ -1,0 +1,198 @@
+---
+export interface Props {
+  id: string
+  industry: string
+  client: string
+  teamSize: string
+  heroImage: string
+  challenge: string
+  solution: string
+  results: Array<{ icon: string; text: string }>
+  tech: string[]
+  timeline: string
+  testimonial: {
+    quote: string
+    author: string
+    position: string
+  }
+  labels: {
+    challenge: string
+    solution: string
+    techStack: string
+    results: string
+  }
+}
+
+const {
+  id,
+  industry,
+  client,
+  teamSize,
+  heroImage,
+  challenge,
+  solution,
+  results,
+  tech,
+  timeline,
+  testimonial,
+  labels,
+} = Astro.props
+
+const getIndustryEmoji = (ind: string) => {
+  const key = ind.toLowerCase().replace(/[^a-z]/g, '')
+  if (
+    key.includes('sản') ||
+    key.includes('manufacturing') ||
+    key.includes('製造')
+  )
+    return '🏭'
+  if (key.includes('f&b') || key.includes('fnb') || key.includes('restaurant'))
+    return '🍽️'
+  if (key.includes('logistics') || key.includes('物流')) return '🚚'
+  return '💼'
+}
+---
+
+<div
+  x-data='{ open: false }'
+  x-on:open-modal.window={`if ($event.detail.id === '${id}') open = true`}
+  x-on:keydown.escape.window='open = false'>
+  <div
+    x-show='open'
+    x-transition:enter='transition ease-out duration-300'
+    x-transition:enter-start='opacity-0'
+    x-transition:enter-end='opacity-100'
+    x-transition:leave='transition ease-in duration-200'
+    x-transition:leave-start='opacity-100'
+    x-transition:leave-end='opacity-0'
+    class='fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4'
+    x-on:click.self='open = false'
+    role='dialog'
+    aria-modal='true'
+    aria-labelledby={`modal-title-${id}`}>
+    <div
+      x-show='open'
+      x-transition:enter='transition ease-out duration-300'
+      x-transition:enter-start='opacity-0 transform scale-95'
+      x-transition:enter-end='opacity-100 transform scale-100'
+      class='bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto'>
+      <!-- Modal Header -->
+      <div
+        class='relative h-48 bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center overflow-hidden'>
+        <img
+          src={heroImage}
+          alt={client}
+          class='w-full h-full object-cover'
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+        />
+        <span
+          class='text-8xl hidden items-center justify-center'
+          aria-hidden='true'
+          style='display: none;'>{getIndustryEmoji(industry)}</span
+        >
+        <button
+          x-on:click='open = false'
+          class='absolute top-4 right-4 text-white/80 hover:text-white bg-black/20 rounded-full p-2'
+          aria-label='Close modal'>
+          <svg
+            class='w-6 h-6'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+            aria-hidden='true'>
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M6 18L18 6M6 6l12 12'></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div class='p-8'>
+        <div class='flex items-center gap-3 mb-4'>
+          <span
+            class='bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium'>
+            {industry}
+          </span>
+          <span class='text-gray-500'>{timeline}</span>
+        </div>
+
+        <h2
+          id={`modal-title-${id}`}
+          class='text-3xl font-bold text-gray-900 mb-2'>{client}</h2
+        >
+        <p class='text-gray-500 mb-6'>{teamSize}</p>
+
+        <!-- Challenge -->
+        <div class='mb-6'>
+          <h3 class='text-lg font-bold text-red-600 mb-2'
+            >🎯 {labels.challenge}</h3
+          >
+          <p class='text-gray-600'>{challenge}</p>
+        </div>
+
+        <!-- Solution -->
+        <div class='mb-6'>
+          <h3 class='text-lg font-bold text-blue-600 mb-2'
+            >💡 {labels.solution}</h3
+          >
+          <p class='text-gray-600'>{solution}</p>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class='mb-6'>
+          <h3 class='text-lg font-bold text-gray-900 mb-3'
+            >🛠️ {labels.techStack}</h3
+          >
+          <div class='flex flex-wrap gap-2'>
+            {
+              tech.map((t) => (
+                <span class='bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium'>
+                  {t}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class='mb-6'>
+          <h3 class='text-lg font-bold text-green-600 mb-3'
+            >📊 {labels.results}</h3
+          >
+          <div class='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+            {
+              results.map((result) => (
+                <div class='bg-green-50 rounded-lg p-4 flex items-center gap-3'>
+                  <span class='text-2xl' aria-hidden='true'>
+                    {result.icon}
+                  </span>
+                  <span class='text-gray-700 font-medium'>{result.text}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Testimonial -->
+        <div
+          class='bg-linear-to-r from-blue-50 to-purple-50 rounded-xl p-6 border-l-4 border-blue-500'>
+          <p class='text-gray-700 italic text-lg mb-4'>"{testimonial.quote}"</p>
+          <div class='flex items-center gap-3'>
+            <div
+              class='w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold'
+              aria-hidden='true'>
+              {testimonial.author.charAt(0)}
+            </div>
+            <div>
+              <div class='font-bold text-gray-900'>{testimonial.author}</div>
+              <div class='text-gray-500 text-sm'>{testimonial.position}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

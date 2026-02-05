@@ -1,79 +1,50 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CTA from '../../components/CTA.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import CaseStudyModal from '../../components/CaseStudyModal.astro';
 
-const caseStudies = [
-  {
-    id: 'textile-abc',
-    industry: '製造業',
-    client: 'ABC繊維会社',
-    teamSize: '50名',
-    heroEmoji: '🏭',
-    challenge: '手動での受注管理、エラーが多発、生産進捗が追跡できない',
-    solution: 'カスタムERPモジュール：受注管理、生産計画、在庫管理、リアルタイムレポート',
-    tech: ['PHP', 'Laravel', 'PostgreSQL', 'Vue.js', 'Docker'],
-    timeline: '3ヶ月',
-    results: [
-      { icon: '⏱️', text: 'レポート時間70%削減' },
-      { icon: '📉', text: '受注エラー85%削減' },
-      { icon: '💰', text: '8ヶ月でROI達成' },
-      { icon: '⭐', text: '2週間で50名をトレーニング' }
-    ],
-    testimonial: {
-      quote: 'ERPシステムにより生産管理効率が大幅に向上しました。',
-      author: 'Nguyen Van A',
-      position: '取締役'
-    }
-  },
-  {
-    id: 'restaurant-xyz',
-    industry: 'F&B',
-    client: 'XYZレストランチェーン',
-    teamSize: '120名（5店舗）',
-    heroEmoji: '🍽️',
-    challenge: '多店舗管理が困難、在庫管理ができない、在庫ロスが発生',
-    solution: 'F&B管理システム + スタッフ向けモバイルアプリ',
-    tech: ['Node.js', 'React', 'MongoDB', 'React Native'],
-    timeline: '4ヶ月',
-    results: [
-      { icon: '📱', text: '5店舗リアルタイム接続' },
-      { icon: '📊', text: '在庫ロス60%削減' },
-      { icon: '⚡', text: '注文処理3倍高速化' },
-      { icon: '💵', text: '6ヶ月で売上25%増加' }
-    ],
-    testimonial: {
-      quote: 'プロフェッショナルなチーム、約束通りのタイムライン、予算内で完了。',
-      author: 'Tran Thi B',
-      position: 'CEO'
-    }
-  },
-  {
-    id: 'logistics-def',
-    industry: '物流',
-    client: 'DEF物流会社',
-    teamSize: '80名',
-    heroEmoji: '🚚',
-    challenge: '手動での注文追跡、顧客からの可視性に関するクレーム',
-    solution: 'TMS（輸送管理システム）+ 顧客ポータル',
-    tech: ['Python', 'Django', 'PostgreSQL', 'Flutter'],
-    timeline: '5ヶ月',
-    results: [
-      { icon: '🚚', text: '100%の注文をリアルタイム追跡' },
-      { icon: '😊', text: '顧客満足度70%から95%へ' },
-      { icon: '⏰', text: '定時配送率78%から93%へ' },
-      { icon: '📈', text: '同じ人員で40%多い注文を処理' }
-    ],
-    testimonial: {
-      quote: 'トラッキングシステムが私たちの運営方法を完全に変えました。',
-      author: 'Le Van C',
-      position: 'COO'
-    }
-  }
-];
+const lang = 'ja';
 
-const industries = ['すべて', '製造業', 'F&B', '物流'];
+// Load case studies from content collection
+const caseStudiesRaw = await getCollection('case-studies');
+const caseStudies = caseStudiesRaw
+  .sort((a, b) => a.data.index - b.data.index)
+  .map(study => ({
+    id: study.data.id,
+    industry: study.data.industry[lang],
+    industryKey: study.data.industryKey,
+    client: study.data.client[lang],
+    teamSize: study.data.teamSize[lang],
+    heroImage: study.data.heroImage,
+    challenge: study.data.challenge[lang],
+    solution: study.data.solution[lang],
+    tech: study.data.tech,
+    timeline: study.data.timeline[lang],
+    results: study.data.results.map(r => ({
+      icon: r.icon,
+      text: r[lang]
+    })),
+    testimonial: {
+      quote: study.data.testimonial.quote[lang],
+      author: study.data.testimonial.author,
+      position: study.data.testimonial.position[lang]
+    }
+  }));
+
+// Get unique industries for filter
+const industries = ['すべて', ...new Set(caseStudies.map(s => s.industry))];
+
+const labels = {
+  challenge: '課題',
+  solution: 'ソリューション',
+  techStack: 'Tech Stack',
+  results: '成果',
+  viewDetails: '詳細を見る'
+};
 ---
 
 <BaseLayout
@@ -104,12 +75,14 @@ const industries = ['すべて', '製造業', 'F&B', '物流'];
     <section class="py-20 bg-white" x-data="{ activeFilter: 'すべて' }">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Industry Filter -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <div class="flex flex-wrap justify-center gap-3 mb-12" role="tablist" aria-label="業界でフィルター">
           {industries.map((industry) => (
             <button
-              @click={`activeFilter = '${industry}'`}
-              class="px-6 py-2 rounded-full font-medium transition-all duration-300"
-              :class={`activeFilter === '${industry}' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
+              x-on:click={`activeFilter = '${industry}'`}
+              class="px-6 py-2 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              x-bind:class={`activeFilter === '${industry}' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
+              role="tab"
+              x-bind:aria-selected={`activeFilter === '${industry}'`}
             >
               {industry}
             </button>
@@ -120,64 +93,23 @@ const industries = ['すべて', '製造業', 'F&B', '物流'];
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {caseStudies.map((study) => (
             <div
-              class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100"
               x-show={`activeFilter === 'すべて' || activeFilter === '${study.industry}'`}
               x-transition:enter="transition ease-out duration-300"
               x-transition:enter-start="opacity-0 transform scale-95"
               x-transition:enter-end="opacity-100 transform scale-100"
             >
-              <!-- Hero Image Placeholder -->
-              <div class="relative h-48 bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <span class="text-7xl">{study.heroEmoji}</span>
-                <div class="absolute top-4 left-4">
-                  <span class="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {study.industry}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Content -->
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  {study.client}
-                </h3>
-                <p class="text-gray-500 text-sm mb-4">{study.teamSize} • {study.timeline}</p>
-
-                <!-- Challenge -->
-                <div class="mb-4">
-                  <span class="text-red-600 font-medium text-sm">課題:</span>
-                  <p class="text-gray-600 text-sm mt-1 line-clamp-2">{study.challenge}</p>
-                </div>
-
-                <!-- Results Preview -->
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {study.results.slice(0, 2).map((result) => (
-                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 px-2 py-1 rounded text-xs">
-                      {result.icon} {result.text.split(' ').slice(0, 2).join(' ')}...
-                    </span>
-                  ))}
-                </div>
-
-                <!-- Tech Stack -->
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {study.tech.map((t) => (
-                    <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-medium">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <!-- View Details Button -->
-                <button
-                  @click={`$dispatch('open-modal', { id: '${study.id}' })`}
-                  class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
-                >
-                  詳細を見る
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
-                </button>
-              </div>
+              <CaseStudyCard
+                id={study.id}
+                industry={study.industry}
+                client={study.client}
+                teamSize={study.teamSize}
+                heroImage={study.heroImage}
+                challenge={study.challenge}
+                results={study.results}
+                tech={study.tech}
+                timeline={study.timeline}
+                labels={labels}
+              />
             </div>
           ))}
         </div>
@@ -186,108 +118,20 @@ const industries = ['すべて', '製造業', 'F&B', '物流'];
 
     <!-- Case Study Modals -->
     {caseStudies.map((study) => (
-      <div
-        x-data="{ open: false }"
-        @open-modal.window={`if ($event.detail.id === '${study.id}') open = true`}
-        @keydown.escape.window="open = false"
-      >
-        <div
-          x-show="open"
-          x-transition:enter="transition ease-out duration-300"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="transition ease-in duration-200"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-          class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
-          @click.self="open = false"
-        >
-          <div
-            x-show="open"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 transform scale-95"
-            x-transition:enter-end="opacity-100 transform scale-100"
-            class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-          >
-            <!-- Modal Header -->
-            <div class="relative h-48 bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <span class="text-8xl">{study.heroEmoji}</span>
-              <button
-                @click="open = false"
-                class="absolute top-4 right-4 text-white/80 hover:text-white"
-              >
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Modal Content -->
-            <div class="p-8">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                  {study.industry}
-                </span>
-                <span class="text-gray-500">{study.timeline}</span>
-              </div>
-
-              <h2 class="text-3xl font-bold text-gray-900 mb-2">{study.client}</h2>
-              <p class="text-gray-500 mb-6">{study.teamSize}</p>
-
-              <!-- Challenge -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-red-600 mb-2">🎯 課題</h3>
-                <p class="text-gray-600">{study.challenge}</p>
-              </div>
-
-              <!-- Solution -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-blue-600 mb-2">💡 ソリューション</h3>
-                <p class="text-gray-600">{study.solution}</p>
-              </div>
-
-              <!-- Tech Stack -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-3">🛠️ Tech Stack</h3>
-                <div class="flex flex-wrap gap-2">
-                  {study.tech.map((t) => (
-                    <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Results -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-green-600 mb-3">📊 成果</h3>
-                <div class="grid grid-cols-2 gap-4">
-                  {study.results.map((result) => (
-                    <div class="bg-green-50 rounded-lg p-4 flex items-center gap-3">
-                      <span class="text-2xl">{result.icon}</span>
-                      <span class="text-gray-700 font-medium">{result.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Testimonial -->
-              <div class="bg-linear-to-r from-blue-50 to-purple-50 rounded-xl p-6 border-l-4 border-blue-500">
-                <p class="text-gray-700 italic text-lg mb-4">"{study.testimonial.quote}"</p>
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                    {study.testimonial.author.charAt(0)}
-                  </div>
-                  <div>
-                    <div class="font-bold text-gray-900">{study.testimonial.author}</div>
-                    <div class="text-gray-500 text-sm">{study.testimonial.position}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CaseStudyModal
+        id={study.id}
+        industry={study.industry}
+        client={study.client}
+        teamSize={study.teamSize}
+        heroImage={study.heroImage}
+        challenge={study.challenge}
+        solution={study.solution}
+        results={study.results}
+        tech={study.tech}
+        timeline={study.timeline}
+        testimonial={study.testimonial}
+        labels={labels}
+      />
     ))}
 
     <CTA />
@@ -295,12 +139,3 @@ const industries = ['すべて', '製造業', 'F&B', '物流'];
 
   <Footer />
 </BaseLayout>
-
-<style>
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>

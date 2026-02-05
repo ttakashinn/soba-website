@@ -148,7 +148,7 @@ const title = lang === 'ja' ? 'よくある質問' : lang === 'en' ? 'Frequently
       {currentFaqs.map((faq, index) => (
         <div
           class="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-blue-300"
-          :class="openIndex === {index} ? 'shadow-lg border-blue-400' : 'shadow-sm'"
+          :class={`openIndex === ${index} ? 'shadow-lg border-blue-400' : 'shadow-sm'`}
         >
           <button
             type="button"
@@ -175,7 +175,12 @@ const title = lang === 'ja' ? 'よくある質問' : lang === 'en' ? 'Frequently
           <div
             class="overflow-hidden transition-all duration-300 ease-out"
             x-show={`openIndex === ${index}`}
-            x-collapse
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 max-h-0"
+            x-transition:enter-end="opacity-100 max-h-96"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 max-h-96"
+            x-transition:leave-end="opacity-0 max-h-0"
           >
             <div class="px-6 pb-5 pt-0">
               <div class="pl-12 text-gray-600 leading-relaxed border-l-2 border-blue-200 ml-1">

@@ -1,102 +1,73 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import CTA from '../components/CTA.astro';
+import { getCollection } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import CTA from '../components/CTA.astro'
+import CaseStudyCard from '../components/CaseStudyCard.astro'
+import CaseStudyModal from '../components/CaseStudyModal.astro'
 
-const caseStudies = [
-  {
-    id: 'textile-abc',
-    industry: 'Manufacturing',
-    industryVi: 'Sản xuất',
-    client: 'Công ty Dệt May ABC',
-    teamSize: '50 nhân viên',
-    heroEmoji: '🏭',
-    challenge: 'Quản lý đơn hàng thủ công, sai sót nhiều, không theo dõi được tiến độ sản xuất',
-    solution: 'Custom ERP với modules: Quản lý đơn hàng, Lập kế hoạch sản xuất, Quản lý kho, Báo cáo real-time',
-    tech: ['PHP', 'Laravel', 'PostgreSQL', 'Vue.js', 'Docker'],
-    timeline: '3 tháng',
-    results: [
-      { icon: '⏱️', text: 'Giảm 70% thời gian báo cáo' },
-      { icon: '📉', text: 'Giảm 85% sai sót đơn hàng' },
-      { icon: '💰', text: 'ROI đạt sau 8 tháng' },
-      { icon: '⭐', text: '50 users trained trong 2 tuần' }
-    ],
-    testimonial: {
-      quote: 'Hệ thống ERP giúp công ty chúng tôi quản lý sản xuất hiệu quả hơn rất nhiều.',
-      author: 'Nguyễn Văn A',
-      position: 'Giám đốc'
-    }
-  },
-  {
-    id: 'restaurant-xyz',
-    industry: 'F&B',
-    industryVi: 'F&B',
-    client: 'Chuỗi Nhà Hàng XYZ',
-    teamSize: '120 nhân viên (5 chi nhánh)',
-    heroEmoji: '🍽️',
-    challenge: 'Quản lý đa chi nhánh khó khăn, không kiểm soát được inventory, mất mát hàng tồn kho',
-    solution: 'F&B Management System + Mobile app cho staff',
-    tech: ['Node.js', 'React', 'MongoDB', 'React Native'],
-    timeline: '4 tháng',
-    results: [
-      { icon: '📱', text: '5 chi nhánh kết nối real-time' },
-      { icon: '📊', text: 'Giảm 60% thất thoát inventory' },
-      { icon: '⚡', text: 'Order processing nhanh gấp 3 lần' },
-      { icon: '💵', text: 'Tăng 25% revenue sau 6 tháng' }
-    ],
-    testimonial: {
-      quote: 'Professional team, timeline đúng cam kết, budget trong tầm kiểm soát.',
-      author: 'Trần Thị B',
-      position: 'CEO'
-    }
-  },
-  {
-    id: 'logistics-def',
-    industry: 'Logistics',
-    industryVi: 'Logistics',
-    client: 'Công ty Logistics DEF',
-    teamSize: '80 nhân viên',
-    heroEmoji: '🚚',
-    challenge: 'Tracking đơn hàng thủ công, khách hàng khiếu nại không theo dõi được',
-    solution: 'TMS (Transportation Management System) + Customer portal',
-    tech: ['Python', 'Django', 'PostgreSQL', 'Flutter'],
-    timeline: '5 tháng',
-    results: [
-      { icon: '🚚', text: 'Real-time tracking 100% đơn hàng' },
-      { icon: '😊', text: 'Customer satisfaction tăng từ 70% lên 95%' },
-      { icon: '⏰', text: 'On-time delivery từ 78% lên 93%' },
-      { icon: '📈', text: 'Xử lý tăng 40% đơn hàng với cùng nhân lực' }
-    ],
-    testimonial: {
-      quote: 'Hệ thống tracking đã thay đổi hoàn toàn cách chúng tôi vận hành.',
-      author: 'Lê Văn C',
-      position: 'COO'
-    }
-  }
-];
+const lang = 'vi'
 
-const industries = ['Tất cả', 'Sản xuất', 'F&B', 'Logistics'];
+// Load case studies from content collection
+const caseStudiesRaw = await getCollection('case-studies')
+const caseStudies = caseStudiesRaw
+  .sort((a: typeof caseStudiesRaw[0], b: typeof caseStudiesRaw[0]) => a.data.index - b.data.index)
+  .map((study: (typeof caseStudiesRaw)[0]) => ({
+    id: study.data.id,
+    industry: study.data.industry[lang],
+    industryKey: study.data.industryKey,
+    client: study.data.client[lang],
+    teamSize: study.data.teamSize[lang],
+    heroImage: study.data.heroImage,
+    challenge: study.data.challenge[lang],
+    solution: study.data.solution[lang],
+    tech: study.data.tech,
+    timeline: study.data.timeline[lang],
+    results: study.data.results.map((r: typeof study.data.results[0]) => ({
+      icon: r.icon,
+      text: r[lang],
+    })),
+    testimonial: {
+      quote: study.data.testimonial.quote[lang],
+      author: study.data.testimonial.author,
+      position: study.data.testimonial.position[lang],
+    },
+  }))
+
+// Get unique industries for filter
+const industries = ['Tất cả', ...new Set(caseStudies.map((s: typeof caseStudies[0]) => s.industry))]
+
+const labels = {
+  challenge: 'Thách thức',
+  solution: 'Giải pháp',
+  techStack: 'Tech Stack',
+  results: 'Kết quả',
+  viewDetails: 'Xem chi tiết',
+}
 ---
 
 <BaseLayout
-  title="Portfolio - Dự án tiêu biểu"
-  description="Case studies và dự án tiêu biểu của SOBA GROUP - Chuyển đổi số cho doanh nghiệp"
-  lang="vi"
->
+  title='Portfolio - Dự án tiêu biểu'
+  description='Case studies và dự án tiêu biểu của SOBA GROUP - Chuyển đổi số cho doanh nghiệp'
+  lang='vi'>
   <Header />
 
   <main>
     <!-- Hero -->
-    <section class="relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <section
+      class='relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
       </div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl">
-          <h1 class="text-5xl lg:text-6xl font-bold mb-6">Dự án tiêu biểu</h1>
-          <p class="text-2xl text-blue-100">
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'>Dự án tiêu biểu</h1>
+          <p class='text-2xl text-blue-100'>
             Các case study chuyển đổi số thành công cùng SOBA GROUP
           </p>
         </div>
@@ -104,206 +75,77 @@ const industries = ['Tất cả', 'Sản xuất', 'F&B', 'Logistics'];
     </section>
 
     <!-- Filter & Grid -->
-    <section class="py-20 bg-white" x-data="{ activeFilter: 'Tất cả' }">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class='py-20 bg-white' x-data="{ activeFilter: 'Tất cả' }">
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <!-- Industry Filter -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
-          {industries.map((industry) => (
-            <button
-              @click={`activeFilter = '${industry}'`}
-              class="px-6 py-2 rounded-full font-medium transition-all duration-300"
-              :class={`activeFilter === '${industry}' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
-            >
-              {industry}
-            </button>
-          ))}
+        <div
+          class='flex flex-wrap justify-center gap-3 mb-12'
+          role='tablist'
+          aria-label='Lọc theo ngành'>
+          {
+            industries.map((industry) => (
+              <button
+                x-on:click={`activeFilter = '${industry}'`}
+                class='px-6 py-2 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+                x-bind:class={`activeFilter === '${industry}' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
+                role='tab'
+                x-bind:aria-selected={`activeFilter === '${industry}'`}>
+                {industry}
+              </button>
+            ))
+          }
         </div>
 
         <!-- Case Studies Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {caseStudies.map((study) => (
-            <div
-              class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100"
-              x-show={`activeFilter === 'Tất cả' || activeFilter === '${study.industryVi}'`}
-              x-transition:enter="transition ease-out duration-300"
-              x-transition:enter-start="opacity-0 transform scale-95"
-              x-transition:enter-end="opacity-100 transform scale-100"
-            >
-              <!-- Hero Image Placeholder -->
-              <div class="relative h-48 bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <span class="text-7xl">{study.heroEmoji}</span>
-                <div class="absolute top-4 left-4">
-                  <span class="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {study.industryVi}
-                  </span>
-                </div>
+        <div class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {
+            caseStudies.map((study: typeof caseStudies[0]) => (
+              <div
+                x-show={`activeFilter === 'Tất cả' || activeFilter === '${study.industry}'`}
+                x-transition:enter='transition ease-out duration-300'
+                x-transition:enter-start='opacity-0 transform scale-95'
+                x-transition:enter-end='opacity-100 transform scale-100'>
+                <CaseStudyCard
+                  id={study.id}
+                  industry={study.industry}
+                  client={study.client}
+                  teamSize={study.teamSize}
+                  heroImage={study.heroImage}
+                  challenge={study.challenge}
+                  results={study.results}
+                  tech={study.tech}
+                  timeline={study.timeline}
+                  labels={labels}
+                />
               </div>
-
-              <!-- Content -->
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  {study.client}
-                </h3>
-                <p class="text-gray-500 text-sm mb-4">{study.teamSize} • {study.timeline}</p>
-
-                <!-- Challenge -->
-                <div class="mb-4">
-                  <span class="text-red-600 font-medium text-sm">Thách thức:</span>
-                  <p class="text-gray-600 text-sm mt-1 line-clamp-2">{study.challenge}</p>
-                </div>
-
-                <!-- Results Preview -->
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {study.results.slice(0, 2).map((result) => (
-                    <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 px-2 py-1 rounded text-xs">
-                      {result.icon} {result.text.split(' ').slice(0, 3).join(' ')}...
-                    </span>
-                  ))}
-                </div>
-
-                <!-- Tech Stack -->
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {study.tech.map((t) => (
-                    <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-medium">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <!-- View Details Button -->
-                <button
-                  @click={`$dispatch('open-modal', { id: '${study.id}' })`}
-                  class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
-                >
-                  Xem chi tiết
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </section>
 
     <!-- Case Study Modals -->
-    {caseStudies.map((study) => (
-      <div
-        x-data="{ open: false }"
-        @open-modal.window={`if ($event.detail.id === '${study.id}') open = true`}
-        @keydown.escape.window="open = false"
-      >
-        <div
-          x-show="open"
-          x-transition:enter="transition ease-out duration-300"
-          x-transition:enter-start="opacity-0"
-          x-transition:enter-end="opacity-100"
-          x-transition:leave="transition ease-in duration-200"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-          class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
-          @click.self="open = false"
-        >
-          <div
-            x-show="open"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 transform scale-95"
-            x-transition:enter-end="opacity-100 transform scale-100"
-            class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-          >
-            <!-- Modal Header -->
-            <div class="relative h-48 bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <span class="text-8xl">{study.heroEmoji}</span>
-              <button
-                @click="open = false"
-                class="absolute top-4 right-4 text-white/80 hover:text-white"
-              >
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Modal Content -->
-            <div class="p-8">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                  {study.industryVi}
-                </span>
-                <span class="text-gray-500">{study.timeline}</span>
-              </div>
-
-              <h2 class="text-3xl font-bold text-gray-900 mb-2">{study.client}</h2>
-              <p class="text-gray-500 mb-6">{study.teamSize}</p>
-
-              <!-- Challenge -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-red-600 mb-2">🎯 Thách thức</h3>
-                <p class="text-gray-600">{study.challenge}</p>
-              </div>
-
-              <!-- Solution -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-blue-600 mb-2">💡 Giải pháp</h3>
-                <p class="text-gray-600">{study.solution}</p>
-              </div>
-
-              <!-- Tech Stack -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-3">🛠️ Tech Stack</h3>
-                <div class="flex flex-wrap gap-2">
-                  {study.tech.map((t) => (
-                    <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Results -->
-              <div class="mb-6">
-                <h3 class="text-lg font-bold text-green-600 mb-3">📊 Kết quả</h3>
-                <div class="grid grid-cols-2 gap-4">
-                  {study.results.map((result) => (
-                    <div class="bg-green-50 rounded-lg p-4 flex items-center gap-3">
-                      <span class="text-2xl">{result.icon}</span>
-                      <span class="text-gray-700 font-medium">{result.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Testimonial -->
-              <div class="bg-linear-to-r from-blue-50 to-purple-50 rounded-xl p-6 border-l-4 border-blue-500">
-                <p class="text-gray-700 italic text-lg mb-4">"{study.testimonial.quote}"</p>
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
-                    {study.testimonial.author.charAt(0)}
-                  </div>
-                  <div>
-                    <div class="font-bold text-gray-900">{study.testimonial.author}</div>
-                    <div class="text-gray-500 text-sm">{study.testimonial.position}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
+    {
+      caseStudies.map((study: typeof caseStudies[0]) => (
+        <CaseStudyModal
+          id={study.id}
+          industry={study.industry}
+          client={study.client}
+          teamSize={study.teamSize}
+          heroImage={study.heroImage}
+          challenge={study.challenge}
+          solution={study.solution}
+          results={study.results}
+          tech={study.tech}
+          timeline={study.timeline}
+          testimonial={study.testimonial}
+          labels={labels}
+        />
+      ))
+    }
 
     <CTA />
   </main>
 
   <Footer />
 </BaseLayout>
-
-<style>
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>

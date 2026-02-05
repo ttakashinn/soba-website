@@ -23,9 +23,14 @@ const urlMap: Record<string, Record<'vi' | 'en' | 'ja', string>> = {
   '/ja/about': { vi: '/about', en: '/en/about', ja: '/ja/about' },
 
   // Services pages
-  '/services': { vi: '/services', en: '/en/services', ja: '/ja/service' },
-  '/en/services': { vi: '/services', en: '/en/services', ja: '/ja/service' },
-  '/ja/service': { vi: '/services', en: '/en/services', ja: '/ja/service' },
+  '/services': { vi: '/services', en: '/en/services', ja: '/ja/services' },
+  '/en/services': { vi: '/services', en: '/en/services', ja: '/ja/services' },
+  '/ja/services': { vi: '/services', en: '/en/services', ja: '/ja/services' },
+
+  // Portfolio pages
+  '/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
+  '/en/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
+  '/ja/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
 };
 
 // Get current path
@@ -52,7 +57,8 @@ const alternateUrls = {
 
 // Navigation links
 const navLinks = {
-  services: lang === 'vi' ? '/services' : lang === 'en' ? '/en/services' : '/ja/service',
+  services: lang === 'vi' ? '/services' : `/${lang}/services`,
+  portfolio: lang === 'vi' ? '/portfolio' : `/${lang}/portfolio`,
   about: lang === 'vi' ? '/about' : `/${lang}/about`,
   contact: lang === 'vi' ? '/contact' : `/${lang}/contact`,
   home: lang === 'vi' ? '/' : `/${lang}/`,
@@ -78,6 +84,12 @@ const navLinks = {
           class="text-gray-700 hover:text-blue-600 transition font-medium"
         >
           {t('nav.services')}
+        </a>
+        <a
+          href={navLinks.portfolio}
+          class="text-gray-700 hover:text-blue-600 transition font-medium"
+        >
+          {t('nav.portfolio')}
         </a>
         <a
           href={navLinks.about}
@@ -195,6 +207,12 @@ const navLinks = {
         class="block py-2 text-gray-700 hover:text-blue-600 transition font-medium"
       >
         {t('nav.services')}
+      </a>
+      <a
+        href={navLinks.portfolio}
+        class="block py-2 text-gray-700 hover:text-blue-600 transition font-medium"
+      >
+        {t('nav.portfolio')}
       </a>
       <a
         href={navLinks.about}

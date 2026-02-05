@@ -1,70 +1,88 @@
 ---
-import { getLangFromUrl } from '../i18n/utils';
-import '../styles/global.css';
+import { getLangFromUrl } from '../i18n/utils'
+import '../styles/global.css'
 
 interface Props {
-  title: string;
-  description: string;
-  lang?: 'vi' | 'en' | 'ja';
+  title: string
+  description: string
+  lang?: 'vi' | 'en' | 'ja'
 }
 
-const { title, description, lang: propLang } = Astro.props;
-const lang = propLang || getLangFromUrl(Astro.url);
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'http://localhost:4321');
+const { title, description, lang: propLang } = Astro.props
+const lang = propLang || getLangFromUrl(Astro.url)
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || 'http://localhost:4321',
+)
 
 // Build alternate URLs for hreflang
-const pathWithoutLang = Astro.url.pathname.replace(/^\/(en|ja)/, '') || '/';
-const siteUrl = Astro.site || new URL('http://localhost:4321');
+const pathWithoutLang = Astro.url.pathname.replace(/^\/(en|ja)/, '') || '/'
+const siteUrl = Astro.site || new URL('http://localhost:4321')
 const alternateURLs = {
   vi: new URL(pathWithoutLang, siteUrl),
   en: new URL(`/en${pathWithoutLang}`, siteUrl),
   ja: new URL(`/ja${pathWithoutLang}`, siteUrl),
-};
+}
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
 
     <!-- SEO -->
     <title>{title} | SOBA GROUP</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
+    <meta name='description' content={description} />
+    <link rel='canonical' href={canonicalURL} />
 
     <!-- hreflang for multilingual SEO -->
-    <link rel="alternate" hreflang="vi" href={alternateURLs.vi} />
-    <link rel="alternate" hreflang="en" href={alternateURLs.en} />
-    <link rel="alternate" hreflang="ja" href={alternateURLs.ja} />
-    <link rel="alternate" hreflang="x-default" href={alternateURLs.vi} />
+    <link rel='alternate' hreflang='vi' href={alternateURLs.vi} />
+    <link rel='alternate' hreflang='en' href={alternateURLs.en} />
+    <link rel='alternate' hreflang='ja' href={alternateURLs.ja} />
+    <link rel='alternate' hreflang='x-default' href={alternateURLs.vi} />
 
     <!-- Open Graph -->
-    <meta property="og:locale" content={lang === 'vi' ? 'vi_VN' : lang === 'en' ? 'en_US' : 'ja_JP'} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:site_name" content="SOBA GROUP" />
+    <meta
+      property='og:locale'
+      content={lang === 'vi' ? 'vi_VN' : lang === 'en' ? 'en_US' : 'ja_JP'}
+    />
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content={title} />
+    <meta property='og:description' content={description} />
+    <meta property='og:url' content={canonicalURL} />
+    <meta property='og:site_name' content='SOBA GROUP' />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    {lang === 'ja' ? (
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    ) : (
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    )}
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    {
+      lang === 'ja' ? (
+        <link
+          href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap'
+          rel='stylesheet'
+        />
+      ) : (
+        <link
+          href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
+          rel='stylesheet'
+        />
+      )
+    }
   </head>
-  <body class="font-sans" style={lang === 'ja' ? 'font-family: "Noto Sans JP", sans-serif;' : 'font-family: "Inter", sans-serif;'}>
+  <body
+    class='font-sans'
+    style={lang === 'ja'
+      ? 'font-family: "Noto Sans JP", sans-serif;'
+      : 'font-family: "Inter", sans-serif;'}>
     <slot />
 
     <script>
-      import Alpine from 'alpinejs';
-      window.Alpine = Alpine;
-      Alpine.start();
+      import Alpine from 'alpinejs'
+      window.Alpine = Alpine
+      Alpine.start()
     </script>
   </body>
 </html>
