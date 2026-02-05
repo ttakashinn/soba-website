@@ -1,9 +1,9 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { languages } from '../i18n/config';
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+import { languages } from '../i18n/config'
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 
 // URL mapping between languages
 const urlMap: Record<string, Record<'vi' | 'en' | 'ja', string>> = {
@@ -29,31 +29,39 @@ const urlMap: Record<string, Record<'vi' | 'en' | 'ja', string>> = {
 
   // Portfolio pages
   '/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
-  '/en/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
-  '/ja/portfolio': { vi: '/portfolio', en: '/en/portfolio', ja: '/ja/portfolio' },
-};
+  '/en/portfolio': {
+    vi: '/portfolio',
+    en: '/en/portfolio',
+    ja: '/ja/portfolio',
+  },
+  '/ja/portfolio': {
+    vi: '/portfolio',
+    en: '/en/portfolio',
+    ja: '/ja/portfolio',
+  },
+}
 
 // Get current path
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname
 
 // Get alternate URLs based on mapping
 const getAlternateUrl = (targetLang: 'vi' | 'en' | 'ja') => {
-  const mapping = urlMap[currentPath];
+  const mapping = urlMap[currentPath]
   if (mapping) {
-    return mapping[targetLang];
+    return mapping[targetLang]
   }
   // Fallback: try to construct URL
   if (targetLang === 'vi') {
-    return currentPath.replace(/^\/(en|ja)/, '') || '/';
+    return currentPath.replace(/^\/(en|ja)/, '') || '/'
   }
-  return `/${targetLang}${currentPath.replace(/^\/(en|ja)/, '') || '/'}`;
-};
+  return `/${targetLang}${currentPath.replace(/^\/(en|ja)/, '') || '/'}`
+}
 
 const alternateUrls = {
   vi: getAlternateUrl('vi'),
   en: getAlternateUrl('en'),
   ja: getAlternateUrl('ja'),
-};
+}
 
 // Navigation links
 const navLinks = {
@@ -62,96 +70,100 @@ const navLinks = {
   about: lang === 'vi' ? '/about' : `/${lang}/about`,
   contact: lang === 'vi' ? '/contact' : `/${lang}/contact`,
   home: lang === 'vi' ? '/' : `/${lang}/`,
-};
+}
 ---
 
 <header
-  class="sticky top-0 bg-white shadow-sm z-50"
-  x-data="{ mobileMenuOpen: false, langMenuOpen: false }"
->
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <div class="flex items-center justify-between">
+  class='sticky top-0 bg-white shadow-sm z-50'
+  x-data='{ mobileMenuOpen: false, langMenuOpen: false }'>
+  <nav class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
+    <div class='flex items-center justify-between'>
       <!-- Logo -->
-      <a href={navLinks.home} class="flex items-center space-x-3">
-        <img src="/logo.png" alt="SOBA GROUP Logo" class="w-10 h-10 rounded-lg object-contain" />
-        <span class="text-xl font-bold text-gray-900">SOBA GROUP</span>
+      <a href={navLinks.home} class='flex items-center space-x-3'>
+        <img
+          src='/logo.png'
+          alt='SOBA GROUP Logo'
+          class='w-10 h-10 rounded-lg object-contain'
+        />
+        <span class='text-xl font-bold text-gray-900'>SOBA GROUP</span>
       </a>
 
       <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center space-x-8">
+      <div class='hidden md:flex items-center space-x-8'>
         <a
           href={navLinks.services}
-          class="text-gray-700 hover:text-blue-600 transition font-medium"
-        >
+          class='text-gray-700 hover:text-indigo-600 transition font-medium'>
           {t('nav.services')}
         </a>
         <a
           href={navLinks.portfolio}
-          class="text-gray-700 hover:text-blue-600 transition font-medium"
-        >
+          class='text-gray-700 hover:text-indigo-600 transition font-medium'>
           {t('nav.portfolio')}
         </a>
         <a
           href={navLinks.about}
-          class="text-gray-700 hover:text-blue-600 transition font-medium"
-        >
+          class='text-gray-700 hover:text-indigo-600 transition font-medium'>
           {t('nav.about')}
         </a>
 
         <!-- Language Switcher -->
-        <div class="relative" @click.away="langMenuOpen = false">
+        <div class='relative' @click.away='langMenuOpen = false'>
           <button
-            @click="langMenuOpen = !langMenuOpen"
-            class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition"
-          >
-            <span class="text-xl">
+            @click='langMenuOpen = !langMenuOpen'
+            class='flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition'>
+            <span class='text-xl'>
               {lang === 'vi' ? '🇻🇳' : lang === 'en' ? '🇬🇧' : '🇯🇵'}
             </span>
-            <span class="font-medium">{languages[lang]}</span>
+            <span class='font-medium'>{languages[lang]}</span>
             <svg
-              class="w-4 h-4 transition-transform"
+              class='w-4 h-4 transition-transform'
               :class="{ 'rotate-180': langMenuOpen }"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M19 9l-7 7-7-7'></path>
             </svg>
           </button>
 
           <div
-            x-show="langMenuOpen"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 scale-95"
-            x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-150"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-95"
-            class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 border border-gray-100"
-            style="display: none;"
-          >
+            x-show='langMenuOpen'
+            x-transition:enter='transition ease-out duration-200'
+            x-transition:enter-start='opacity-0 scale-95'
+            x-transition:enter-end='opacity-100 scale-100'
+            x-transition:leave='transition ease-in duration-150'
+            x-transition:leave-start='opacity-100 scale-100'
+            x-transition:leave-end='opacity-0 scale-95'
+            class='absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 border border-gray-100'
+            style='display: none;'>
             <a
               href={alternateUrls.vi}
-              class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition"
-              class:list={[{ 'bg-blue-50 text-blue-600 font-medium': lang === 'vi' }]}
-            >
-              <span class="text-xl">🇻🇳</span>
+              class='flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition'
+              class:list={[
+                { 'bg-blue-50 text-indigo-600 font-medium': lang === 'vi' },
+              ]}>
+              <span class='text-xl'>🇻🇳</span>
               <span>Tiếng Việt</span>
             </a>
             <a
               href={alternateUrls.en}
-              class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition"
-              class:list={[{ 'bg-blue-50 text-blue-600 font-medium': lang === 'en' }]}
-            >
-              <span class="text-xl">🇬🇧</span>
+              class='flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition'
+              class:list={[
+                { 'bg-blue-50 text-indigo-600 font-medium': lang === 'en' },
+              ]}>
+              <span class='text-xl'>🇬🇧</span>
               <span>English</span>
             </a>
             <a
               href={alternateUrls.ja}
-              class="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition"
-              class:list={[{ 'bg-blue-50 text-blue-600 font-medium': lang === 'ja' }]}
-            >
-              <span class="text-xl">🇯🇵</span>
+              class='flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-blue-50 transition'
+              class:list={[
+                { 'bg-blue-50 text-indigo-600 font-medium': lang === 'ja' },
+              ]}>
+              <span class='text-xl'>🇯🇵</span>
               <span>日本語</span>
             </a>
           </div>
@@ -159,101 +171,96 @@ const navLinks = {
 
         <a
           href={navLinks.contact}
-          class="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition font-medium shadow-sm"
-        >
+          class='bg-indigo-600 text-white px-6 py-2.5 rounded-xl hover:bg-indigo-700 transition font-medium shadow-sm'>
           {t('nav.contact')}
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
       <button
-        @click="mobileMenuOpen = !mobileMenuOpen"
-        class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
-      >
-        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        @click='mobileMenuOpen = !mobileMenuOpen'
+        class='md:hidden p-2 rounded-lg hover:bg-gray-100 transition'>
+        <svg
+          class='w-6 h-6 text-gray-700'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'>
           <path
-            x-show="!mobileMenuOpen"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
+            x-show='!mobileMenuOpen'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M4 6h16M4 12h16M4 18h16'></path>
           <path
-            x-show="mobileMenuOpen"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-            style="display: none;"
-          />
+            x-show='mobileMenuOpen'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M6 18L18 6M6 6l12 12'
+            style='display: none;'></path>
         </svg>
       </button>
     </div>
 
     <!-- Mobile Menu -->
     <div
-      x-show="mobileMenuOpen"
-      x-transition:enter="transition ease-out duration-200"
-      x-transition:enter-start="opacity-0 -translate-y-2"
-      x-transition:enter-end="opacity-100 translate-y-0"
-      x-transition:leave="transition ease-in duration-150"
-      x-transition:leave-start="opacity-100 translate-y-0"
-      x-transition:leave-end="opacity-0 -translate-y-2"
-      class="md:hidden mt-4 pb-4 space-y-3 border-t pt-4"
-      style="display: none;"
-    >
+      x-show='mobileMenuOpen'
+      x-transition:enter='transition ease-out duration-200'
+      x-transition:enter-start='opacity-0 -translate-y-2'
+      x-transition:enter-end='opacity-100 translate-y-0'
+      x-transition:leave='transition ease-in duration-150'
+      x-transition:leave-start='opacity-100 translate-y-0'
+      x-transition:leave-end='opacity-0 -translate-y-2'
+      class='md:hidden mt-4 pb-4 space-y-3 border-t pt-4'
+      style='display: none;'>
       <a
         href={navLinks.services}
-        class="block py-2 text-gray-700 hover:text-blue-600 transition font-medium"
-      >
+        class='block py-2 text-gray-700 hover:text-indigo-600 transition font-medium'>
         {t('nav.services')}
       </a>
       <a
         href={navLinks.portfolio}
-        class="block py-2 text-gray-700 hover:text-blue-600 transition font-medium"
-      >
+        class='block py-2 text-gray-700 hover:text-indigo-600 transition font-medium'>
         {t('nav.portfolio')}
       </a>
       <a
         href={navLinks.about}
-        class="block py-2 text-gray-700 hover:text-blue-600 transition font-medium"
-      >
+        class='block py-2 text-gray-700 hover:text-indigo-600 transition font-medium'>
         {t('nav.about')}
       </a>
 
       <!-- Mobile Language Switcher -->
-      <div class="pt-3 border-t space-y-2">
-        <p class="text-xs text-gray-500 uppercase tracking-wide font-medium mb-2">Language / 言語</p>
+      <div class='pt-3 border-t space-y-2'>
+        <p
+          class='text-xs text-gray-500 uppercase tracking-wide font-medium mb-2'
+          >Language / 言語</p
+        >
         <a
           href={alternateUrls.vi}
-          class="flex items-center space-x-2 py-2 text-gray-700 hover:text-blue-600 transition"
-          class:list={[{ 'text-blue-600 font-medium': lang === 'vi' }]}
-        >
-          <span class="text-xl">🇻🇳</span>
+          class='flex items-center space-x-2 py-2 text-gray-700 hover:text-indigo-600 transition'
+          class:list={[{ 'text-indigo-600 font-medium': lang === 'vi' }]}>
+          <span class='text-xl'>🇻🇳</span>
           <span>Tiếng Việt</span>
         </a>
         <a
           href={alternateUrls.en}
-          class="flex items-center space-x-2 py-2 text-gray-700 hover:text-blue-600 transition"
-          class:list={[{ 'text-blue-600 font-medium': lang === 'en' }]}
-        >
-          <span class="text-xl">🇬🇧</span>
+          class='flex items-center space-x-2 py-2 text-gray-700 hover:text-indigo-600 transition'
+          class:list={[{ 'text-indigo-600 font-medium': lang === 'en' }]}>
+          <span class='text-xl'>🇬🇧</span>
           <span>English</span>
         </a>
         <a
           href={alternateUrls.ja}
-          class="flex items-center space-x-2 py-2 text-gray-700 hover:text-blue-600 transition"
-          class:list={[{ 'text-blue-600 font-medium': lang === 'ja' }]}
-        >
-          <span class="text-xl">🇯🇵</span>
+          class='flex items-center space-x-2 py-2 text-gray-700 hover:text-indigo-600 transition'
+          class:list={[{ 'text-indigo-600 font-medium': lang === 'ja' }]}>
+          <span class='text-xl'>🇯🇵</span>
           <span>日本語</span>
         </a>
       </div>
 
       <a
         href={navLinks.contact}
-        class="block py-3 text-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium mt-4"
-      >
+        class='block py-3 text-center bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition font-medium mt-4'>
         {t('nav.contact')}
       </a>
     </div>

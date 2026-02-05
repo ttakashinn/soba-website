@@ -56,7 +56,7 @@ const labels = {
 
   <main>
     <!-- Hero -->
-    <section class="relative bg-linear-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-24 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-indigo-500 via-indigo-600 to-slate-700 text-white py-24 overflow-hidden">
       <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
       </div>
@@ -64,7 +64,7 @@ const labels = {
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
           <h1 class="text-5xl lg:text-6xl font-bold mb-6">Featured Projects</h1>
-          <p class="text-2xl text-blue-100">
+          <p class="text-2xl text-white/90">
             Successful digital transformation case studies with SOBA GROUP
           </p>
         </div>
@@ -80,7 +80,7 @@ const labels = {
             <button
               x-on:click={`activeFilter = '${industry}'`}
               class="px-6 py-2 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              x-bind:class={`activeFilter === '${industry}' ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
+              x-bind:class={`activeFilter === '${industry}' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
               role="tab"
               x-bind:aria-selected={`activeFilter === '${industry}'`}
             >

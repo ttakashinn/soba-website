@@ -1,30 +1,34 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
-<section class="relative py-20 overflow-hidden">
+<section class='relative py-20 overflow-hidden'>
   <!-- Background gradient -->
-  <div class="absolute inset-0 bg-linear-to-br from-blue-600 via-blue-700 to-blue-900"></div>
+  <div
+    class='absolute inset-0 bg-gradient-to-br from-indigo-500 via-indigo-600 to-slate-700'
+  ></div>
 
   <!-- Pattern overlay -->
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+  <div class='absolute inset-0 opacity-10'>
+    <div
+      class='absolute inset-0'
+      style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+    ></div>
   </div>
 
-  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+  <div class='relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
+    <h2 class='text-4xl lg:text-5xl font-bold text-white mb-6'>
       {t('cta.title')}
     </h2>
-    <p class="text-xl text-blue-100 mb-10">
+    <p class='text-xl text-white/90 mb-10'>
       {t('cta.subtitle')}
     </p>
     <a
-      href="/contact"
-      class="inline-block bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-2xl hover:shadow-3xl transform hover:-translate-y-1"
-    >
+      href='/contact'
+      class='inline-block bg-white text-indigo-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-2xl hover:shadow-3xl transform hover:-translate-y-1'>
       {t('cta.button')}
     </a>
   </div>

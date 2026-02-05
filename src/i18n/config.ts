@@ -16,7 +16,7 @@ export const ui = {
 
     // Hero
     'hero.title': 'Đối tác chuyển đổi số tin cậy cho doanh nghiệp vừa và nhỏ',
-    'hero.subtitle': 'Tư vấn - Triển khai - Vận hành. Giải pháp IT toàn diện từ A đến Z cho SME',
+    'hero.subtitle': 'Tư vấn - Triển khai - Vận hành. Giải pháp công nghệ thông tin toàn diện từ A đến Z',
     'hero.cta': 'Tư vấn miễn phí',
     'hero.cta.secondary': 'Xem dịch vụ',
 
@@ -26,20 +26,20 @@ export const ui = {
     'services.digital.desc': 'Từ chiến lược đến triển khai, chúng tôi đồng hành cùng doanh nghiệp hiện đại hóa quy trình, tối ưu vận hành',
     'services.outsourcing.title': 'Phát triển phần mềm',
     'services.outsourcing.desc': 'Thuê ngoài lập trình viên, BA, tester chất lượng cao. Linh hoạt quy mô, tiết kiệm chi phí',
-    'services.bpo.title': 'Bảo trì & vận hành IT',
-    'services.bpo.desc': 'Phòng IT ảo cho SME. Giám sát 24/7, bảo trì hệ thống, xử lý sự cố nhanh chóng',
+    'services.bpo.title': 'Bảo trì & vận hành hệ thống',
+    'services.bpo.desc': 'Phòng công nghệ thông tin ảo cho doanh nghiệp vừa và nhỏ. Giám sát 24/7, bảo trì hệ thống, xử lý sự cố nhanh chóng',
     'services.learn.more': 'Tìm hiểu thêm',
 
     // Why Choose Us
     'why.title': 'Tại sao chọn SOBA GROUP?',
-    'why.understand.title': 'Hiểu rõ SME',
+    'why.understand.title': 'Hiểu rõ doanh nghiệp vừa và nhỏ',
     'why.understand.desc': 'Chuyên sâu về nhu cầu và ngân sách doanh nghiệp vừa và nhỏ',
     'why.solution.title': 'Giải pháp tối ưu',
     'why.solution.desc': 'Cân bằng giữa chi phí, thời gian và chất lượng',
     'why.team.title': 'Đội ngũ giàu kinh nghiệm',
     'why.team.desc': '5+ năm triển khai dự án cho 50+ doanh nghiệp trong/ngoài nước',
     'why.commitment.title': 'Cam kết chất lượng',
-    'why.commitment.desc': 'SLA rõ ràng, hỗ trợ sau triển khai, bảo hành dài hạn',
+    'why.commitment.desc': 'Cam kết chất lượng dịch vụ rõ ràng, hỗ trợ sau triển khai, bảo hành dài hạn',
 
     // Stats
     'stats.projects': 'Dự án hoàn thành',
@@ -52,13 +52,13 @@ export const ui = {
     'process.step1.title': 'Tư vấn & Phân tích',
     'process.step1.desc': 'Lắng nghe nhu cầu, đánh giá hiện trạng',
     'process.step2.title': 'Lập kế hoạch',
-    'process.step2.desc': 'Thiết kế chi tiết, timeline, budget',
+    'process.step2.desc': 'Thiết kế chi tiết, lịch trình và ngân sách',
     'process.step3.title': 'Triển khai',
-    'process.step3.desc': 'Phát triển theo sprint, demo định kỳ',
-    'process.step4.title': 'Testing & Go-live',
-    'process.step4.desc': 'UAT, training người dùng, cutover',
+    'process.step3.desc': 'Phát triển theo giai đoạn, trình diễn định kỳ',
+    'process.step4.title': 'Kiểm thử & Vận hành',
+    'process.step4.desc': 'Kiểm thử người dùng, đào tạo sử dụng, chuyển đổi hệ thống',
     'process.step5.title': 'Bảo trì & Tối ưu',
-    'process.step5.desc': 'Support, monitoring, continuous improvement',
+    'process.step5.desc': 'Hỗ trợ, giám sát và cải tiến liên tục',
 
     // CTA
     'cta.title': 'Sẵn sàng chuyển đổi số?',

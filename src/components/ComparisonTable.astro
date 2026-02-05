@@ -1,45 +1,46 @@
 ---
-import { getLangFromUrl } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils'
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url)
 
 const content = {
   vi: {
     title: 'So sánh với các lựa chọn khác',
-    subtitle: 'Tại sao SOBA GROUP là lựa chọn tốt nhất cho doanh nghiệp của bạn',
+    subtitle:
+      'Tại sao SOBA GROUP là lựa chọn tốt nhất cho doanh nghiệp của bạn',
     headers: ['Tiêu chí', 'SOBA GROUP', 'Freelancer', 'Agency lớn'],
     criteria: [
       {
         name: 'Chi phí',
-        soba: { stars: 5, text: 'Hợp lý cho SME' },
+        soba: { stars: 5, text: 'Phù hợp doanh nghiệp nhỏ' },
         freelancer: { stars: 5, text: 'Rẻ nhất' },
-        agency: { stars: 2, text: 'Đắt đỏ' }
+        agency: { stars: 2, text: 'Đắt đỏ' },
       },
       {
         name: 'Chất lượng',
         soba: { stars: 5, text: 'Đội ngũ chuyên nghiệp' },
         freelancer: { stars: 3, text: 'Không ổn định' },
-        agency: { stars: 5, text: 'Cao cấp' }
+        agency: { stars: 5, text: 'Cao cấp' },
       },
       {
         name: 'Support',
         soba: { stars: 5, text: '24/7' },
         freelancer: { stars: 2, text: 'Không ổn định' },
-        agency: { stars: 3, text: 'Giờ hành chính' }
+        agency: { stars: 3, text: 'Giờ hành chính' },
       },
       {
         name: 'Thời gian',
         soba: { stars: 4, text: 'Linh hoạt' },
         freelancer: { stars: 5, text: 'Nhanh' },
-        agency: { stars: 2, text: 'Lâu' }
+        agency: { stars: 2, text: 'Lâu' },
       },
       {
         name: 'Bảo hành',
         soba: { stars: 5, text: '12-24 tháng' },
         freelancer: { stars: 2, text: 'Không rõ ràng' },
-        agency: { stars: 4, text: '6-12 tháng' }
-      }
-    ]
+        agency: { stars: 4, text: '6-12 tháng' },
+      },
+    ],
   },
   en: {
     title: 'Compare with other options',
@@ -50,33 +51,33 @@ const content = {
         name: 'Cost',
         soba: { stars: 5, text: 'SME-friendly' },
         freelancer: { stars: 5, text: 'Cheapest' },
-        agency: { stars: 2, text: 'Expensive' }
+        agency: { stars: 2, text: 'Expensive' },
       },
       {
         name: 'Quality',
         soba: { stars: 5, text: 'Professional team' },
         freelancer: { stars: 3, text: 'Inconsistent' },
-        agency: { stars: 5, text: 'Premium' }
+        agency: { stars: 5, text: 'Premium' },
       },
       {
         name: 'Support',
         soba: { stars: 5, text: '24/7' },
         freelancer: { stars: 2, text: 'Unreliable' },
-        agency: { stars: 3, text: 'Business hours' }
+        agency: { stars: 3, text: 'Business hours' },
       },
       {
         name: 'Timeline',
         soba: { stars: 4, text: 'Flexible' },
         freelancer: { stars: 5, text: 'Fast' },
-        agency: { stars: 2, text: 'Slow' }
+        agency: { stars: 2, text: 'Slow' },
       },
       {
         name: 'Warranty',
         soba: { stars: 5, text: '12-24 months' },
         freelancer: { stars: 2, text: 'Unclear' },
-        agency: { stars: 4, text: '6-12 months' }
-      }
-    ]
+        agency: { stars: 4, text: '6-12 months' },
+      },
+    ],
   },
   ja: {
     title: '他の選択肢との比較',
@@ -87,120 +88,160 @@ const content = {
         name: 'コスト',
         soba: { stars: 5, text: 'SME向け' },
         freelancer: { stars: 5, text: '最安' },
-        agency: { stars: 2, text: '高額' }
+        agency: { stars: 2, text: '高額' },
       },
       {
         name: '品質',
         soba: { stars: 5, text: 'プロチーム' },
         freelancer: { stars: 3, text: '不安定' },
-        agency: { stars: 5, text: 'プレミアム' }
+        agency: { stars: 5, text: 'プレミアム' },
       },
       {
         name: 'サポート',
         soba: { stars: 5, text: '24時間365日' },
         freelancer: { stars: 2, text: '不安定' },
-        agency: { stars: 3, text: '営業時間内' }
+        agency: { stars: 3, text: '営業時間内' },
       },
       {
         name: '期間',
         soba: { stars: 4, text: '柔軟' },
         freelancer: { stars: 5, text: '速い' },
-        agency: { stars: 2, text: '遅い' }
+        agency: { stars: 2, text: '遅い' },
       },
       {
         name: '保証',
         soba: { stars: 5, text: '12-24ヶ月' },
         freelancer: { stars: 2, text: '不明確' },
-        agency: { stars: 4, text: '6-12ヶ月' }
-      }
-    ]
-  }
-};
+        agency: { stars: 4, text: '6-12ヶ月' },
+      },
+    ],
+  },
+}
 
-const currentContent = content[lang as keyof typeof content] || content.vi;
+const currentContent = content[lang as keyof typeof content] || content.vi
 
 const renderStars = (count: number) => {
-  return '★'.repeat(count) + '☆'.repeat(5 - count);
-};
+  return '★'.repeat(count) + '☆'.repeat(5 - count)
+}
 ---
 
-<section class="py-20 bg-linear-to-br from-gray-50 to-blue-50">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.title}</h2>
-      <p class="text-xl text-gray-600">{currentContent.subtitle}</p>
-      <div class="w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full mt-6"></div>
+<section class='py-20 bg-gradient-to-br from-gray-50 to-blue-50'>
+  <div class='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='text-center mb-12'>
+      <h2 class='text-4xl font-bold text-gray-900 mb-4'
+        >{currentContent.title}</h2
+      >
+      <p class='text-xl text-gray-600'>{currentContent.subtitle}</p>
+      <div
+        class='w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-400 mx-auto rounded-full mt-6'
+      ></div>
     </div>
 
     <!-- Mobile: Cards view -->
-    <div class="lg:hidden space-y-4">
-      {currentContent.criteria.map((row) => (
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-          <div class="bg-gray-100 px-4 py-3 font-bold text-gray-900">{row.name}</div>
-          <div class="divide-y divide-gray-100">
-            <div class="px-4 py-3 bg-linear-to-r from-blue-50 to-blue-100">
-              <div class="flex justify-between items-center">
-                <span class="font-semibold text-blue-700">SOBA GROUP</span>
-                <span class="text-yellow-500">{renderStars(row.soba.stars)}</span>
-              </div>
-              <p class="text-sm text-blue-600 mt-1">{row.soba.text}</p>
+    <div class='lg:hidden space-y-4'>
+      {
+        currentContent.criteria.map((row) => (
+          <div class='bg-white rounded-xl shadow-lg overflow-hidden'>
+            <div class='bg-gray-100 px-4 py-3 font-bold text-gray-900'>
+              {row.name}
             </div>
-            <div class="px-4 py-3">
-              <div class="flex justify-between items-center">
-                <span class="font-medium text-gray-700">Freelancer</span>
-                <span class="text-yellow-500">{renderStars(row.freelancer.stars)}</span>
+            <div class='divide-y divide-gray-100'>
+              <div class='px-4 py-3 bg-gradient-to-r from-indigo-50 to-violet-50'>
+                <div class='flex justify-between items-center'>
+                  <span class='font-semibold text-indigo-700'>SOBA GROUP</span>
+                  <span class='text-yellow-500'>
+                    {renderStars(row.soba.stars)}
+                  </span>
+                </div>
+                <p class='text-sm text-indigo-600 mt-1'>{row.soba.text}</p>
               </div>
-              <p class="text-sm text-gray-500 mt-1">{row.freelancer.text}</p>
-            </div>
-            <div class="px-4 py-3">
-              <div class="flex justify-between items-center">
-                <span class="font-medium text-gray-700">{currentContent.headers[3]}</span>
-                <span class="text-yellow-500">{renderStars(row.agency.stars)}</span>
+              <div class='px-4 py-3'>
+                <div class='flex justify-between items-center'>
+                  <span class='font-medium text-gray-700'>Freelancer</span>
+                  <span class='text-yellow-500'>
+                    {renderStars(row.freelancer.stars)}
+                  </span>
+                </div>
+                <p class='text-sm text-gray-600 mt-1'>{row.freelancer.text}</p>
               </div>
-              <p class="text-sm text-gray-500 mt-1">{row.agency.text}</p>
+              <div class='px-4 py-3'>
+                <div class='flex justify-between items-center'>
+                  <span class='font-medium text-gray-700'>
+                    {currentContent.headers[3]}
+                  </span>
+                  <span class='text-yellow-500'>
+                    {renderStars(row.agency.stars)}
+                  </span>
+                </div>
+                <p class='text-sm text-gray-600 mt-1'>{row.agency.text}</p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <!-- Desktop: Table view -->
-    <div class="hidden lg:block overflow-hidden rounded-2xl shadow-xl bg-white">
-      <table class="w-full">
+    <div
+      class='hidden lg:block overflow-hidden rounded-2xl shadow-xl bg-white border border-gray-200'>
+      <table class='w-full'>
         <thead>
-          <tr class="bg-gray-100">
-            {currentContent.headers.map((header, index) => (
-              <th
-                class={`px-6 py-4 text-left font-bold ${
-                  index === 1
-                    ? 'bg-linear-to-r from-blue-600 to-blue-700 text-white text-center'
-                    : 'text-gray-900'
-                }`}
-              >
-                {index === 1 && <span class="block text-xs text-blue-200 mb-1">⭐ Đề xuất</span>}
-                {header}
-              </th>
-            ))}
+          <tr class='bg-gradient-to-r from-gray-100 to-gray-50'>
+            {
+              currentContent.headers.map((header, index) => (
+                <th
+                  class={`px-6 py-4 font-bold ${
+                    index === 0
+                      ? 'text-left text-gray-900'
+                      : index === 1
+                        ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-center'
+                        : 'text-gray-900 text-center'
+                  }`}>
+                  {index === 1 && (
+                    <span class='block text-xs text-indigo-200 mb-1'>
+                      ⭐ Đề xuất
+                    </span>
+                  )}
+                  {header}
+                </th>
+              ))
+            }
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100">
-          {currentContent.criteria.map((row, rowIndex) => (
-            <tr class={rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-              <td class="px-6 py-4 font-semibold text-gray-900">{row.name}</td>
-              <td class="px-6 py-4 bg-linear-to-r from-blue-50 to-blue-100 text-center">
-                <div class="text-yellow-500 text-lg">{renderStars(row.soba.stars)}</div>
-                <div class="text-sm text-blue-700 font-medium mt-1">{row.soba.text}</div>
-              </td>
-              <td class="px-6 py-4 text-center">
-                <div class="text-yellow-500">{renderStars(row.freelancer.stars)}</div>
-                <div class="text-sm text-gray-500 mt-1">{row.freelancer.text}</div>
-              </td>
-              <td class="px-6 py-4 text-center">
-                <div class="text-yellow-500">{renderStars(row.agency.stars)}</div>
-                <div class="text-sm text-gray-500 mt-1">{row.agency.text}</div>
-              </td>
-            </tr>
-          ))}
+        <tbody class='divide-y divide-gray-200'>
+          {
+            currentContent.criteria.map((row, rowIndex) => (
+              <tr class={rowIndex % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                <td class='px-6 py-4 font-semibold text-gray-900 border-r border-gray-200'>
+                  {row.name}
+                </td>
+                <td class='px-6 py-4 bg-gradient-to-r from-indigo-50 to-violet-50 text-center border-r border-indigo-200'>
+                  <div class='text-yellow-500 text-lg'>
+                    {renderStars(row.soba.stars)}
+                  </div>
+                  <div class='text-sm text-indigo-700 font-medium mt-1'>
+                    {row.soba.text}
+                  </div>
+                </td>
+                <td class='px-6 py-4 text-center border-r border-gray-200'>
+                  <div class='text-yellow-500'>
+                    {renderStars(row.freelancer.stars)}
+                  </div>
+                  <div class='text-sm text-gray-600 mt-1'>
+                    {row.freelancer.text}
+                  </div>
+                </td>
+                <td class='px-6 py-4 text-center'>
+                  <div class='text-yellow-500'>
+                    {renderStars(row.agency.stars)}
+                  </div>
+                  <div class='text-sm text-gray-600 mt-1'>
+                    {row.agency.text}
+                  </div>
+                </td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
     </div>

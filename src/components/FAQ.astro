@@ -9,22 +9,22 @@ const faqs = {
     {
       icon: '💰',
       question: 'Chi phí dự án chuyển đổi số trung bình là bao nhiêu?',
-      answer: 'Tùy quy mô: SME nhỏ (50-150 triệu), SME vừa (150-300 triệu), Enterprise (300-500 triệu). Chúng tôi tư vấn miễn phí và báo giá chi tiết sau khi phân tích nhu cầu.'
+      answer: 'Tùy quy mô: Doanh nghiệp nhỏ (50-150 triệu), Doanh nghiệp vừa (150-300 triệu), Doanh nghiệp lớn (300-500 triệu). Chúng tôi tư vấn miễn phí và báo giá chi tiết sau khi phân tích nhu cầu.'
     },
     {
       icon: '⏱️',
       question: 'Thời gian triển khai mất bao lâu?',
-      answer: 'Thông thường 2-4 tháng cho dự án ERP/CRM. Chia làm nhiều sprint, có thể đưa vào sử dụng từng phần sớm hơn.'
+      answer: 'Thông thường 2-4 tháng cho dự án hệ thống quản lý doanh nghiệp. Chia làm nhiều giai đoạn, có thể đưa vào sử dụng từng phần sớm hơn.'
     },
     {
       icon: '🛠️',
-      question: 'Có hỗ trợ sau khi go-live không?',
-      answer: 'Có, chúng tôi có gói bảo trì 12-24 tháng, support 24/7, training nhân viên và xử lý bug miễn phí trong thời gian bảo hành.'
+      question: 'Có hỗ trợ sau khi vận hành không?',
+      answer: 'Có, chúng tôi có gói bảo trì 12-24 tháng, hỗ trợ 24/7, đào tạo nhân viên và xử lý lỗi miễn phí trong thời gian bảo hành.'
     },
     {
       icon: '💳',
       question: 'Thanh toán như thế nào?',
-      answer: 'Linh hoạt: 30% ký hợp đồng, 40% khi UAT, 30% khi go-live. Hoặc chia theo milestone cho dự án lớn.'
+      answer: 'Linh hoạt: 30% ký hợp đồng, 40% khi kiểm thử, 30% khi vận hành. Hoặc chia theo cốc mốc cho dự án lớn.'
     },
     {
       icon: '⚙️',
@@ -141,14 +141,14 @@ const title = lang === 'ja' ? 'よくある質問' : lang === 'en' ? 'Frequently
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold text-gray-900 mb-4">{title}</h2>
-      <div class="w-24 h-1 bg-linear-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
+      <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-400 mx-auto rounded-full"></div>
     </div>
 
     <div class="space-y-4" x-data="{ openIndex: null }">
       {currentFaqs.map((faq, index) => (
         <div
           class="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-blue-300"
-          :class={`openIndex === ${index} ? 'shadow-lg border-blue-400' : 'shadow-sm'`}
+          :class={`openIndex === ${index} ? 'shadow-lg border-indigo-300' : 'shadow-sm'`}
         >
           <button
             type="button"
@@ -162,7 +162,7 @@ const title = lang === 'ja' ? 'よくある質問' : lang === 'en' ? 'Frequently
               <span class="font-semibold text-gray-900 text-lg">{faq.question}</span>
             </div>
             <svg
-              class="w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300"
+              class="w-6 h-6 text-indigo-600 flex-shrink-0 transition-transform duration-300"
               :class={`openIndex === ${index} ? 'rotate-180' : ''`}
               fill="none"
               stroke="currentColor"
@@ -183,7 +183,7 @@ const title = lang === 'ja' ? 'よくある質問' : lang === 'en' ? 'Frequently
             x-transition:leave-end="opacity-0 max-h-0"
           >
             <div class="px-6 pb-5 pt-0">
-              <div class="pl-12 text-gray-600 leading-relaxed border-l-2 border-blue-200 ml-1">
+              <div class="pl-12 text-gray-600 leading-relaxed border-l-2 border-indigo-200 ml-1">
                 {faq.answer}
               </div>
             </div>
