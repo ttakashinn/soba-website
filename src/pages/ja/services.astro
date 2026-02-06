@@ -1,117 +1,126 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-import ROICalculator from '../../components/ROICalculator.astro';
-import FAQ from '../../components/FAQ.astro';
-import FreeAuditBanner from '../../components/FreeAuditBanner.astro';
-import CTA from '../../components/CTA.astro';
-import { useTranslations } from '../../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import ServiceCard from '../../components/ServiceCard.astro'
+import ComparisonTable from '../../components/ComparisonTable.astro'
+import ROICalculator from '../../components/ROICalculator.astro'
+import FAQ from '../../components/FAQ.astro'
+import FreeAuditBanner from '../../components/FreeAuditBanner.astro'
+import CTA from '../../components/CTA.astro'
+import { useTranslations } from '../../i18n/utils'
 
-const t = useTranslations('ja');
+const t = useTranslations('ja')
 ---
 
 <BaseLayout
-  title="サービス"
-  description="SOBA GROUPは、中小企業向けにデジタル変革コンサルティング、アウトソーシング、BPOサービスを提供しています。"
-  lang="ja"
->
+  title='サービス'
+  description='SOBA GROUPは、中小企業向けにデジタル変革コンサルティング、アウトソーシング、BPOサービスを提供しています。'
+  lang='ja'>
   <Header />
 
   <main>
     <!-- Page Header -->
-    <section class="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl lg:text-5xl font-bold mb-6">私たちのサービス</h1>
-        <p class="text-xl text-white/90 max-w-3xl">
+    <section
+      class='bg-linear-to-br from-indigo-500 to-indigo-600 text-white py-20'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <h1 class='text-4xl lg:text-5xl font-bold mb-6'>私たちのサービス</h1>
+        <p class='text-xl text-white/90 max-w-3xl'>
           プロセスを最適化し、コストを削減し、生産性を向上させる包括的なITソリューション。
         </p>
       </div>
     </section>
 
     <!-- Services Grid -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-3 gap-8 mb-16">
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='grid md:grid-cols-3 gap-8 mb-16'>
           <ServiceCard
             title={t('services.digital.title')}
             description={t('services.digital.desc')}
-            icon="🚀"
-            href="/ja/service/dx"
+            icon='🚀'
+            href='/ja/service/dx'
           />
           <ServiceCard
             title={t('services.outsourcing.title')}
             description={t('services.outsourcing.desc')}
-            icon="👥"
-            href="/ja/service/outsourcing"
+            icon='👥'
+            href='/ja/service/outsourcing'
           />
           <ServiceCard
             title={t('services.bpo.title')}
             description={t('services.bpo.desc')}
-            icon="🛠️"
-            href="/ja/service/bpo"
+            icon='🛠️'
+            href='/ja/service/bpo'
           />
         </div>
 
         <!-- Why Choose Our Services -->
-        <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 lg:p-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        <div
+          class='bg-linear-to-br from-blue-50 to-white rounded-2xl p-8 lg:p-12'>
+          <h2 class='text-3xl font-bold text-gray-900 mb-8 text-center'>
             当社のサービスを選ぶ理由
           </h2>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="flex items-start space-x-4">
-              <div class="shrink-0">
-                <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+          <div class='grid md:grid-cols-2 gap-8'>
+            <div class='flex items-start space-x-4'>
+              <div class='shrink-0'>
+                <div
+                  class='w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl'>
                   1
                 </div>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">無料相談</h3>
-                <p class="text-gray-600">
+                <h3 class='text-xl font-bold text-gray-900 mb-2'>無料相談</h3>
+                <p class='text-gray-600'>
                   ニーズを分析し、貴社に最適なソリューションを提案します。
                 </p>
               </div>
             </div>
 
-            <div class="flex items-start space-x-4">
-              <div class="shrink-0">
-                <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+            <div class='flex items-start space-x-4'>
+              <div class='shrink-0'>
+                <div
+                  class='w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl'>
                   2
                 </div>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">透明な価格設定</h3>
-                <p class="text-gray-600">
+                <h3 class='text-xl font-bold text-gray-900 mb-2'
+                  >透明な価格設定</h3
+                >
+                <p class='text-gray-600'>
                   明確な見積もりで、予期しない費用はありません。
                 </p>
               </div>
             </div>
 
-            <div class="flex items-start space-x-4">
-              <div class="shrink-0">
-                <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+            <div class='flex items-start space-x-4'>
+              <div class='shrink-0'>
+                <div
+                  class='w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl'>
                   3
                 </div>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">迅速な実装</h3>
-                <p class="text-gray-600">
+                <h3 class='text-xl font-bold text-gray-900 mb-2'>迅速な実装</h3>
+                <p class='text-gray-600'>
                   アジャイル手法により、プロジェクトを迅速に稼働させ、即座に価値を提供します。
                 </p>
               </div>
             </div>
 
-            <div class="flex items-start space-x-4">
-              <div class="shrink-0">
-                <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+            <div class='flex items-start space-x-4'>
+              <div class='shrink-0'>
+                <div
+                  class='w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl'>
                   4
                 </div>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">長期サポート</h3>
-                <p class="text-gray-600">
+                <h3 class='text-xl font-bold text-gray-900 mb-2'
+                  >長期サポート</h3
+                >
+                <p class='text-gray-600'>
                   導入後の保証と技術サポートで、システムの安定稼働を保証します。
                 </p>
               </div>

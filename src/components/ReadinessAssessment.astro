@@ -1,0 +1,956 @@
+---
+import { QUESTIONS } from '../content/quiz'
+import type { Language } from '../content/quiz'
+
+interface Props {
+  lang?: Language
+}
+
+const { lang = 'vi' } = Astro.props
+
+// UI Labels dictionary
+const labels = {
+  vi: {
+    title: 'Đánh giá mức độ sẵn sàng chuyển đổi số',
+    subtitle:
+      'Trả lời 6 câu hỏi để nhận báo cáo chi tiết về năng lực số của doanh nghiệp',
+    startBtn: 'Bắt đầu đánh giá',
+    nextBtn: 'Tiếp theo',
+    prevBtn: 'Quay lại',
+    submitBtn: 'Xem kết quả',
+    sendingBtn: 'Đang xử lý...',
+    question: 'Câu hỏi',
+    of: 'trên',
+    // Lead form
+    formTitle: 'Nhận báo cáo chi tiết',
+    formSubtitle: 'Điền thông tin để nhận phân tích đầy đủ qua email',
+    name: 'Họ và tên',
+    namePlaceholder: 'Nguyễn Văn A',
+    email: 'Email công việc',
+    emailPlaceholder: 'email@company.com',
+    phone: 'Số điện thoại',
+    phonePlaceholder: '0912 345 678',
+    company: 'Tên công ty',
+    companyPlaceholder: 'Công ty ABC',
+    position: 'Chức vụ',
+    positionPlaceholder: 'Giám đốc / Trưởng phòng',
+    required: 'Bắt buộc',
+    // Results
+    resultTitle: 'Kết quả đánh giá',
+    overallScore: 'Điểm tổng thể',
+    categories: {
+      tech: 'Công nghệ',
+      process: 'Quy trình',
+      people: 'Con người',
+    },
+    levels: {
+      low: 'Cần cải thiện',
+      medium: 'Trung bình',
+      high: 'Sẵn sàng',
+    },
+    recommendation: 'Khuyến nghị',
+    recommendations: {
+      low: 'Doanh nghiệp cần xây dựng nền tảng số cơ bản. Bắt đầu từ việc số hóa dữ liệu và quy trình đơn giản.',
+      medium:
+        'Doanh nghiệp đã có nền tảng tốt. Tập trung vào tích hợp hệ thống và nâng cao kỹ năng số cho nhân viên.',
+      high: 'Doanh nghiệp sẵn sàng cho chuyển đổi số toàn diện. Có thể triển khai các giải pháp tiên tiến như AI, automation.',
+    },
+    ctaTitle: 'Muốn tìm hiểu chi tiết hơn?',
+    ctaBtn: 'Đặt lịch tư vấn miễn phí',
+    restartBtn: 'Làm lại đánh giá',
+    thankYou: 'Cảm ơn bạn!',
+    reportSent: 'Báo cáo chi tiết đã được gửi đến email của bạn.',
+  },
+  en: {
+    title: 'Digital Readiness Assessment',
+    subtitle:
+      'Answer 6 questions to receive a detailed report on your digital capabilities',
+    startBtn: 'Start Assessment',
+    nextBtn: 'Next',
+    prevBtn: 'Back',
+    submitBtn: 'View Results',
+    sendingBtn: 'Processing...',
+    question: 'Question',
+    of: 'of',
+    // Lead form
+    formTitle: 'Get Detailed Report',
+    formSubtitle: 'Fill in your information to receive full analysis via email',
+    name: 'Full Name',
+    namePlaceholder: 'John Doe',
+    email: 'Work Email',
+    emailPlaceholder: 'email@company.com',
+    phone: 'Phone Number',
+    phonePlaceholder: '+1 234 567 890',
+    company: 'Company Name',
+    companyPlaceholder: 'ABC Company',
+    position: 'Position',
+    positionPlaceholder: 'Director / Manager',
+    required: 'Required',
+    // Results
+    resultTitle: 'Assessment Results',
+    overallScore: 'Overall Score',
+    categories: {
+      tech: 'Technology',
+      process: 'Process',
+      people: 'People',
+    },
+    levels: {
+      low: 'Needs Improvement',
+      medium: 'Moderate',
+      high: 'Ready',
+    },
+    recommendation: 'Recommendation',
+    recommendations: {
+      low: 'Your business needs to build a basic digital foundation. Start with data digitization and simple processes.',
+      medium:
+        'Your business has a good foundation. Focus on system integration and improving digital skills for employees.',
+      high: 'Your business is ready for comprehensive digital transformation. You can implement advanced solutions like AI and automation.',
+    },
+    ctaTitle: 'Want to learn more?',
+    ctaBtn: 'Schedule Free Consultation',
+    restartBtn: 'Retake Assessment',
+    thankYou: 'Thank you!',
+    reportSent: 'A detailed report has been sent to your email.',
+  },
+  ja: {
+    title: 'デジタル準備度評価',
+    subtitle: '6つの質問に答えて、デジタル能力の詳細レポートを受け取りましょう',
+    startBtn: '評価を開始',
+    nextBtn: '次へ',
+    prevBtn: '戻る',
+    submitBtn: '結果を見る',
+    sendingBtn: '処理中...',
+    question: '質問',
+    of: '/',
+    // Lead form
+    formTitle: '詳細レポートを取得',
+    formSubtitle: 'メールで完全な分析を受け取るための情報を入力してください',
+    name: '氏名',
+    namePlaceholder: '山田 太郎',
+    email: '会社メール',
+    emailPlaceholder: 'email@company.com',
+    phone: '電話番号',
+    phonePlaceholder: '03-1234-5678',
+    company: '会社名',
+    companyPlaceholder: 'ABC株式会社',
+    position: '役職',
+    positionPlaceholder: '部長 / マネージャー',
+    required: '必須',
+    // Results
+    resultTitle: '評価結果',
+    overallScore: '総合スコア',
+    categories: {
+      tech: 'テクノロジー',
+      process: 'プロセス',
+      people: '人材',
+    },
+    levels: {
+      low: '改善が必要',
+      medium: '中程度',
+      high: '準備完了',
+    },
+    recommendation: '推奨事項',
+    recommendations: {
+      low: '基本的なデジタル基盤の構築が必要です。データのデジタル化と簡単なプロセスから始めましょう。',
+      medium:
+        '良い基盤があります。システム統合と従業員のデジタルスキル向上に注力しましょう。',
+      high: '包括的なデジタル変革の準備ができています。AIや自動化などの先進的なソリューションを導入できます。',
+    },
+    ctaTitle: '詳しく知りたいですか？',
+    ctaBtn: '無料相談を予約',
+    restartBtn: '再評価する',
+    thankYou: 'ありがとうございます！',
+    reportSent: '詳細レポートがメールに送信されました。',
+  },
+}
+
+const t = labels[lang]
+const contactUrl = lang === 'vi' ? '/contact' : `/${lang}/contact`
+---
+
+<section
+  id='readiness-assessment'
+  class='py-16 sm:py-20 lg:py-24 bg-linear-to-b from-slate-50 to-white'
+  x-data={`readinessAssessment({ questions: ${JSON.stringify(QUESTIONS)}, lang: '${lang}' })`}>
+  <div class='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <!-- Step 1: Intro -->
+    <div
+      x-show="step === 'intro'"
+      x-transition:enter='transition ease-out duration-300'
+      x-transition:enter-start='opacity-0 translate-y-4'
+      x-transition:enter-end='opacity-100 translate-y-0'>
+      <div class='text-center mb-10'>
+        <div
+          class='w-20 h-20 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-6'>
+          <svg
+            class='w-10 h-10 text-indigo-600'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'>
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4'
+            ></path>
+          </svg>
+        </div>
+        <h2 class='text-3xl sm:text-4xl font-bold text-slate-800 mb-4'>
+          {t.title}
+        </h2>
+        <p class='text-lg text-slate-600 max-w-2xl mx-auto'>
+          {t.subtitle}
+        </p>
+      </div>
+
+      <div
+        class='bg-white rounded-2xl shadow-xl p-8 sm:p-10 border border-slate-100'>
+        <div class='grid sm:grid-cols-3 gap-6 mb-8'>
+          <div class='text-center p-4'>
+            <div
+              class='w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3'>
+              <svg
+                class='w-6 h-6 text-blue-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='font-semibold text-slate-800'>{t.categories.tech}</h3>
+            <p class='text-sm text-slate-500 mt-1'
+              >2 {t.question.toLowerCase()}</p
+            >
+          </div>
+          <div class='text-center p-4'>
+            <div
+              class='w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center mx-auto mb-3'>
+              <svg
+                class='w-6 h-6 text-violet-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='font-semibold text-slate-800'>{t.categories.process}</h3>
+            <p class='text-sm text-slate-500 mt-1'
+              >2 {t.question.toLowerCase()}</p
+            >
+          </div>
+          <div class='text-center p-4'>
+            <div
+              class='w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-3'>
+              <svg
+                class='w-6 h-6 text-emerald-600'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'
+                ></path>
+              </svg>
+            </div>
+            <h3 class='font-semibold text-slate-800'>{t.categories.people}</h3>
+            <p class='text-sm text-slate-500 mt-1'
+              >2 {t.question.toLowerCase()}</p
+            >
+          </div>
+        </div>
+
+        <button
+          @click="step = 'quiz'; currentQuestion = 0"
+          class='w-full bg-indigo-600 text-white py-4 rounded-xl font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2'>
+          {t.startBtn}
+          <svg
+            class='w-5 h-5'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'>
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M13 7l5 5m0 0l-5 5m5-5H6'></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Quiz -->
+    <div
+      x-show="step === 'quiz'"
+      x-transition:enter='transition ease-out duration-300'
+      x-transition:enter-start='opacity-0 translate-y-4'
+      x-transition:enter-end='opacity-100 translate-y-0'
+      x-cloak>
+      <div
+        class='bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-100'>
+        <!-- Progress -->
+        <div class='mb-8'>
+          <div class='flex justify-between items-center mb-2'>
+            <span class='text-sm font-medium text-slate-600'>
+              {t.question}
+              <span x-text='currentQuestion + 1'></span>
+              {t.of}
+              <span x-text='questions.length'></span>
+            </span>
+            <span
+              class='text-sm font-medium text-indigo-600'
+              x-text='Math.round((currentQuestion + 1) / questions.length * 100) + "%"'
+            ></span>
+          </div>
+          <div class='h-2 bg-slate-100 rounded-full overflow-hidden'>
+            <div
+              class='h-full bg-linear-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-500'
+              :style="{ width: ((currentQuestion + 1) / questions.length * 100) + '%' }">
+            </div>
+          </div>
+        </div>
+
+        <!-- Question -->
+        <template x-for='(q, qIndex) in questions' :key='q.id'>
+          <div
+            x-show='currentQuestion === qIndex'
+            x-transition:enter='transition ease-out duration-200'
+            x-transition:enter-start='opacity-0 translate-x-4'
+            x-transition:enter-end='opacity-100 translate-x-0'>
+            <h3
+              class='text-xl sm:text-2xl font-bold text-slate-800 mb-6'
+              x-text={`q.question['${lang}']`}></h3>
+
+            <div class='space-y-3'>
+              <template x-for='(option, oIndex) in q.options' :key='oIndex'>
+                <button
+                  @click='selectAnswer(q.id, q.category, option.score)'
+                  class='w-full text-left p-4 rounded-xl border-2 transition-all hover:border-indigo-300 hover:bg-indigo-50'
+                  :class="answers[q.id] === option.score ? 'border-indigo-500 bg-indigo-50' : 'border-slate-200'">
+                  <div class='flex items-center gap-3'>
+                    <div
+                      class='w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all'
+                      :class="answers[q.id] === option.score ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300'">
+                      <svg
+                        x-show='answers[q.id] === option.score'
+                        class='w-4 h-4 text-white'
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'>
+                        <path
+                          stroke-linecap='round'
+                          stroke-linejoin='round'
+                          stroke-width='3'
+                          d='M5 13l4 4L19 7'></path>
+                      </svg>
+                    </div>
+                    <span
+                      class='text-slate-700'
+                      x-text={`option.text['${lang}']`}></span>
+                  </div>
+                </button>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <!-- Navigation -->
+        <div class='flex justify-between mt-8 pt-6 border-t border-slate-100'>
+          <button
+            @click='prevQuestion'
+            x-show='currentQuestion > 0'
+            class='flex items-center gap-2 px-5 py-2.5 text-slate-600 hover:text-slate-800 font-medium transition-colors'>
+            <svg
+              class='w-5 h-5'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M11 17l-5-5m0 0l5-5m-5 5h12'></path>
+            </svg>
+            {t.prevBtn}
+          </button>
+          <div x-show='currentQuestion === 0'></div>
+
+          <button
+            @click='nextQuestion'
+            x-show='currentQuestion < questions.length - 1'
+            :disabled='!answers[questions[currentQuestion]?.id]'
+            class='flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed'>
+            {t.nextBtn}
+            <svg
+              class='w-5 h-5'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M13 7l5 5m0 0l-5 5m5-5H6'></path>
+            </svg>
+          </button>
+
+          <button
+            @click="step = 'form'"
+            x-show='currentQuestion === questions.length - 1'
+            :disabled='!answers[questions[currentQuestion]?.id]'
+            class='flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed'>
+            {t.submitBtn}
+            <svg
+              class='w-5 h-5'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M13 7l5 5m0 0l-5 5m5-5H6'></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Lead Form -->
+    <div
+      x-show="step === 'form'"
+      x-transition:enter='transition ease-out duration-300'
+      x-transition:enter-start='opacity-0 translate-y-4'
+      x-transition:enter-end='opacity-100 translate-y-0'
+      x-cloak>
+      <div
+        class='bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-100'>
+        <div class='text-center mb-8'>
+          <div
+            class='w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-4'>
+            <svg
+              class='w-8 h-8 text-indigo-600'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+              ></path>
+            </svg>
+          </div>
+          <h3 class='text-2xl font-bold text-slate-800 mb-2'>{t.formTitle}</h3>
+          <p class='text-slate-600'>{t.formSubtitle}</p>
+        </div>
+
+        <form @submit.prevent='submitForm' class='space-y-5'>
+          <div class='grid sm:grid-cols-2 gap-5'>
+            <div>
+              <label class='block text-sm font-medium text-slate-700 mb-1.5'>
+                {t.name}
+                <span class='text-red-500'>*</span>
+              </label>
+              <input
+                type='text'
+                x-model='leadInfo.name'
+                required
+                class='w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all'
+                placeholder={t.namePlaceholder}
+              />
+            </div>
+            <div>
+              <label class='block text-sm font-medium text-slate-700 mb-1.5'>
+                {t.email}
+                <span class='text-red-500'>*</span>
+              </label>
+              <input
+                type='email'
+                x-model='leadInfo.email'
+                required
+                class='w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all'
+                placeholder={t.emailPlaceholder}
+              />
+            </div>
+          </div>
+
+          <div class='grid sm:grid-cols-2 gap-5'>
+            <div>
+              <label class='block text-sm font-medium text-slate-700 mb-1.5'>
+                {t.phone}
+                <span class='text-red-500'>*</span>
+              </label>
+              <input
+                type='tel'
+                x-model='leadInfo.phone'
+                required
+                class='w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all'
+                placeholder={t.phonePlaceholder}
+              />
+            </div>
+            <div>
+              <label class='block text-sm font-medium text-slate-700 mb-1.5'>
+                {t.company}
+              </label>
+              <input
+                type='text'
+                x-model='leadInfo.company'
+                class='w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all'
+                placeholder={t.companyPlaceholder}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class='block text-sm font-medium text-slate-700 mb-1.5'>
+              {t.position}
+            </label>
+            <input
+              type='text'
+              x-model='leadInfo.position'
+              class='w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all'
+              placeholder={t.positionPlaceholder}
+            />
+          </div>
+
+          <div class='flex gap-4 pt-4'>
+            <button
+              type='button'
+              @click="step = 'quiz'; currentQuestion = questions.length - 1"
+              class='flex-1 px-5 py-3 border border-slate-200 text-slate-600 rounded-xl font-medium hover:bg-slate-50 transition-colors'>
+              {t.prevBtn}
+            </button>
+            <button
+              type='submit'
+              :disabled='loading || !leadInfo.name || !leadInfo.email || !leadInfo.phone'
+              class='flex-1 bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2'>
+              <span x-show='!loading'>{t.submitBtn}</span>
+              <span x-show='loading' class='flex items-center gap-2'>
+                <svg
+                  class='animate-spin h-5 w-5'
+                  fill='none'
+                  viewBox='0 0 24 24'>
+                  <circle
+                    class='opacity-25'
+                    cx='12'
+                    cy='12'
+                    r='10'
+                    stroke='currentColor'
+                    stroke-width='4'></circle>
+                  <path
+                    class='opacity-75'
+                    fill='currentColor'
+                    d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                  ></path>
+                </svg>
+                {t.sendingBtn}
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Step 4: Results -->
+    <div
+      x-show="step === 'result'"
+      x-transition:enter='transition ease-out duration-300'
+      x-transition:enter-start='opacity-0 translate-y-4'
+      x-transition:enter-end='opacity-100 translate-y-0'
+      x-cloak>
+      <!-- Success message -->
+      <div
+        x-show='submitted'
+        class='bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-center gap-3'>
+        <div
+          class='w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shrink-0'>
+          <svg
+            class='w-5 h-5 text-green-600'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'>
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M5 13l4 4L19 7'></path>
+          </svg>
+        </div>
+        <div>
+          <p class='font-semibold text-green-800'>{t.thankYou}</p>
+          <p class='text-sm text-green-600'>{t.reportSent}</p>
+        </div>
+      </div>
+
+      <div
+        class='bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-slate-100'>
+        <h3 class='text-2xl font-bold text-slate-800 mb-6 text-center'
+          >{t.resultTitle}</h3
+        >
+
+        <!-- Radar Chart -->
+        <div class='flex justify-center mb-8'>
+          <svg viewBox='0 0 200 200' class='w-64 h-64 sm:w-80 sm:h-80'>
+            <!-- Background grid -->
+            <g stroke='#e2e8f0' fill='none'>
+              <polygon
+                points='100,20 165,65 165,135 100,180 35,135 35,65'
+                stroke-width='1'></polygon>
+              <polygon
+                points='100,40 145,72.5 145,127.5 100,160 55,127.5 55,72.5'
+                stroke-width='1'></polygon>
+              <polygon
+                points='100,60 125,80 125,120 100,140 75,120 75,80'
+                stroke-width='1'></polygon>
+            </g>
+
+            <!-- Axis lines -->
+            <g stroke='#e2e8f0' stroke-width='1'>
+              <line x1='100' y1='100' x2='100' y2='20'></line>
+              <line x1='100' y1='100' x2='165' y2='65'></line>
+              <line x1='100' y1='100' x2='165' y2='135'></line>
+              <line x1='100' y1='100' x2='100' y2='180'></line>
+              <line x1='100' y1='100' x2='35' y2='135'></line>
+              <line x1='100' y1='100' x2='35' y2='65'></line>
+            </g>
+
+            <!-- Data polygon -->
+            <polygon
+              :points='radarPoints'
+              fill='rgba(99, 102, 241, 0.2)'
+              stroke='#6366f1'
+              stroke-width='2'>
+            </polygon>
+
+            <!-- Data points -->
+            <template x-for='(point, i) in radarPointsArray' :key='i'>
+              <circle :cx='point.x' :cy='point.y' r='5' fill='#6366f1'></circle>
+            </template>
+
+            <!-- Labels -->
+            <text
+              x='100'
+              y='10'
+              text-anchor='middle'
+              class='text-xs fill-slate-600 font-medium'
+              >{t.categories.tech}</text
+            >
+            <text
+              x='175'
+              y='65'
+              text-anchor='start'
+              class='text-xs fill-slate-600 font-medium'></text>
+            <text
+              x='175'
+              y='140'
+              text-anchor='start'
+              class='text-xs fill-slate-600 font-medium'
+              >{t.categories.process}</text
+            >
+            <text
+              x='100'
+              y='195'
+              text-anchor='middle'
+              class='text-xs fill-slate-600 font-medium'></text>
+            <text
+              x='20'
+              y='140'
+              text-anchor='end'
+              class='text-xs fill-slate-600 font-medium'
+              >{t.categories.people}</text
+            >
+            <text
+              x='20'
+              y='65'
+              text-anchor='end'
+              class='text-xs fill-slate-600 font-medium'></text>
+          </svg>
+        </div>
+
+        <!-- Score Summary -->
+        <div class='grid grid-cols-3 gap-4 mb-8'>
+          <div class='text-center p-4 bg-blue-50 rounded-xl'>
+            <div class='text-3xl font-bold text-blue-600' x-text='scores.tech'
+            ></div>
+            <div class='text-sm text-slate-600 mt-1'>{t.categories.tech}</div>
+          </div>
+          <div class='text-center p-4 bg-violet-50 rounded-xl'>
+            <div
+              class='text-3xl font-bold text-violet-600'
+              x-text='scores.process'></div>
+            <div class='text-sm text-slate-600 mt-1'>{t.categories.process}</div
+            >
+          </div>
+          <div class='text-center p-4 bg-emerald-50 rounded-xl'>
+            <div
+              class='text-3xl font-bold text-emerald-600'
+              x-text='scores.people'></div>
+            <div class='text-sm text-slate-600 mt-1'>{t.categories.people}</div>
+          </div>
+        </div>
+
+        <!-- Overall Score -->
+        <div
+          class='bg-linear-to-r from-indigo-500 to-violet-500 rounded-xl p-6 text-white text-center mb-8'>
+          <div class='text-sm opacity-90 mb-1'>{t.overallScore}</div>
+          <div class='text-5xl font-bold mb-2' x-text='overallScore + "/18"'
+          ></div>
+          <div
+            class='inline-block px-3 py-1 rounded-full text-sm font-medium'
+            :class="{
+              'bg-red-100 text-red-700': overallScore <= 8,
+              'bg-yellow-100 text-yellow-700': overallScore > 8 && overallScore <= 14,
+              'bg-green-100 text-green-700': overallScore > 14
+            }"
+            x-text='overallScore <= 8 ? `${t.levels.low}` : (overallScore <= 14 ? `${t.levels.medium}` : `${t.levels.high}`)'
+            x-data={`{ t: ${JSON.stringify(t)} }`}>
+          </div>
+        </div>
+
+        <!-- Recommendation -->
+        <div class='bg-slate-50 rounded-xl p-6 mb-8'>
+          <h4 class='font-semibold text-slate-800 mb-2 flex items-center gap-2'>
+            <svg
+              class='w-5 h-5 text-indigo-600'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'
+              ></path>
+            </svg>
+            {t.recommendation}
+          </h4>
+          <p
+            class='text-slate-600'
+            x-text='overallScore <= 8 ? `${t.recommendations.low}` : (overallScore <= 14 ? `${t.recommendations.medium}` : `${t.recommendations.high}`)'
+            x-data={`{ t: ${JSON.stringify(t)} }`}>
+          </p>
+        </div>
+
+        <!-- CTAs -->
+        <div class='text-center'>
+          <p class='text-slate-600 mb-4'>{t.ctaTitle}</p>
+          <div class='flex flex-col sm:flex-row gap-3 justify-center'>
+            <a
+              href={contactUrl}
+              class='inline-flex items-center justify-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/25'>
+              {t.ctaBtn}
+              <svg
+                class='w-5 h-5'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M13 7l5 5m0 0l-5 5m5-5H6'></path>
+              </svg>
+            </a>
+            <button
+              @click='restart'
+              class='inline-flex items-center justify-center gap-2 px-6 py-3 border border-slate-200 text-slate-600 rounded-xl font-medium hover:bg-slate-50 transition-colors'>
+              <svg
+                class='w-5 h-5'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
+                ></path>
+              </svg>
+              {t.restartBtn}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data(
+      'readinessAssessment',
+      (config: { questions: any[]; lang: string }) => ({
+        questions: config.questions,
+        lang: config.lang,
+        step: 'intro' as 'intro' | 'quiz' | 'form' | 'result',
+        currentQuestion: 0,
+        answers: {} as Record<string, number>,
+        scores: {
+          tech: 0,
+          process: 0,
+          people: 0,
+        },
+        leadInfo: {
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          position: '',
+        },
+        loading: false,
+        submitted: false,
+
+        selectAnswer(questionId: string, category: string, score: number) {
+          this.answers[questionId] = score
+        },
+
+        nextQuestion() {
+          if (this.currentQuestion < this.questions.length - 1) {
+            this.currentQuestion++
+          }
+        },
+
+        prevQuestion() {
+          if (this.currentQuestion > 0) {
+            this.currentQuestion--
+          }
+        },
+
+        calculateScores() {
+          this.scores = { tech: 0, process: 0, people: 0 }
+          this.questions.forEach((q: any) => {
+            const answer = this.answers[q.id]
+            if (answer !== undefined) {
+              this.scores[q.category as keyof typeof this.scores] += answer
+            }
+          })
+        },
+
+        get overallScore() {
+          return this.scores.tech + this.scores.process + this.scores.people
+        },
+
+        get radarPoints() {
+          const points = this.radarPointsArray
+          return points
+            .map((p: { x: number; y: number }) => `${p.x},${p.y}`)
+            .join(' ')
+        },
+
+        get radarPointsArray() {
+          const centerX = 100
+          const centerY = 100
+          const maxRadius = 80
+
+          // Normalize scores (max 6 per category)
+          const techNorm = this.scores.tech / 6
+          const processNorm = this.scores.process / 6
+          const peopleNorm = this.scores.people / 6
+
+          // 3 main points + 3 intermediate points for smoother shape
+          const angles = [
+            -90, // top (tech)
+            -30, // tech-process
+            30, // process
+            90, // bottom
+            150, // people
+            210, // people-tech
+          ]
+
+          const values = [
+            techNorm,
+            (techNorm + processNorm) / 2,
+            processNorm,
+            (processNorm + peopleNorm) / 2,
+            peopleNorm,
+            (peopleNorm + techNorm) / 2,
+          ]
+
+          return angles.map((angle, i) => {
+            const rad = (angle * Math.PI) / 180
+            const r = maxRadius * Math.max(0.1, values[i])
+            return {
+              x: centerX + r * Math.cos(rad),
+              y: centerY + r * Math.sin(rad),
+            }
+          })
+        },
+
+        async submitForm() {
+          if (
+            !this.leadInfo.name ||
+            !this.leadInfo.email ||
+            !this.leadInfo.phone
+          ) {
+            return
+          }
+
+          this.loading = true
+          this.calculateScores()
+
+          const payload = {
+            type: 'assessment',
+            scores: this.scores,
+            overallScore: this.overallScore,
+            name: this.leadInfo.name,
+            email: this.leadInfo.email,
+            phone: this.leadInfo.phone,
+            company: this.leadInfo.company,
+            position: this.leadInfo.position,
+            language: this.lang,
+          }
+
+          try {
+            const response = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            })
+
+            if (response.ok) {
+              this.submitted = true
+            }
+          } catch (error) {
+            console.error('Submit error:', error)
+          } finally {
+            this.loading = false
+            this.step = 'result'
+          }
+        },
+
+        restart() {
+          this.step = 'intro'
+          this.currentQuestion = 0
+          this.answers = {}
+          this.scores = { tech: 0, process: 0, people: 0 }
+          this.leadInfo = {
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            position: '',
+          }
+          this.submitted = false
+        },
+      }),
+    )
+  })
+</script>
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>

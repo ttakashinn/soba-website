@@ -15,13 +15,30 @@ export interface Props {
   }
 }
 
-const { id, industry, client, teamSize, heroImage, challenge, results, tech, timeline, labels } = Astro.props
+const {
+  id,
+  industry,
+  client,
+  teamSize,
+  heroImage,
+  challenge,
+  results,
+  tech,
+  timeline,
+  labels,
+} = Astro.props
 
 // Map industry to emoji for fallback
 const getIndustryEmoji = (ind: string) => {
   const key = ind.toLowerCase().replace(/[^a-z]/g, '')
-  if (key.includes('sản') || key.includes('manufacturing') || key.includes('製造')) return '🏭'
-  if (key.includes('f&b') || key.includes('fnb') || key.includes('restaurant')) return '🍽️'
+  if (
+    key.includes('sản') ||
+    key.includes('manufacturing') ||
+    key.includes('製造')
+  )
+    return '🏭'
+  if (key.includes('f&b') || key.includes('fnb') || key.includes('restaurant'))
+    return '🍽️'
   if (key.includes('logistics') || key.includes('物流')) return '🚚'
   return '💼'
 }
@@ -32,7 +49,7 @@ const getIndustryEmoji = (ind: string) => {
   data-industry={industry}>
   <!-- Hero Image -->
   <div
-    class='relative h-44 sm:h-48 bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center overflow-hidden'>
+    class='relative h-44 sm:h-48 bg-linear-to-br from-indigo-500 to-violet-600 flex items-center justify-center overflow-hidden'>
     <img
       src={heroImage}
       alt={client}
@@ -40,11 +57,14 @@ const getIndustryEmoji = (ind: string) => {
       loading='lazy'
       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
     />
-    <span class='text-6xl sm:text-7xl hidden items-center justify-center' aria-hidden='true' style='display: none;'
-      >{getIndustryEmoji(industry)}</span
+    <span
+      class='text-6xl sm:text-7xl hidden items-center justify-center'
+      aria-hidden='true'
+      style='display: none;'>{getIndustryEmoji(industry)}</span
     >
     <div class='absolute top-3 sm:top-4 left-3 sm:left-4'>
-      <span class='bg-white/95 backdrop-blur-sm text-slate-700 px-3 py-1 rounded-full text-xs sm:text-sm font-medium'>
+      <span
+        class='bg-white/95 backdrop-blur-sm text-slate-700 px-3 py-1 rounded-full text-xs sm:text-sm font-medium'>
         {industry}
       </span>
     </div>
@@ -52,15 +72,22 @@ const getIndustryEmoji = (ind: string) => {
 
   <!-- Content -->
   <div class='p-5 sm:p-6'>
-    <h3 class='text-lg sm:text-xl font-bold text-slate-800 mb-1.5 sm:mb-2 group-hover:text-indigo-600 transition-colors'>
+    <h3
+      class='text-lg sm:text-xl font-bold text-slate-800 mb-1.5 sm:mb-2 group-hover:text-indigo-600 transition-colors'>
       {client}
     </h3>
-    <p class='text-slate-500 text-xs sm:text-sm mb-3 sm:mb-4'>{teamSize} • {timeline}</p>
+    <p class='text-slate-500 text-xs sm:text-sm mb-3 sm:mb-4'
+      >{teamSize} • {timeline}</p
+    >
 
     <!-- Challenge -->
     <div class='mb-3 sm:mb-4'>
-      <span class='text-rose-600 font-medium text-xs sm:text-sm'>{labels.challenge}:</span>
-      <p class='text-slate-600 text-xs sm:text-sm mt-1 line-clamp-2'>{challenge}</p>
+      <span class='text-rose-600 font-medium text-xs sm:text-sm'
+        >{labels.challenge}:</span
+      >
+      <p class='text-slate-600 text-xs sm:text-sm mt-1 line-clamp-2'
+        >{challenge}</p
+      >
     </div>
 
     <!-- Results Preview -->
@@ -79,7 +106,9 @@ const getIndustryEmoji = (ind: string) => {
     <div class='flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5'>
       {
         tech.map((t) => (
-          <span class='bg-slate-100 text-slate-600 px-2 py-0.5 sm:py-1 rounded text-xs font-medium'>{t}</span>
+          <span class='bg-slate-100 text-slate-600 px-2 py-0.5 sm:py-1 rounded text-xs font-medium'>
+            {t}
+          </span>
         ))
       }
     </div>
@@ -90,8 +119,17 @@ const getIndustryEmoji = (ind: string) => {
       class='w-full bg-indigo-600 text-white py-2.5 sm:py-3 rounded-xl font-medium text-sm hover:bg-indigo-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:shadow-xl hover:-translate-y-0.5 btn-press'
       aria-label={`${labels.viewDetails} - ${client}`}>
       {labels.viewDetails}
-      <svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
-        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 8l4 4m0 0l-4 4m4-4H3'></path>
+      <svg
+        class='w-4 h-4'
+        fill='none'
+        stroke='currentColor'
+        viewBox='0 0 24 24'
+        aria-hidden='true'>
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+          d='M17 8l4 4m0 0l-4 4m4-4H3'></path>
       </svg>
     </button>
   </div>

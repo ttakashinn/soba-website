@@ -1,40 +1,45 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import Team from '../../components/Team.astro';
-import FAQ from '../../components/FAQ.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import Team from '../../components/Team.astro'
+import FAQ from '../../components/FAQ.astro'
 ---
 
 <BaseLayout
-  title="会社概要"
-  description="SOBA GROUP - 5年以上の経験を持ち、50社以上にサービスを提供する信頼できるDXパートナー。"
-  lang="ja"
->
+  title='会社概要'
+  description='SOBA GROUP - 5年以上の経験を持ち、50社以上にサービスを提供する信頼できるDXパートナー。'
+  lang='ja'>
   <Header />
 
   <main>
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-indigo-500 via-indigo-600 to-slate-700 text-white py-24 overflow-hidden">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <section
+      class='relative bg-linear-to-br from-indigo-500 via-indigo-600 to-slate-700 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
       </div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl">
-          <h1 class="text-5xl lg:text-6xl font-bold mb-6">会社概要</h1>
-          <p class="text-2xl text-white/90">信頼できるDXパートナー</p>
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'>会社概要</h1>
+          <p class='text-2xl text-white/90'>信頼できるDXパートナー</p>
         </div>
       </div>
     </section>
 
     <!-- Story Section -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='grid lg:grid-cols-2 gap-16 items-center'>
           <div>
-            <h2 class="text-4xl font-bold text-gray-900 mb-6">私たちのストーリー</h2>
-            <div class="space-y-4 text-lg text-gray-600 leading-relaxed">
+            <h2 class='text-4xl font-bold text-gray-900 mb-6'
+              >私たちのストーリー</h2
+            >
+            <div class='space-y-4 text-lg text-gray-600 leading-relaxed'>
               <p>
                 SOBA GROUPは、中小企業が大きなコストをかけずに
                 最新のテクノロジーにアクセスできるよう支援することを使命として設立されました。
@@ -44,30 +49,38 @@ import FAQ from '../../components/FAQ.astro';
                 迅速なROIをもたらすソリューションが必要であることを理解しています。
               </p>
               <p>
-                <strong class="text-indigo-600">5年以上の経験</strong>と<strong class="text-indigo-600">50以上の成功したプロジェクト</strong>を持ち、
-                SOBA GROUPは企業の信頼できるパートナーであることを誇りに思っています。
+                <strong class='text-indigo-600'>5年以上の経験</strong>と<strong
+                  class='text-indigo-600'>50以上の成功したプロジェクト</strong
+                >を持ち、 SOBA
+                GROUPは企業の信頼できるパートナーであることを誇りに思っています。
               </p>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="aspect-square bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl p-8">
-              <div class="grid grid-cols-2 gap-6 h-full">
-                <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center">
-                  <div class="text-5xl font-bold text-indigo-600 mb-2">50+</div>
-                  <div class="text-gray-600 text-center">成功プロジェクト</div>
+          <div class='relative'>
+            <div
+              class='aspect-square bg-linear-to-br from-blue-100 to-blue-50 rounded-2xl p-8'>
+              <div class='grid grid-cols-2 gap-6 h-full'>
+                <div
+                  class='bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center'>
+                  <div class='text-5xl font-bold text-indigo-600 mb-2'>50+</div>
+                  <div class='text-gray-600 text-center'>成功プロジェクト</div>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center">
-                  <div class="text-5xl font-bold text-indigo-600 mb-2">5+</div>
-                  <div class="text-gray-600 text-center">年の経験</div>
+                <div
+                  class='bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center'>
+                  <div class='text-5xl font-bold text-indigo-600 mb-2'>5+</div>
+                  <div class='text-gray-600 text-center'>年の経験</div>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center">
-                  <div class="text-5xl font-bold text-indigo-600 mb-2">98%</div>
-                  <div class="text-gray-600 text-center">顧客満足度</div>
+                <div
+                  class='bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center'>
+                  <div class='text-5xl font-bold text-indigo-600 mb-2'>98%</div>
+                  <div class='text-gray-600 text-center'>顧客満足度</div>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center">
-                  <div class="text-5xl font-bold text-indigo-600 mb-2">24/7</div>
-                  <div class="text-gray-600 text-center">サポート</div>
+                <div
+                  class='bg-white rounded-xl p-6 shadow-lg flex flex-col justify-center items-center'>
+                  <div class='text-5xl font-bold text-indigo-600 mb-2'>24/7</div
+                  >
+                  <div class='text-gray-600 text-center'>サポート</div>
                 </div>
               </div>
             </div>
@@ -77,38 +90,67 @@ import FAQ from '../../components/FAQ.astro';
     </section>
 
     <!-- Mission & Vision -->
-    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">ミッション＆ビジョン</h2>
-          <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-400 mx-auto rounded-full"></div>
+    <section class='py-20 bg-linear-to-br from-gray-50 to-blue-50'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'
+            >ミッション＆ビジョン</h2
+          >
+          <div
+            class='w-24 h-1 bg-linear-to-r from-indigo-500 to-violet-400 mx-auto rounded-full'
+          ></div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class='grid md:grid-cols-2 gap-8'>
           <!-- Mission -->
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
-            <div class="w-16 h-16 bg-indigo-600 rounded-xl flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          <div
+            class='bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow'>
+            <div
+              class='w-16 h-16 bg-indigo-600 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-white'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M13 10V3L4 14h7v7l9-11h-7z'></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">ミッション</h3>
-            <p class="text-gray-600 text-lg leading-relaxed">
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>ミッション</h3>
+            <p class='text-gray-600 text-lg leading-relaxed'>
               デジタル技術を中小企業により近づけ、
               デジタル時代において平等に競争できるよう支援します。
             </p>
           </div>
 
           <!-- Vision -->
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
-            <div class="w-16 h-16 bg-indigo-600 rounded-xl flex items-center justify-center mb-6">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          <div
+            class='bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow'>
+            <div
+              class='w-16 h-16 bg-indigo-600 rounded-xl flex items-center justify-center mb-6'>
+              <svg
+                class='w-8 h-8 text-white'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'></path>
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
+                ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">ビジョン</h3>
-            <p class="text-gray-600 text-lg leading-relaxed">
+            <h3 class='text-2xl font-bold text-gray-900 mb-4'>ビジョン</h3>
+            <p class='text-gray-600 text-lg leading-relaxed'>
               ベトナムおよび地域における中小企業向けの主要なITサービスプロバイダーになる。
             </p>
           </div>
@@ -117,61 +159,75 @@ import FAQ from '../../components/FAQ.astro';
     </section>
 
     <!-- Core Values -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">コアバリュー</h2>
-          <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-400 mx-auto rounded-full"></div>
+    <section class='py-20 bg-white'>
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='text-center mb-16'>
+          <h2 class='text-4xl font-bold text-gray-900 mb-4'>コアバリュー</h2>
+          <div
+            class='w-24 h-1 bg-linear-to-r from-indigo-500 to-violet-400 mx-auto rounded-full'
+          ></div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
           <!-- Value 1 -->
-          <div class="group">
-            <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 h-full border-2 border-transparent hover:border-indigo-200 transition-all">
-              <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <span class="text-2xl text-white font-bold">1</span>
+          <div class='group'>
+            <div
+              class='bg-linear-to-br from-blue-50 to-white rounded-2xl p-8 h-full border-2 border-transparent hover:border-indigo-200 transition-all'>
+              <div
+                class='w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform'>
+                <span class='text-2xl text-white font-bold'>1</span>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">顧客中心</h3>
-              <p class="text-gray-600 leading-relaxed">
+              <h3 class='text-xl font-bold text-gray-900 mb-3'>顧客中心</h3>
+              <p class='text-gray-600 leading-relaxed'>
                 すべての決定は顧客の利益を考慮して行われます
               </p>
             </div>
           </div>
 
           <!-- Value 2 -->
-          <div class="group">
-            <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 h-full border-2 border-transparent hover:border-indigo-200 transition-all">
-              <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <span class="text-2xl text-white font-bold">2</span>
+          <div class='group'>
+            <div
+              class='bg-linear-to-br from-blue-50 to-white rounded-2xl p-8 h-full border-2 border-transparent hover:border-indigo-200 transition-all'>
+              <div
+                class='w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform'>
+                <span class='text-2xl text-white font-bold'>2</span>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">品質へのコミットメント</h3>
-              <p class="text-gray-600 leading-relaxed">
+              <h3 class='text-xl font-bold text-gray-900 mb-3'
+                >品質へのコミットメント</h3
+              >
+              <p class='text-gray-600 leading-relaxed'>
                 サービス品質に妥協はありません
               </p>
             </div>
           </div>
 
           <!-- Value 3 -->
-          <div class="group">
-            <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 h-full border-2 border-transparent hover:border-indigo-200 transition-all">
-              <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <span class="text-2xl text-white font-bold">3</span>
+          <div class='group'>
+            <div
+              class='bg-linear-to-br from-blue-50 to-white rounded-2xl p-8 h-full border-2 border-transparent hover:border-indigo-200 transition-all'>
+              <div
+                class='w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform'>
+                <span class='text-2xl text-white font-bold'>3</span>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">透明性</h3>
-              <p class="text-gray-600 leading-relaxed">
+              <h3 class='text-xl font-bold text-gray-900 mb-3'>透明性</h3>
+              <p class='text-gray-600 leading-relaxed'>
                 コスト、進捗、責任について明確
               </p>
             </div>
           </div>
 
           <!-- Value 4 -->
-          <div class="group">
-            <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 h-full border-2 border-transparent hover:border-indigo-200 transition-all">
-              <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <span class="text-2xl text-white font-bold">4</span>
+          <div class='group'>
+            <div
+              class='bg-linear-to-br from-blue-50 to-white rounded-2xl p-8 h-full border-2 border-transparent hover:border-indigo-200 transition-all'>
+              <div
+                class='w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform'>
+                <span class='text-2xl text-white font-bold'>4</span>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">イノベーション</h3>
-              <p class="text-gray-600 leading-relaxed">
+              <h3 class='text-xl font-bold text-gray-900 mb-3'
+                >イノベーション</h3
+              >
+              <p class='text-gray-600 leading-relaxed'>
                 常に最新の技術と方法で更新
               </p>
             </div>
@@ -187,16 +243,18 @@ import FAQ from '../../components/FAQ.astro';
     <FAQ />
 
     <!-- CTA -->
-    <section class="py-20 bg-gradient-to-br from-indigo-500 to-slate-700 text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl font-bold mb-6">デジタル変革の旅を始める準備はできていますか？</h2>
-        <p class="text-xl text-white/90 mb-8">
+    <section
+      class='py-20 bg-linear-to-br from-indigo-500 to-slate-700 text-white'>
+      <div class='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center'>
+        <h2 class='text-4xl font-bold mb-6'
+          >デジタル変革の旅を始める準備はできていますか？</h2
+        >
+        <p class='text-xl text-white/90 mb-8'>
           私たちがあなたのビジネスパートナーになります
         </p>
         <a
-          href="/ja/contact"
-          class="inline-block bg-white text-indigo-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-2xl"
-        >
+          href='/ja/contact'
+          class='inline-block bg-white text-indigo-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-2xl'>
           今すぐお問い合わせ
         </a>
       </div>

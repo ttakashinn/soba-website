@@ -1,19 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import CTA from '../../components/CTA.astro';
-import CaseStudyCard from '../../components/CaseStudyCard.astro';
-import CaseStudyModal from '../../components/CaseStudyModal.astro';
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import CTA from '../../components/CTA.astro'
+import CaseStudyCard from '../../components/CaseStudyCard.astro'
+import CaseStudyModal from '../../components/CaseStudyModal.astro'
 
-const lang = 'ja';
+const lang = 'ja'
 
 // Load case studies from content collection
-const caseStudiesRaw = await getCollection('case-studies');
+const caseStudiesRaw = await getCollection('case-studies')
 const caseStudies = caseStudiesRaw
   .sort((a, b) => a.data.index - b.data.index)
-  .map(study => ({
+  .map((study) => ({
     id: study.data.id,
     industry: study.data.industry[lang],
     industryKey: study.data.industryKey,
@@ -24,47 +24,52 @@ const caseStudies = caseStudiesRaw
     solution: study.data.solution[lang],
     tech: study.data.tech,
     timeline: study.data.timeline[lang],
-    results: study.data.results.map(r => ({
+    results: study.data.results.map((r) => ({
       icon: r.icon,
-      text: r[lang]
+      text: r[lang],
     })),
     testimonial: {
       quote: study.data.testimonial.quote[lang],
       author: study.data.testimonial.author,
-      position: study.data.testimonial.position[lang]
-    }
-  }));
+      position: study.data.testimonial.position[lang],
+    },
+  }))
 
 // Get unique industries for filter
-const industries = ['すべて', ...new Set(caseStudies.map(s => s.industry))];
+const industries = ['すべて', ...new Set(caseStudies.map((s) => s.industry))]
 
 const labels = {
   challenge: '課題',
   solution: 'ソリューション',
   techStack: 'Tech Stack',
   results: '成果',
-  viewDetails: '詳細を見る'
-};
+  viewDetails: '詳細を見る',
+}
 ---
 
 <BaseLayout
-  title="ポートフォリオ - 代表的なプロジェクト"
-  description="SOBA GROUPのケーススタディと代表的なプロジェクト - 企業向けデジタル変革"
-  lang="ja"
->
+  title='ポートフォリオ - 代表的なプロジェクト'
+  description='SOBA GROUPのケーススタディと代表的なプロジェクト - 企業向けデジタル変革'
+  lang='ja'>
   <Header />
 
   <main>
     <!-- Hero -->
-    <section class="relative bg-gradient-to-br from-indigo-500 via-indigo-600 to-slate-700 text-white py-24 overflow-hidden">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    <section
+      class='relative bg-linear-to-br from-indigo-500 via-indigo-600 to-slate-700 text-white py-24 overflow-hidden'>
+      <div class='absolute inset-0 opacity-10'>
+        <div
+          class='absolute inset-0'
+          style='background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;'
+        ></div>
       </div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl">
-          <h1 class="text-5xl lg:text-6xl font-bold mb-6">代表的なプロジェクト</h1>
-          <p class="text-2xl text-white/90">
+      <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div class='max-w-3xl'>
+          <h1 class='text-5xl lg:text-6xl font-bold mb-6'
+            >代表的なプロジェクト</h1
+          >
+          <p class='text-2xl text-white/90'>
             SOBA GROUPとの成功したデジタル変革事例
           </p>
         </div>
@@ -72,67 +77,74 @@ const labels = {
     </section>
 
     <!-- Filter & Grid -->
-    <section class="py-20 bg-white" x-data="{ activeFilter: 'すべて' }">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class='py-20 bg-white' x-data="{ activeFilter: 'すべて' }">
+      <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <!-- Industry Filter -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12" role="tablist" aria-label="業界でフィルター">
-          {industries.map((industry) => (
-            <button
-              x-on:click={`activeFilter = '${industry}'`}
-              class="px-6 py-2 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              x-bind:class={`activeFilter === '${industry}' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
-              role="tab"
-              x-bind:aria-selected={`activeFilter === '${industry}'`}
-            >
-              {industry}
-            </button>
-          ))}
+        <div
+          class='flex flex-wrap justify-center gap-3 mb-12'
+          role='tablist'
+          aria-label='業界でフィルター'>
+          {
+            industries.map((industry) => (
+              <button
+                x-on:click={`activeFilter = '${industry}'`}
+                class='px-6 py-2 rounded-full font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+                x-bind:class={`activeFilter === '${industry}' ? 'bg-indigo-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'`}
+                role='tab'
+                x-bind:aria-selected={`activeFilter === '${industry}'`}>
+                {industry}
+              </button>
+            ))
+          }
         </div>
 
         <!-- Case Studies Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {caseStudies.map((study) => (
-            <div
-              x-show={`activeFilter === 'すべて' || activeFilter === '${study.industry}'`}
-              x-transition:enter="transition ease-out duration-300"
-              x-transition:enter-start="opacity-0 transform scale-95"
-              x-transition:enter-end="opacity-100 transform scale-100"
-            >
-              <CaseStudyCard
-                id={study.id}
-                industry={study.industry}
-                client={study.client}
-                teamSize={study.teamSize}
-                heroImage={study.heroImage}
-                challenge={study.challenge}
-                results={study.results}
-                tech={study.tech}
-                timeline={study.timeline}
-                labels={labels}
-              />
-            </div>
-          ))}
+        <div class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {
+            caseStudies.map((study) => (
+              <div
+                x-show={`activeFilter === 'すべて' || activeFilter === '${study.industry}'`}
+                x-transition:enter='transition ease-out duration-300'
+                x-transition:enter-start='opacity-0 transform scale-95'
+                x-transition:enter-end='opacity-100 transform scale-100'>
+                <CaseStudyCard
+                  id={study.id}
+                  industry={study.industry}
+                  client={study.client}
+                  teamSize={study.teamSize}
+                  heroImage={study.heroImage}
+                  challenge={study.challenge}
+                  results={study.results}
+                  tech={study.tech}
+                  timeline={study.timeline}
+                  labels={labels}
+                />
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <!-- Case Study Modals -->
-    {caseStudies.map((study) => (
-      <CaseStudyModal
-        id={study.id}
-        industry={study.industry}
-        client={study.client}
-        teamSize={study.teamSize}
-        heroImage={study.heroImage}
-        challenge={study.challenge}
-        solution={study.solution}
-        results={study.results}
-        tech={study.tech}
-        timeline={study.timeline}
-        testimonial={study.testimonial}
-        labels={labels}
-      />
-    ))}
+    {
+      caseStudies.map((study) => (
+        <CaseStudyModal
+          id={study.id}
+          industry={study.industry}
+          client={study.client}
+          teamSize={study.teamSize}
+          heroImage={study.heroImage}
+          challenge={study.challenge}
+          solution={study.solution}
+          results={study.results}
+          tech={study.tech}
+          timeline={study.timeline}
+          testimonial={study.testimonial}
+          labels={labels}
+        />
+      ))
+    }
 
     <CTA />
   </main>

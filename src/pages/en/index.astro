@@ -6,9 +6,10 @@ import Hero from '../../components/Hero.astro'
 import ServiceCard from '../../components/ServiceCard.astro'
 import Stats from '../../components/Stats.astro'
 import WhyChooseUs from '../../components/WhyChooseUs.astro'
+import AntiPersona from '../../components/AntiPersona.astro'
 import Process from '../../components/Process.astro'
 import Testimonials from '../../components/Testimonials.astro'
-import FreeAuditBanner from '../../components/FreeAuditBanner.astro'
+import ReadinessAssessment from '../../components/ReadinessAssessment.astro'
 import ContactForm from '../../components/ContactForm.astro'
 import CTA from '../../components/CTA.astro'
 import { useTranslations } from '../../i18n/utils'
@@ -33,7 +34,7 @@ const t = useTranslations('en')
             {t('services.title')}
           </h2>
           <div
-            class='w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-400 mx-auto rounded-full'
+            class='w-24 h-1 bg-linear-to-r from-indigo-500 to-violet-400 mx-auto rounded-full'
           ></div>
         </div>
 
@@ -62,11 +63,12 @@ const t = useTranslations('en')
 
     <Stats />
     <WhyChooseUs />
+    <AntiPersona lang='en' />
     <Process />
     <Testimonials />
-    <FreeAuditBanner />
+    <ReadinessAssessment lang='en' />
     <CTA />
-    <ContactForm />
+    <!-- <ContactForm /> -->
   </main>
 
   <Footer />

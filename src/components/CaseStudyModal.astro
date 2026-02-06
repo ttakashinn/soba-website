@@ -23,13 +23,31 @@ export interface Props {
   }
 }
 
-const { id, industry, client, teamSize, heroImage, challenge, solution, results, tech, timeline, testimonial, labels } =
-  Astro.props
+const {
+  id,
+  industry,
+  client,
+  teamSize,
+  heroImage,
+  challenge,
+  solution,
+  results,
+  tech,
+  timeline,
+  testimonial,
+  labels,
+} = Astro.props
 
 const getIndustryEmoji = (ind: string) => {
   const key = ind.toLowerCase().replace(/[^a-z]/g, '')
-  if (key.includes('sản') || key.includes('manufacturing') || key.includes('製造')) return '🏭'
-  if (key.includes('f&b') || key.includes('fnb') || key.includes('restaurant')) return '🍽️'
+  if (
+    key.includes('sản') ||
+    key.includes('manufacturing') ||
+    key.includes('製造')
+  )
+    return '🏭'
+  if (key.includes('f&b') || key.includes('fnb') || key.includes('restaurant'))
+    return '🍽️'
   if (key.includes('logistics') || key.includes('物流')) return '🚚'
   return '💼'
 }
@@ -60,22 +78,33 @@ const getIndustryEmoji = (ind: string) => {
       class='bg-white rounded-2xl sm:rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl'>
       <!-- Modal Header -->
       <div
-        class='relative h-40 sm:h-48 bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center overflow-hidden'>
+        class='relative h-40 sm:h-48 bg-linear-to-br from-indigo-500 to-violet-600 flex items-center justify-center overflow-hidden'>
         <img
           src={heroImage}
           alt={client}
           class='w-full h-full object-cover'
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
         />
-        <span class='text-7xl sm:text-8xl hidden items-center justify-center' aria-hidden='true' style='display: none;'
-          >{getIndustryEmoji(industry)}</span
+        <span
+          class='text-7xl sm:text-8xl hidden items-center justify-center'
+          aria-hidden='true'
+          style='display: none;'>{getIndustryEmoji(industry)}</span
         >
         <button
           x-on:click='open = false'
           class='absolute top-3 sm:top-4 right-3 sm:right-4 text-white/80 hover:text-white bg-slate-900/20 hover:bg-slate-900/40 rounded-full p-2 transition-colors'
           aria-label='Close modal'>
-          <svg class='w-5 h-5 sm:w-6 sm:h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
-            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'></path>
+          <svg
+            class='w-5 h-5 sm:w-6 sm:h-6'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+            aria-hidden='true'>
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M6 18L18 6M6 6l12 12'></path>
           </svg>
         </button>
       </div>
@@ -83,38 +112,50 @@ const getIndustryEmoji = (ind: string) => {
       <!-- Modal Content -->
       <div class='p-5 sm:p-6 lg:p-8'>
         <div class='flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4'>
-          <span class='bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs sm:text-sm font-medium'>
+          <span
+            class='bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs sm:text-sm font-medium'>
             {industry}
           </span>
           <span class='text-slate-500 text-xs sm:text-sm'>{timeline}</span>
         </div>
 
-        <h2 id={`modal-title-${id}`} class='text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 mb-1 sm:mb-2'>
+        <h2
+          id={`modal-title-${id}`}
+          class='text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 mb-1 sm:mb-2'>
           {client}
         </h2>
-        <p class='text-slate-500 text-sm sm:text-base mb-5 sm:mb-6'>{teamSize}</p>
+        <p class='text-slate-500 text-sm sm:text-base mb-5 sm:mb-6'
+          >{teamSize}</p
+        >
 
         <!-- Challenge -->
         <div class='mb-5 sm:mb-6'>
-          <h3 class='text-base sm:text-lg font-bold text-rose-600 mb-2 flex items-center gap-2'>
+          <h3
+            class='text-base sm:text-lg font-bold text-rose-600 mb-2 flex items-center gap-2'>
             <span class='text-lg sm:text-xl'>🎯</span>
             {labels.challenge}
           </h3>
-          <p class='text-slate-600 text-sm sm:text-base leading-relaxed'>{challenge}</p>
+          <p class='text-slate-600 text-sm sm:text-base leading-relaxed'
+            >{challenge}</p
+          >
         </div>
 
         <!-- Solution -->
         <div class='mb-5 sm:mb-6'>
-          <h3 class='text-base sm:text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2'>
+          <h3
+            class='text-base sm:text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2'>
             <span class='text-lg sm:text-xl'>💡</span>
             {labels.solution}
           </h3>
-          <p class='text-slate-600 text-sm sm:text-base leading-relaxed'>{solution}</p>
+          <p class='text-slate-600 text-sm sm:text-base leading-relaxed'
+            >{solution}</p
+          >
         </div>
 
         <!-- Tech Stack -->
         <div class='mb-5 sm:mb-6'>
-          <h3 class='text-base sm:text-lg font-bold text-slate-800 mb-2 sm:mb-3 flex items-center gap-2'>
+          <h3
+            class='text-base sm:text-lg font-bold text-slate-800 mb-2 sm:mb-3 flex items-center gap-2'>
             <span class='text-lg sm:text-xl'>🛠️</span>
             {labels.techStack}
           </h3>
@@ -131,7 +172,8 @@ const getIndustryEmoji = (ind: string) => {
 
         <!-- Results -->
         <div class='mb-5 sm:mb-6'>
-          <h3 class='text-base sm:text-lg font-bold text-emerald-600 mb-2 sm:mb-3 flex items-center gap-2'>
+          <h3
+            class='text-base sm:text-lg font-bold text-emerald-600 mb-2 sm:mb-3 flex items-center gap-2'>
             <span class='text-lg sm:text-xl'>📊</span>
             {labels.results}
           </h3>
@@ -142,7 +184,9 @@ const getIndustryEmoji = (ind: string) => {
                   <span class='text-xl sm:text-2xl' aria-hidden='true'>
                     {result.icon}
                   </span>
-                  <span class='text-slate-700 font-medium text-sm sm:text-base'>{result.text}</span>
+                  <span class='text-slate-700 font-medium text-sm sm:text-base'>
+                    {result.text}
+                  </span>
                 </div>
               ))
             }
@@ -150,19 +194,25 @@ const getIndustryEmoji = (ind: string) => {
         </div>
 
         <!-- Testimonial -->
-        <div class='bg-gradient-to-r from-indigo-50 to-violet-50 rounded-xl sm:rounded-2xl p-5 sm:p-6 border-l-4 border-indigo-500'>
-          <p class='text-slate-700 italic text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 leading-relaxed'>
+        <div
+          class='bg-linear-to-r from-indigo-50 to-violet-50 rounded-xl sm:rounded-2xl p-5 sm:p-6 border-l-4 border-indigo-500'>
+          <p
+            class='text-slate-700 italic text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 leading-relaxed'>
             "{testimonial.quote}"
           </p>
           <div class='flex items-center gap-3'>
             <div
-              class='w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-lg shadow-indigo-500/25'
+              class='w-9 h-9 sm:w-10 sm:h-10 bg-linear-to-br from-indigo-500 to-violet-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-lg shadow-indigo-500/25'
               aria-hidden='true'>
               {testimonial.author.charAt(0)}
             </div>
             <div>
-              <div class='font-bold text-slate-800 text-sm sm:text-base'>{testimonial.author}</div>
-              <div class='text-slate-500 text-xs sm:text-sm'>{testimonial.position}</div>
+              <div class='font-bold text-slate-800 text-sm sm:text-base'
+                >{testimonial.author}</div
+              >
+              <div class='text-slate-500 text-xs sm:text-sm'
+                >{testimonial.position}</div
+              >
             </div>
           </div>
         </div>

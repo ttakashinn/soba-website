@@ -1,0 +1,159 @@
+---
+interface Props {
+  lang?: 'vi' | 'en' | 'ja'
+}
+
+const { lang = 'vi' } = Astro.props
+
+const content = {
+  vi: {
+    headline: 'Chúng tôi có thể KHÔNG phù hợp với bạn nếu...',
+    items: [
+      {
+        title: "Cần website giá rẻ 'mỳ ăn liền'",
+        desc: 'Chúng tôi xây dựng hệ thống vận hành đi đường dài, không làm web giới thiệu giá vài trăm nghìn.',
+      },
+      {
+        title: 'Chưa có quy trình cốt lõi',
+        desc: 'Công nghệ chỉ phóng đại quy trình. Nếu quy trình đang rối, số hóa chỉ tạo ra hỗn loạn.',
+      },
+      {
+        title: 'Muốn khoán trắng 100%',
+        desc: 'Chuyển đổi số cần cam kết từ lãnh đạo. Nếu bạn không phối hợp, dự án khó thành công.',
+      },
+    ],
+    cta: {
+      text: 'Nhưng nếu bạn cần đối tác kỹ thuật dám nói thật và cam kết hiệu quả...',
+      button: 'Đặt lịch tư vấn',
+    },
+  },
+  en: {
+    headline: 'We might NOT be the right fit for you if...',
+    items: [
+      {
+        title: "You need a cheap 'instant' website",
+        desc: 'We build long-term operational systems, not low-cost brochure sites.',
+      },
+      {
+        title: 'No core business processes',
+        desc: 'Tech only magnifies processes. If your process is chaotic, digitization only creates automated chaos.',
+      },
+      {
+        title: 'Want to delegate 100% (Hands-off)',
+        desc: 'DX requires leadership commitment. Without your collaboration, success is unlikely.',
+      },
+    ],
+    cta: {
+      text: 'But if you need a technical partner who speaks the truth and commits to results...',
+      button: 'Book a Consultation',
+    },
+  },
+  ja: {
+    headline: 'もし以下に当てはまる場合、弊社は最適ではないかもしれません...',
+    items: [
+      {
+        title: '安価な「インスタント」Webサイトが必要',
+        desc: '私たちは長期的な運用システムを構築します。安価な紹介サイトは制作しません。',
+      },
+      {
+        title: '中核となる業務プロセスがない',
+        desc: '技術はプロセスを拡大するだけです。プロセスが混乱している場合、デジタル化は混乱を自動化するだけです。',
+      },
+      {
+        title: 'すべてを丸投げしたい（100%委託）',
+        desc: 'DXにはリーダーシップのコミットメントが必要です。連携がない場合、プロジェクトの成功は困難です。',
+      },
+    ],
+    cta: {
+      text: 'しかし、真実を語り、結果にコミットする技術パートナーが必要なら...',
+      button: '無料相談を予約',
+    },
+  },
+}
+
+const t = content[lang]
+const contactUrl = lang === 'vi' ? '/contact' : `/${lang}/contact`
+---
+
+<section class='py-12 sm:py-14 lg:py-16 bg-slate-100'>
+  <div class='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <!-- Headline -->
+    <div class='text-center mb-8 sm:mb-10'>
+      <div
+        class='inline-flex items-center gap-2 bg-amber-100 text-amber-700 px-4 py-1.5 rounded-full text-sm font-medium mb-4'>
+        <svg
+          class='w-4 h-4'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'>
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
+          ></path>
+        </svg>
+        <span>{lang === 'vi' ? 'Lưu ý' : lang === 'en' ? 'Heads up' : 'ご注意'}</span>
+      </div>
+      <h2 class='text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800'>
+        {t.headline}
+      </h2>
+    </div>
+
+    <!-- Items Grid -->
+    <div class='grid md:grid-cols-3 gap-5 sm:gap-6 mb-8 sm:mb-10'>
+      {
+        t.items.map((item, index) => (
+          <div class='bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow'>
+            <div class='flex items-start gap-3 mb-3'>
+              <div class='shrink-0 w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center'>
+                <svg
+                  class='w-4 h-4 text-amber-600'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'>
+                  <path
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2'
+                    d='M6 18L18 6M6 6l12 12'
+                  />
+                </svg>
+              </div>
+              <h3 class='text-base sm:text-lg font-bold text-slate-800 leading-snug'>
+                {item.title}
+              </h3>
+            </div>
+            <p class='text-slate-600 text-sm leading-relaxed pl-11'>
+              {item.desc}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- CTA -->
+    <div
+      class='bg-linear-to-r from-indigo-600 to-violet-600 rounded-xl p-5 sm:p-6 text-center'>
+      <p class='text-white/90 text-sm sm:text-base mb-4 max-w-2xl mx-auto'>
+        {t.cta.text}
+      </p>
+      <a
+        href={contactUrl}
+        class='inline-flex items-center gap-2 bg-white text-indigo-600 px-6 py-2.5 rounded-lg font-semibold hover:bg-indigo-50 transition-colors shadow-md text-sm sm:text-base'>
+        {t.cta.button}
+        <svg
+          class='w-4 h-4'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'>
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M13 7l5 5m0 0l-5 5m5-5H6'></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

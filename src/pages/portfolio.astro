@@ -12,7 +12,10 @@ const lang = 'vi'
 // Load case studies from content collection
 const caseStudiesRaw = await getCollection('case-studies')
 const caseStudies = caseStudiesRaw
-  .sort((a: typeof caseStudiesRaw[0], b: typeof caseStudiesRaw[0]) => a.data.index - b.data.index)
+  .sort(
+    (a: (typeof caseStudiesRaw)[0], b: (typeof caseStudiesRaw)[0]) =>
+      a.data.index - b.data.index,
+  )
   .map((study: (typeof caseStudiesRaw)[0]) => ({
     id: study.data.id,
     industry: study.data.industry[lang],
@@ -24,7 +27,7 @@ const caseStudies = caseStudiesRaw
     solution: study.data.solution[lang],
     tech: study.data.tech,
     timeline: study.data.timeline[lang],
-    results: study.data.results.map((r: typeof study.data.results[0]) => ({
+    results: study.data.results.map((r: (typeof study.data.results)[0]) => ({
       icon: r.icon,
       text: r[lang],
     })),
@@ -36,7 +39,10 @@ const caseStudies = caseStudiesRaw
   }))
 
 // Get unique industries for filter
-const industries = ['Tất cả', ...new Set(caseStudies.map((s: typeof caseStudies[0]) => s.industry))]
+const industries = [
+  'Tất cả',
+  ...new Set(caseStudies.map((s: (typeof caseStudies)[0]) => s.industry)),
+]
 
 const labels = {
   challenge: 'Thách thức',
@@ -56,7 +62,7 @@ const labels = {
   <main>
     <!-- Hero -->
     <section
-      class='relative bg-gradient-to-br from-indigo-500 via-indigo-600 to-slate-700 text-white py-24 overflow-hidden'>
+      class='relative bg-linear-to-br from-indigo-500 via-indigo-600 to-slate-700 text-white py-24 overflow-hidden'>
       <div class='absolute inset-0 opacity-10'>
         <div
           class='absolute inset-0'
@@ -99,7 +105,7 @@ const labels = {
         <!-- Case Studies Grid -->
         <div class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {
-            caseStudies.map((study: typeof caseStudies[0]) => (
+            caseStudies.map((study: (typeof caseStudies)[0]) => (
               <div
                 x-show={`activeFilter === 'Tất cả' || activeFilter === '${study.industry}'`}
                 x-transition:enter='transition ease-out duration-300'
@@ -126,7 +132,7 @@ const labels = {
 
     <!-- Case Study Modals -->
     {
-      caseStudies.map((study: typeof caseStudies[0]) => (
+      caseStudies.map((study: (typeof caseStudies)[0]) => (
         <CaseStudyModal
           id={study.id}
           industry={study.industry}
