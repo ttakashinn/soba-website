@@ -166,12 +166,17 @@ const labels = {
 
 const t = labels[lang]
 const contactUrl = lang === 'vi' ? '/contact' : `/${lang}/contact`
+
+// Pre-build Alpine expression strings to avoid JSX parsing issues with > characters
+const levelClassExpr = "{ 'bg-red-100 text-red-700': overallScore <= 8, 'bg-yellow-100 text-yellow-700': overallScore > 8 && overallScore <= 14, 'bg-green-100 text-green-700': overallScore > 14 }"
+const levelTextExpr = "overallScore <= 8 ? t.levels.low : (overallScore <= 14 ? t.levels.medium : t.levels.high)"
+const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (overallScore <= 14 ? t.recommendations.medium : t.recommendations.high)"
 ---
 
 <section
   id='readiness-assessment'
   class='py-16 sm:py-20 lg:py-24 bg-linear-to-b from-slate-50 to-white'
-  x-data={`readinessAssessment({ questions: ${JSON.stringify(QUESTIONS)}, lang: '${lang}' })`}>
+  x-data={`readinessAssessment({ questions: ${JSON.stringify(QUESTIONS)}, lang: '${lang}', labels: ${JSON.stringify(t)} })`}>
   <div class='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
     <!-- Step 1: Intro -->
     <div
@@ -709,13 +714,8 @@ const contactUrl = lang === 'vi' ? '/contact' : `/${lang}/contact`
           ></div>
           <div
             class='inline-block px-3 py-1 rounded-full text-sm font-medium'
-            :class="{
-              'bg-red-100 text-red-700': overallScore <= 8,
-              'bg-yellow-100 text-yellow-700': overallScore > 8 && overallScore <= 14,
-              'bg-green-100 text-green-700': overallScore > 14
-            }"
-            x-text='overallScore <= 8 ? `${t.levels.low}` : (overallScore <= 14 ? `${t.levels.medium}` : `${t.levels.high}`)'
-            x-data={`{ t: ${JSON.stringify(t)} }`}>
+            :class={levelClassExpr}
+            x-text={levelTextExpr}>
           </div>
         </div>
 
@@ -738,8 +738,7 @@ const contactUrl = lang === 'vi' ? '/contact' : `/${lang}/contact`
           </h4>
           <p
             class='text-slate-600'
-            x-text='overallScore <= 8 ? `${t.recommendations.low}` : (overallScore <= 14 ? `${t.recommendations.medium}` : `${t.recommendations.high}`)'
-            x-data={`{ t: ${JSON.stringify(t)} }`}>
+            x-text={recommendationTextExpr}>
           </p>
         </div>
 
