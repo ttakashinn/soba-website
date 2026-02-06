@@ -1,14 +1,21 @@
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config'
+import cloudflare from '@astrojs/cloudflare'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sobavn.com',
 
-  output: 'static', // SSG mode cho Cloudflare Pages
+  output: 'static',
+  adapter: cloudflare({
+    imageService: 'compile',
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
   build: {
@@ -27,4 +34,4 @@ export default defineConfig({
   },
 
   compressHTML: true,
-});
+})

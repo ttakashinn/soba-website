@@ -168,9 +168,12 @@ const t = labels[lang]
 const contactUrl = lang === 'vi' ? '/contact' : `/${lang}/contact`
 
 // Pre-build Alpine expression strings to avoid JSX parsing issues with > characters
-const levelClassExpr = "{ 'bg-red-100 text-red-700': overallScore <= 8, 'bg-yellow-100 text-yellow-700': overallScore > 8 && overallScore <= 14, 'bg-green-100 text-green-700': overallScore > 14 }"
-const levelTextExpr = "overallScore <= 8 ? t.levels.low : (overallScore <= 14 ? t.levels.medium : t.levels.high)"
-const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (overallScore <= 14 ? t.recommendations.medium : t.recommendations.high)"
+const levelClassExpr =
+  "{ 'bg-red-100 text-red-700': overallScore <= 8, 'bg-yellow-100 text-yellow-700': overallScore > 8 && overallScore <= 14, 'bg-green-100 text-green-700': overallScore > 14 }"
+const levelTextExpr =
+  'overallScore <= 8 ? t.levels.low : (overallScore <= 14 ? t.levels.medium : t.levels.high)'
+const recommendationTextExpr =
+  'overallScore <= 8 ? t.recommendations.low : (overallScore <= 14 ? t.recommendations.medium : t.recommendations.high)'
 ---
 
 <section
@@ -411,7 +414,7 @@ const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (ove
           </button>
 
           <button
-            @click="step = 'form'"
+            @click='showResults'
             x-show='currentQuestion === questions.length - 1'
             :disabled='!answers[questions[currentQuestion]?.id]'
             class='flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed'>
@@ -607,7 +610,10 @@ const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (ove
 
         <!-- Radar Chart -->
         <div class='flex justify-center mb-8'>
-          <svg viewBox='0 0 200 200' class='w-64 h-64 sm:w-80 sm:h-80'>
+          <svg
+            viewBox='-50 -10 280 220'
+            class='w-64 h-64 sm:w-80 sm:h-80'
+            preserveAspectRatio='xMidYMid meet'>
             <!-- Background grid -->
             <g stroke='#e2e8f0' fill='none'>
               <polygon
@@ -639,10 +645,37 @@ const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (ove
               stroke-width='2'>
             </polygon>
 
-            <!-- Data points -->
-            <template x-for='(point, i) in radarPointsArray' :key='i'>
-              <circle :cx='point.x' :cy='point.y' r='5' fill='#6366f1'></circle>
-            </template>
+            <!-- Data points (manually rendered since x-for doesn't work in SVG) -->
+            <circle
+              :cx='radarPointsArray[0]?.x'
+              :cy='radarPointsArray[0]?.y'
+              r='5'
+              fill='#6366f1'></circle>
+            <circle
+              :cx='radarPointsArray[1]?.x'
+              :cy='radarPointsArray[1]?.y'
+              r='5'
+              fill='#6366f1'></circle>
+            <circle
+              :cx='radarPointsArray[2]?.x'
+              :cy='radarPointsArray[2]?.y'
+              r='5'
+              fill='#6366f1'></circle>
+            <circle
+              :cx='radarPointsArray[3]?.x'
+              :cy='radarPointsArray[3]?.y'
+              r='5'
+              fill='#6366f1'></circle>
+            <circle
+              :cx='radarPointsArray[4]?.x'
+              :cy='radarPointsArray[4]?.y'
+              r='5'
+              fill='#6366f1'></circle>
+            <circle
+              :cx='radarPointsArray[5]?.x'
+              :cy='radarPointsArray[5]?.y'
+              r='5'
+              fill='#6366f1'></circle>
 
             <!-- Labels -->
             <text
@@ -653,34 +686,19 @@ const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (ove
               >{t.categories.tech}</text
             >
             <text
-              x='175'
-              y='65'
-              text-anchor='start'
-              class='text-xs fill-slate-600 font-medium'></text>
-            <text
-              x='175'
+              x='178'
               y='140'
               text-anchor='start'
               class='text-xs fill-slate-600 font-medium'
               >{t.categories.process}</text
             >
             <text
-              x='100'
-              y='195'
-              text-anchor='middle'
-              class='text-xs fill-slate-600 font-medium'></text>
-            <text
-              x='20'
+              x='22'
               y='140'
               text-anchor='end'
               class='text-xs fill-slate-600 font-medium'
               >{t.categories.people}</text
             >
-            <text
-              x='20'
-              y='65'
-              text-anchor='end'
-              class='text-xs fill-slate-600 font-medium'></text>
           </svg>
         </div>
 
@@ -736,10 +754,7 @@ const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (ove
             </svg>
             {t.recommendation}
           </h4>
-          <p
-            class='text-slate-600'
-            x-text={recommendationTextExpr}>
-          </p>
+          <p class='text-slate-600' x-text={recommendationTextExpr}> </p>
         </div>
 
         <!-- CTAs -->
@@ -790,9 +805,10 @@ const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (ove
   document.addEventListener('alpine:init', () => {
     Alpine.data(
       'readinessAssessment',
-      (config: { questions: any[]; lang: string }) => ({
+      (config: { questions: any[]; lang: string; labels: any }) => ({
         questions: config.questions,
         lang: config.lang,
+        t: config.labels,
         step: 'intro' as 'intro' | 'quiz' | 'form' | 'result',
         currentQuestion: 0,
         answers: {} as Record<string, number>,
@@ -885,6 +901,11 @@ const recommendationTextExpr = "overallScore <= 8 ? t.recommendations.low : (ove
               y: centerY + r * Math.sin(rad),
             }
           })
+        },
+
+        showResults() {
+          this.calculateScores()
+          this.step = 'result'
         },
 
         async submitForm() {
